@@ -9,9 +9,12 @@ class Casa : public Inmueble {
         TipoTecho techo;
 
     public:
-        Casa(bool esPH, TipoTecho techo);
-        bool esCasa();
-        ~Casa();
+        Casa(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* duen, bool ph, TipoTecho tipoT);
+        virtual ~Casa(); 
+        bool getEsPH() const;
+        TipoTecho getTecho() const;
+
+        virtual DTInmueble* getDTInmueble() const;
 };
 
 #endif

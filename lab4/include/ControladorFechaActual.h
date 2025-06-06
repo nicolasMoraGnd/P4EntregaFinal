@@ -7,13 +7,13 @@
 class ControladorFechaActual : public IControladorFechaActual  {
     private:
         static ControladorFechaActual* instance;
-        DTFecha* fechaActual;
+        DTFecha fechaActual;
         ControladorFechaActual();
 
     public:
         static ControladorFechaActual* getInstance();
-        DTFecha* getFechaActual();
-        void setNewFechaActual(int dia, int mes, int anio);
+        virtual DTFecha getFechaActual() const;
+        virtual void setNewFechaActual(const DTFecha& fecha);
         ~ControladorFechaActual();
 };
 
