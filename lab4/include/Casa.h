@@ -32,7 +32,6 @@ class Casa : public Inmueble{
         //de inmueble coso pum
         void desvincularInmueble() const;
 
-        // Destructor
         // destructor de mundos
         virtual ~Casa();  
 
