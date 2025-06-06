@@ -30,6 +30,7 @@ class Apartamento : public Inmueble{
         void desvincularInmueble() const;
 
         // Destructor
+        // destructor de mundos
         virtual ~Apartamento();  
 
 };
