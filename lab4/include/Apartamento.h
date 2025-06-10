@@ -1,18 +1,37 @@
 #ifndef APARTAMENTO_H
 #define APARTAMENTO_H
+
 #include "Inmueble.h"
 
-
-class Apartamento : public Inmueble {
+class Apartamento : public Inmueble{
     private:
-        int piso;
-        bool tieneAscensor;
-        float gastosComunes;
-
+      float gastosComunes;
+      int piso;
+      bool tieneAscensor;
+    
     public:
-        Apartamento(int piso, bool tieneAscensor, float gastosComunes);
-        bool esCasa();
-        ~Apartamento();
+        //bob el constructor (no es necesario el const aca solo en el string xd)
+        Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anoConstruccion, float gastosComunes, int piso, bool tieneAscensor);
+
+        // metodo local(?
+        bool esCasa() const;
+
+        //Getters
+        float getGastosComunes() const;
+        int getPiso() const;
+        bool getTieneAscensor() const;
+
+        //Setter
+        void setGastosComunes(float gastosComunes);
+        void setPiso(int piso);
+        void setTieneAscensor(bool tieneAscensor);
+
+        //de inmueble coso pum
+        void desvincularInmueble() const;
+
+        // destructor de mundos
+        virtual ~Apartamento();  
+
 };
 
 #endif
