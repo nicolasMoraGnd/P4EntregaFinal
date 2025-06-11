@@ -2,6 +2,7 @@
 #define CASA_H
 
 #include "Inmueble.h"
+#include "TipoTecho.h"
 
 class Casa : public Inmueble {
 private:
