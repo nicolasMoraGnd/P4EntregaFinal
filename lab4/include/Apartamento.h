@@ -1,21 +1,29 @@
 #ifndef APARTAMENTO_H
 #define APARTAMENTO_H
+
 #include "Inmueble.h"
 
 class Apartamento : public Inmueble {
-    private:
-        int piso;
-        bool tieneAscensor;
-        float gastosComunes;
+private:
+    int piso;
+    bool tieneAscensor;
+    float gastosComunes;
 
-    public:
-        Apartamento(int cod, const std::string& dir, int nroP, int sup, int anioC, Propietario* duen, int p, bool asc, float gc);
-        virtual ~Apartamento(); 
-        int getPiso() const;
-        bool getTieneAscensor() const;
-        float getGastosComunes() const;
+public:
+    Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* duen, float gastosComunes, int piso, bool tieneAscensor);
+    virtual ~Apartamento();
 
-        virtual DTInmueble* getDTInmueble() const;
+    int getPiso() const;
+    bool getTieneAscensor() const;
+    float getGastosComunes() const;
+
+    void setPiso(int piso);
+    void setTieneAscensor(bool tieneAscensor);
+    void setGastosComunes(float gastosComunes);
+
+    virtual bool esCasa() const;
+    virtual void desvincularInmueble();
+    virtual DTInmueble* getDTInmueble() const;
 };
 
 #endif

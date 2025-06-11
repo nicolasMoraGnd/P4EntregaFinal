@@ -18,7 +18,6 @@ private:
     std::string direccionFisica;
     std::string url;
     std::string telefonoInmobiliaria;
-
     std::set<Propietario*> propietariosRepresentados;
     std::set<AdministraPropiedad*> propiedadesAdministradas;
 

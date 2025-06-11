@@ -2,11 +2,11 @@
 #define INMUEBLE_H
 
 #include <string>
-#include <set> 
+#include <set>
 
 class Propietario;
 class AdministraPropiedad;
-class Inmobiliaria; 
+class Inmobiliaria;
 struct DTInmueble;
 
 class Inmueble {
@@ -16,9 +16,8 @@ private:
     int numeroPuerta;
     int superficie;
     int anioConstruccion;
-
     Propietario* propietarioDuenio; // Vínculo al dueño
-    std::set<AdministraPropiedad*> administraciones; 
+    std::set<AdministraPropiedad*> administraciones;
 
 public:
     Inmueble(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno);
@@ -26,18 +25,26 @@ public:
 
     int getCodigo() const;
     std::string getDireccion() const;
+    int getNumeroPuerta() const;
+    int getSuperficie() const;
+    int getAnioConstruccion() const;
     Propietario* getPropietarioDuenio() const;
 
-    // Metodo de [1] (pagina 4, paso 3.2.2)
+    void setCodigo(int codigo);
+    void setDireccion(const std::string& direccion);
+    void setNumeroPuerta(int numeroPuerta);
+    void setSuperficie(int superficie);
+    void setAnioConstruccion(int anioConstruccion);
+
     bool esAdministradoPor(const Inmobiliaria* inm) const;
-
-    // Metodo de [1] (pagina 5, paso 5.3)
     void asociarAdministracionPropiedad(AdministraPropiedad* adminProp);
-    void desasociarAdministracionPropiedad(AdministraPropiedad* adminProp); // Para logica de eliminación
-
-    virtual DTInmueble* getDTInmueble() const = 0;
+    void desasociarAdministracionPropiedad(AdministraPropiedad* adminProp);
     std::set<AdministraPropiedad*> getAdministraciones() const;
-    void limpiarReferenciasAdministraciones(); // Para "Eliminar Inmueble"
+    void limpiarReferenciasAdministraciones();
+
+    virtual bool esCasa() const = 0;
+    virtual void desvincularInmueble() = 0;
+    virtual DTInmueble* getDTInmueble() const = 0;
 };
 
 #endif
