@@ -1,15 +1,10 @@
-#include "Inmueble.h"
+#include "../include/Inmueble.h"
+#include "../include/Propietario.h"
+#include "../include/AdministraPropiedad.h"
 
-//bob el constructor
-Inmueble::Inmueble(const int codigo, const std::string direccion, const int numeroPuerta, const int superfice, const int anoConstruccion)
-    :codigo(codigo),
-     direccion(direccion),
-     numeroPuerta(numeroPuerta),
-     superficie(superficie),
-     anoConstruccion(anoConstruccion) {}
+Inmueble::Inmueble(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno)
+    : codigo(codigo), direccion(direccion), numeroPuerta(numeroPuerta), superficie(superficie), anioConstruccion(anioConstruccion), propietarioDuenio(dueno) {}
 
-
-//Getters
 int Inmueble::getCodigo() const {
     return codigo;
 }
@@ -18,7 +13,7 @@ std::string Inmueble::getDireccion() const {
     return direccion;
 }
 
-int Inmueble::getnumeroPuerta() const {
+int Inmueble::getNumeroPuerta() const {
     return numeroPuerta;
 }
 
@@ -26,12 +21,15 @@ int Inmueble::getSuperficie() const {
     return superficie;
 }
 
-int Inmueble::getAnoConstruccion() const {
-    return anoConstruccion;
+int Inmueble::getAnioConstruccion() const {
+    return anioConstruccion;
 }
 
-// Setters
-void Inmueble::setCodigo(const int& codigo) {
+Propietario* Inmueble::getPropietarioDuenio() const {
+    return propietarioDuenio;
+}
+
+void Inmueble::setCodigo(int codigo) {
     this->codigo = codigo;
 }
 
@@ -39,17 +37,41 @@ void Inmueble::setDireccion(const std::string& direccion) {
     this->direccion = direccion;
 }
 
-void Inmueble::setNumeroPuerta(const int& numeroPuerta) {
+void Inmueble::setNumeroPuerta(int numeroPuerta) {
     this->numeroPuerta = numeroPuerta;
 }
 
-void Inmueble::setSuperficie(const int& superficie) {
+void Inmueble::setSuperficie(int superficie) {
     this->superficie = superficie;
 }
 
-void Inmueble::setAnoConstruccion(const int& anoConstruccion) {
-    this->anoConstruccion = anoConstruccion;
+void Inmueble::setAnioConstruccion(int anioConstruccion) {
+    this->anioConstruccion = anioConstruccion;
 }
 
-//destructora de mundos que como por ahora no hay punteros dinamicos 
-Inmueble::~Inmueble() {}
+
+bool Inmueble::esAdministradoPor(const Inmobiliaria* inm) const {
+    // TODO: Implementar la logica de busqueda en el set 'administraciones'
+    return false;
+}
+
+void Inmueble::asociarAdministracionPropiedad(AdministraPropiedad* adminProp) {
+    administraciones.insert(adminProp);
+}
+
+void Inmueble::desasociarAdministracionPropiedad(AdministraPropiedad* adminProp) {
+    administraciones.erase(adminProp);
+}
+
+std::set<AdministraPropiedad*> Inmueble::getAdministraciones() const {
+    return administraciones;
+}
+
+void Inmueble::limpiarReferenciasAdministraciones() {
+    // TODO
+    administraciones.clear();
+}
+
+Inmueble::~Inmueble() {
+
+}

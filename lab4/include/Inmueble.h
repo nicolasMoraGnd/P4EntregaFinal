@@ -2,38 +2,49 @@
 #define INMUEBLE_H
 
 #include <string>
+#include <set>
 
-class Inmueble{
-    private:
-        int codigo;
-        std::string direccion;
-        int numeroPuerta;
-        int superficie;
-        int anoConstruccion;
+class Propietario;
+class AdministraPropiedad;
+class Inmobiliaria;
+struct DTInmueble;
 
-    public:
-        Inmueble(const int codigo, const std::string direccion, const int numeroPuerta, const int superficie, const int anoConstruccion);
-        
-        //getters
-        int getCodigo() const;
-        std::string getDireccion() const;
-        int getnumeroPuerta() const;
-        int getSuperficie() const;
-        int getAnoConstruccion() const;
+class Inmueble {
+private:
+    int codigo;
+    std::string direccion;
+    int numeroPuerta;
+    int superficie;
+    int anioConstruccion;
+    Propietario* propietarioDuenio; // Vínculo al dueño
+    std::set<AdministraPropiedad*> administraciones;
 
-        //setters
-        void setCodigo(const int& codigo);
-        void setDireccion(const std::string& direccion);
-        void setNumeroPuerta(const int& numeroPuerta);
-        void setSuperficie(const int& superficie);
-        void setAnoConstruccion(const int& anoConstruccion);
+public:
+    Inmueble(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno);
+    virtual ~Inmueble();
 
-        //metodos
-        virtual void desvincularInmueble() const = 0;
-        virtual bool esCasa() const = 0; //no se le pasa nada a esCasa?
+    int getCodigo() const;
+    std::string getDireccion() const;
+    int getNumeroPuerta() const;
+    int getSuperficie() const;
+    int getAnioConstruccion() const;
+    Propietario* getPropietarioDuenio() const;
 
-        //hast la vista bby
-        virtual ~Inmueble();
+    void setCodigo(int codigo);
+    void setDireccion(const std::string& direccion);
+    void setNumeroPuerta(int numeroPuerta);
+    void setSuperficie(int superficie);
+    void setAnioConstruccion(int anioConstruccion);
+
+    bool esAdministradoPor(const Inmobiliaria* inm) const;
+    void asociarAdministracionPropiedad(AdministraPropiedad* adminProp);
+    void desasociarAdministracionPropiedad(AdministraPropiedad* adminProp);
+    std::set<AdministraPropiedad*> getAdministraciones() const;
+    void limpiarReferenciasAdministraciones();
+
+    virtual bool esCasa() const = 0;
+    virtual void desvincularInmueble() = 0;
+    virtual DTInmueble* getDTInmueble() const = 0;
 };
 
 #endif

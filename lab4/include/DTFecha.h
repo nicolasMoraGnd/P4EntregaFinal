@@ -1,14 +1,11 @@
-#ifndef DTFECHA
-#define DTFECHA
+#ifndef DTFECHA_H
+#define DTFECHA_H
 
 #include <string>
 
-
 class DTFecha {
     private:
-        int dia;
-        int mes;
-        int anio;
+        int dia, mes, anio;;
     public:
         DTFecha(int dia, int mes, int anio);
         DTFecha(DTFecha* fecha);

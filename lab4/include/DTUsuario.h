@@ -4,8 +4,7 @@
 
 class DTUsuario {
     private:
-        std::string nickname;
-        std::string nombre;
+        std::string nickname, nombre;
 
     public:
         DTUsuario(std::string nickname, std::string nombre);

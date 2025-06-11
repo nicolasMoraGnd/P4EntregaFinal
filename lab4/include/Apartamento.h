@@ -3,35 +3,27 @@
 
 #include "Inmueble.h"
 
-class Apartamento : public Inmueble{
-    private:
-      float gastosComunes;
-      int piso;
-      bool tieneAscensor;
-    
-    public:
-        //bob el constructor (no es necesario el const aca solo en el string xd)
-        Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anoConstruccion, float gastosComunes, int piso, bool tieneAscensor);
+class Apartamento : public Inmueble {
+private:
+    int piso;
+    bool tieneAscensor;
+    float gastosComunes;
 
-        // metodo local(?
-        bool esCasa() const;
+public:
+    Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno, float gastosComunes, int piso, bool tieneAscensor);
+    virtual ~Apartamento();
 
-        //Getters
-        float getGastosComunes() const;
-        int getPiso() const;
-        bool getTieneAscensor() const;
+    int getPiso() const;
+    bool getTieneAscensor() const;
+    float getGastosComunes() const;
 
-        //Setter
-        void setGastosComunes(float gastosComunes);
-        void setPiso(int piso);
-        void setTieneAscensor(bool tieneAscensor);
+    void setPiso(int piso);
+    void setTieneAscensor(bool tieneAscensor);
+    void setGastosComunes(float gastosComunes);
 
-        //de inmueble coso pum
-        void desvincularInmueble() const;
-
-        // destructor de mundos
-        virtual ~Apartamento();  
-
+    virtual bool esCasa() const;
+    virtual void desvincularInmueble();
+    virtual DTInmueble* getDTInmueble() const;
 };
 
 #endif

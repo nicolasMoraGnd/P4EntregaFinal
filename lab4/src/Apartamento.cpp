@@ -1,10 +1,9 @@
-#include "Apartamento.h"
+#include "../include/Apartamento.h"
+#include "../include/DTInmueble.h"
 
-// bobsisho el constructorrr
-Apartamento::Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anoConstruccion, float gastosComunes, int piso, bool tieneAscensor)
-    : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion), gastosComunes(gastosComunes), piso(piso), tieneAscensor(tieneAscensor) {}
+Apartamento::Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anoConstruccion, Propietario* dueno, float gastosComunes, int piso, bool tieneAscensor)
+    : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion, dueno), gastosComunes(gastosComunes), piso(piso), tieneAscensor(tieneAscensor) {}
 
-//siempre retorna falseish o eso dice el DCD
 bool Apartamento::esCasa() const {
     return false;
 }
@@ -21,7 +20,6 @@ bool Apartamento::getTieneAscensor() const {
     return tieneAscensor;
 }
 
-// Setters
 void Apartamento::setGastosComunes(float gastosComunes) {
     this->gastosComunes = gastosComunes;
 }
@@ -34,12 +32,12 @@ void Apartamento::setTieneAscensor(bool tieneAscensor) {
     this->tieneAscensor = tieneAscensor;
 }
 
-// Implementación de método virtual puro
-void Apartamento::desvincularInmueble() const {
-    //ver que necesita para que se desvincule
+void Apartamento::desvincularInmueble() {
 }
 
-//destructor de mundos
+DTInmueble* Apartamento::getDTInmueble() const {
+    // TODO: Implementar la creación y retorno de un DTInmueble
+    return 0;
+}
+
 Apartamento::~Apartamento() {}
-
-
