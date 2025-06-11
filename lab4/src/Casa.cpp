@@ -2,8 +2,8 @@
 #include "../include/DTInmueble.h"
 #include "../include/Propietario.h"
 
-Casa::Casa(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* duen, bool esPH, TipoTecho tipoT)
-    : Inmueble(codigo, direccion, numeroPuerta, superficie, anioConstruccion, duen), esPH(esPH), techo(tipoT) {}
+Casa::Casa(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno, bool esPH, TipoTecho tipoT)
+    : Inmueble(codigo, direccion, numeroPuerta, superficie, anioConstruccion, dueno), esPH(esPH), techo(tipoT) {}
 
 bool Casa::esCasa() const {
     return true;
