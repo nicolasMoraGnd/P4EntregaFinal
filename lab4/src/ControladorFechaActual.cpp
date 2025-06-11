@@ -17,7 +17,7 @@ ControladorFechaActual* ControladorFechaActual::getInstance() {
 DTFecha ControladorFechaActual::getFechaActual(){
     return new DTFecha(fechaActual);
     /*Esto puede ser una fuga de memoria terrible, cada vez que llamamos getFechaActual(), se crea en el heap una nueva copia del objeto DTFecha.
-    Quien llama a esta funcion recibe un puntero y se vuelve responsable de liberarlo.
+    Es decir, quien llama a esta funcion recibe un puntero y se vuelve responsable de liberarlo.
     Aunque en el menu.cpp en teoria se deberia de manejar bien, es algo muy fragil y propenso a errores, si nos olvidamos de un delete tenemos una fuga de memoria.
     Posible solucion: return *(this->fechaActual); Devolviendo una copia del objeto, no un puntero, haciendo que el que llame no se preocupe por la memoria.
     */
