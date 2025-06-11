@@ -12,16 +12,18 @@ class UsuarioHandler {
         std::map<std::string, Usuario*> mapClientes;
         std::map<std::string, Usuario*> mapPropietarios;
         std::map<std::string, Usuario*> mapInmobiliarias;
+        static UsuarioHandler* instancia;
+        UsuarioHandler();
 
     public:
-        UsuarioHandler();
+        static UsuarioHandler* getInstancia();
         ~UsuarioHandler();
 
         void agregarCliente(Cliente* cliente);
         void agregarPropietario(Propietario* propietario);
         void agregarInmobiliaria(Inmobiliaria* inmobiliaria);
-        Inmobiliaria* findInmobiliaria(std::string nickname);
         
+        Inmobiliaria* findInmobiliaria(std::string nickname);
         bool existeUsuario(std::string nickname);
 };
 

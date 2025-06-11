@@ -1,5 +1,12 @@
 #include "../include/UsuarioHandler.h"
 
+UsuarioHandler* UsuarioHandler::getInstancia(){
+    if(instancia== NULL){
+        instancia = new UsuarioHandler();
+    }
+    return instancia
+}
+
 void UsuarioHandler::agregarCliente(Cliente* cliente) {
     mapClientes.insert(std::make_pair(cliente->getNickname(), cliente));
 }
