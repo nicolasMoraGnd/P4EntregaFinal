@@ -7,16 +7,14 @@ InmuebleHandler* InmuebleHandler::instancia = nullptr;
 InmuebleHandler::InmuebleHandler() {}
 
 InmuebleHandler* InmuebleHandler::getInstance() {
-    if (instancia == nullptr) {
+    if (instancia == nullptr)
         instancia = new InmuebleHandler();
-    }
     return instancia;
 }
 
 void InmuebleHandler::addInmueble(Inmueble* inmueble) {
-    if (inmueble != nullptr) {
+    if (inmueble != nullptr)
         inmuebles[inmueble->getCodigo()] = inmueble;
-    }
 }
 
 // RECORDATORIO: Esta funcion solo debe ser llamada por un controlador que ya se encargo de eliminar todas las asociaciones del inmueble.
@@ -31,9 +29,8 @@ void InmuebleHandler::removeInmueble(int codigoInmueble) {
 
 Inmueble* InmuebleHandler::findInmueble(int codigoInmueble) {
     std::map<int, Inmueble*>::iterator it = this->inmuebles.find(codigoInmueble);
-    if (it != this->inmuebles.end()) {
+    if (it != this->inmuebles.end())
         return it->second;
-    }
     return nullptr;
 }
 
