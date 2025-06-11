@@ -10,7 +10,7 @@ private:
     float gastosComunes;
 
 public:
-    Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* duen, float gastosComunes, int piso, bool tieneAscensor);
+    Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno, float gastosComunes, int piso, bool tieneAscensor);
     virtual ~Apartamento();
 
     int getPiso() const;
