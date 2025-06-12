@@ -1,11 +1,11 @@
 #include "../include/UsuarioHandler.h"
 
-UsuarioHandler* UsuarioHandler::instance = NULL;
+UsuarioHandler* UsuarioHandler::instancia = 0;
 UsuarioHandler* UsuarioHandler::getInstancia(){
     if(instancia== NULL){
         instancia = new UsuarioHandler();
     }
-    return instancia
+    return instancia;
 }
 
 void UsuarioHandler::agregarCliente(Cliente* cliente) {

@@ -22,7 +22,6 @@ public:
     void setGastosComunes(float gastosComunes);
 
     virtual bool esCasa() const;
-    virtual void desvincularInmueble();
     virtual DTInmueble* getDTInmueble() const;
 };
 

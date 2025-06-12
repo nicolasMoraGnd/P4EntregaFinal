@@ -1,5 +1,9 @@
 #include "../include/Apartamento.h"
+#include "../include/AdministraPropiedad.h"
+#include "../include/Inmobiliaria.h"
+#include "../include/Propietario.h"
 #include "../include/DTInmueble.h"
+#include <set>
 
 Apartamento::Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anoConstruccion, Propietario* dueno, float gastosComunes, int piso, bool tieneAscensor)
     : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion, dueno), gastosComunes(gastosComunes), piso(piso), tieneAscensor(tieneAscensor) {}
@@ -32,12 +36,8 @@ void Apartamento::setTieneAscensor(bool tieneAscensor) {
     this->tieneAscensor = tieneAscensor;
 }
 
-void Apartamento::desvincularInmueble() {
-}
-
 DTInmueble* Apartamento::getDTInmueble() const {
-    // TODO: Implementar la creación y retorno de un DTInmueble
-    return 0;
+    return new DTInmueble(this->getCodigo(), this->getDireccion(), this->getNumeroPuerta(), this->getSuperficie(), this->getAnioConstruccion());
 }
 
 Apartamento::~Apartamento() {}

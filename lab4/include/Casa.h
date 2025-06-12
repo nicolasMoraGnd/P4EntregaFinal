@@ -20,7 +20,6 @@ public:
     void setTecho(TipoTecho techo);
 
     virtual bool esCasa() const;
-    virtual void desvincularInmueble();
     virtual DTInmueble* getDTInmueble() const;
 };
 

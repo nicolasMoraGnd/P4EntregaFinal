@@ -2,7 +2,7 @@
 #include "../include/DTFecha.h"
 #include <cstddef>
 
-ControladorFechaActual* ControladorFechaActual::instance = NULL;
+ControladorFechaActual* ControladorFechaActual::instance = 0;
 
 ControladorFechaActual::ControladorFechaActual() {
     fechaActual = new DTFecha(1,1,1900);

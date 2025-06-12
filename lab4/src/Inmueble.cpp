@@ -55,20 +55,6 @@ void Inmueble::setAnioConstruccion(int anioConstruccion) {
     this->anioConstruccion = anioConstruccion;
 }
 
-//coso con inmobiliaria
-void Inmueble::asociarInmobiliaria(int key, Inmobiliaria* inm){
-    inmobiliarias[key] = inm;
-}
-
-void Inmueble::desasociarInmobiliaria(int key){
-    inmobiliarias.erase(key);
-}
-
-std::map<int, Inmobiliaria*> Inmueble::getInmobiliarias() const {
-    return inmobiliarias;
-}
-
-//las de administrador
 bool Inmueble::esAdministradoPor(const Inmobiliaria* inm) const {
     // TODO: Implementar la logica de busqueda en el set 'administraciones'
     return false;
@@ -89,6 +75,19 @@ std::set<AdministraPropiedad*> Inmueble::getAdministraciones() const {
 void Inmueble::limpiarReferenciasAdministraciones() {
     // TODO
     administraciones.clear();
+}
+
+void Inmueble::desvincularInmueble() {
+    if (this->propietarioDuenio != 0)
+        this->propietarioDuenio->desvincularPropietarioInmueble(this);
+    std::set<AdministraPropiedad*> administracionesACopiar = this->getAdministraciones();
+    for (std::set<AdministraPropiedad*>::iterator it = administracionesACopiar.begin(); it != administracionesACopiar.end(); ++it) {
+        AdministraPropiedad* admin = *it;
+        if (admin->getInmobiliariaAdmin() != 0)
+            admin->getInmobiliariaAdmin()->desvincularAdministracion(admin);
+        delete admin;
+    }
+    this->limpiarReferenciasAdministraciones();
 }
 
 Inmueble::~Inmueble() {

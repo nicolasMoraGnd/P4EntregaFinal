@@ -2,19 +2,24 @@
 #define PROPIETARIO_H
 
 #include "Usuario.h"
+#include "IObserver.h"
 #include <string>
 #include <set>
-
+#include <list> 
 
 class Inmueble;
-class Inmobiliaria; // Para el método getInmueblesNoAdminPorInmobiliaria
+class Inmobiliaria;
+class Notificacion;
 struct DTInmuebleListado;
 
-class Propietario : public Usuario {
+class Propietario : public Usuario, public IObserver {
 private:
     std::string cuentaBancaria;
     std::string telefono;
     std::set<Inmueble*> inmuebles;
+    std::set<Inmobiliaria*> inmobiliariasQueRepresentan;
+    std::set<Inmobiliaria*> suscripciones;
+    std::list<Notificacion*> notificacionesPendientes;
 
 public:
     Propietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono);
@@ -24,12 +29,17 @@ public:
     std::string getTelefono() const;
 
     void agregarInmueble(Inmueble* inm);
-    void eliminarInmueble(Inmueble* inm);
+    void desvincularPropietarioInmueble(Inmueble* inm);
     std::set<Inmueble*> getInmuebles() const;
 
-    std::set<DTInmuebleListado*> getInmueblesNoAdminPorInmobiliaria(const Inmobiliaria* inm) const;
-
-    // virtual DTUsuario* getDTUsuario() const; Sobrescribir si es necesario
+    virtual void notificar(Notificacion* notif);
+    void suscribirseAInmobiliaria(Inmobiliaria* inm);
+    void desuscribirseDeInmobiliaria(Inmobiliaria* inm);
+    std::list<Notificacion*> getNotificacionesPendientes() const;
+    void limpiarNotificaciones();
+    
+    void agregarInmobiliariaQueRepresenta(Inmobiliaria* inm);
+    void quitarInmobiliariaQueRepresenta(Inmobiliaria* inm);
 };
 
 #endif

@@ -43,6 +43,7 @@ public:
 
     //propietarios
     void agregarPropietarioRepresentado(Propietario* prop); // altaUsuario -> representarPropietario
+    void desvincularAdministracion(AdministraPropiedad* adminProp);
     std::set<Propietario*> getPropietariosRepresentados() const;
 
     //administraciones

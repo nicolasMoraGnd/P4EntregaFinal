@@ -2,7 +2,7 @@
 #include "../include/Inmueble.h"
 #include <utility>
 
-InmuebleHandler* InmuebleHandler::instancia = nullptr;
+InmuebleHandler* InmuebleHandler::instancia = 0;
 
 InmuebleHandler::InmuebleHandler() {}
 

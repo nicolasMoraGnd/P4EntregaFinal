@@ -1,12 +1,12 @@
 #include "../include/PublicacionHandler.h"
 
-PublicacionHandler* PublicacionHandler::instance = NULL;
+PublicacionHandler* PublicacionHandler::instancia = 0;
 
 PublicacionHandler* PublicacionHandler::getInstancia(){
     if(instancia== NULL){
         instancia = new PublicacionHandler();
     }
-    return instancia
+    return instancia;
 }
 
 void PublicacionHandler::agregarPublicacion(Publicacion* publicacion){
@@ -14,5 +14,5 @@ void PublicacionHandler::agregarPublicacion(Publicacion* publicacion){
 }
 
 std::map<int, Publicacion*> PublicacionHandler::getPublicaciones(){
-    return mapPublicaciones
+    return mapPublicaciones;
 }

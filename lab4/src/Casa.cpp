@@ -25,10 +25,6 @@ void Casa::setTecho(TipoTecho techo) {
     this->techo = techo;
 }
 
-void Casa::desvincularInmueble() {
-
-}
-
 DTInmueble* Casa::getDTInmueble() const {
     // TODO: Implementar la creación y retorno de un DTInmueble
     return 0;
