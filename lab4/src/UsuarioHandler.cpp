@@ -1,5 +1,6 @@
 #include "../include/UsuarioHandler.h"
 
+UsuarioHandler* UsuarioHandler::instance = NULL;
 UsuarioHandler* UsuarioHandler::getInstancia(){
     if(instancia== NULL){
         instancia = new UsuarioHandler();

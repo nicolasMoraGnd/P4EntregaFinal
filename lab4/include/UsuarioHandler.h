@@ -22,7 +22,7 @@ class UsuarioHandler {
         void agregarCliente(Cliente* cliente);
         void agregarPropietario(Propietario* propietario);
         void agregarInmobiliaria(Inmobiliaria* inmobiliaria);
-        
+
         Inmobiliaria* findInmobiliaria(std::string nickname);
         bool existeUsuario(std::string nickname);
 };
