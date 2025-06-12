@@ -1,9 +1,15 @@
 #include "../include/Inmueble.h"
 #include "../include/Propietario.h"
 #include "../include/AdministraPropiedad.h"
+#include "../include/Inmobiliaria.h"
 
 Inmueble::Inmueble(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno)
-    : codigo(codigo), direccion(direccion), numeroPuerta(numeroPuerta), superficie(superficie), anioConstruccion(anioConstruccion), propietarioDuenio(dueno) {}
+    : codigo(codigo), 
+    direccion(direccion), 
+    numeroPuerta(numeroPuerta), 
+    superficie(superficie), 
+    anioConstruccion(anioConstruccion), 
+    propietarioDuenio(dueno) {}
 
 int Inmueble::getCodigo() const {
     return codigo;
@@ -49,7 +55,20 @@ void Inmueble::setAnioConstruccion(int anioConstruccion) {
     this->anioConstruccion = anioConstruccion;
 }
 
+//coso con inmobiliaria
+void Inmueble::asociarInmobiliaria(int key, Inmobiliaria* inm){
+    inmobiliarias[key] = inm;
+}
 
+void Inmueble::desasociarInmobiliaria(int key){
+    inmobiliarias.erase(key);
+}
+
+std::map<int, Inmobiliaria*> Inmueble::getInmobiliarias() const {
+    return inmobiliarias;
+}
+
+//las de administrador
 bool Inmueble::esAdministradoPor(const Inmobiliaria* inm) const {
     // TODO: Implementar la logica de busqueda en el set 'administraciones'
     return false;
