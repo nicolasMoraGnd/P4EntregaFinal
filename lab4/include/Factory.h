@@ -3,6 +3,9 @@
 
 class IControladorFechaActual;
 
+class ControladorNotificaciones; 
+
+
 class Factory {
     private:
         static Factory* instance;
@@ -11,6 +14,8 @@ class Factory {
     public:
         static Factory* getInstance();
         IControladorFechaActual* getControladorFechaActual();
+        ControladorNotificaciones* getControladorNotificaciones(); // Ahora el compilador sabe que ControladorNotificaciones es una clase
+        
         //TODO: Get interfaces de controladores
         ~Factory();
 };

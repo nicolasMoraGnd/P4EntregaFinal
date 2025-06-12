@@ -1,11 +1,14 @@
 #include "../include/DTPublicacion.h"
+#include "../include/TipoPublicacion.h"
 
-DTPublicacion::DTPublicacion(int codigo, DTFecha* fecha, std::string texto, std::string precio, std::string inmobiliaria) {
+DTPublicacion::DTPublicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo,std::string texto, float precio, std::string inmobiliaria, bool activa) {
     this->codigo = codigo;
     this->fecha = new DTFecha(fecha);
+    this->tipo = tipo;
     this->texto = texto;
     this->precio = precio;
     this->inmobiliaria = inmobiliaria;
+    this->activa = activa;
 }
 
 int DTPublicacion::getCodigo() {
@@ -16,12 +19,20 @@ DTFecha* DTPublicacion::getFecha() {
     return fecha;
 }
 
+TipoPublicacion DTPublicacion::getTipoPublicacion(){
+    return tipo;
+}
+
 std::string DTPublicacion::getTexto() {
     return texto;
 }
 
-std::string DTPublicacion::getPrecio() {
+float DTPublicacion::getPrecio() {
     return precio;
+}
+
+bool DTPublicacion::getActiva() {
+    return activa;
 }
 
 std::string DTPublicacion::getInmobiliaria() {

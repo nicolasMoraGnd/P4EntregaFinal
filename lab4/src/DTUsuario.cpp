@@ -1,9 +1,11 @@
 #include "../include/DTUsuario.h"
 #include <iostream>
 
-DTUsuario::DTUsuario(std::string nickname, std::string nombre) {
+DTUsuario::DTUsuario(std::string nickname, std::string nombre, std::string constrasena, std::string email) {
     this->nickname = nickname;
     this->nombre = nombre;
+    this->contrasena = contrasena;
+    this->email = email;
 }
 
 std::string DTUsuario::getNickname() {
@@ -12,6 +14,19 @@ std::string DTUsuario::getNickname() {
 
 std::string DTUsuario::getNombre() {
     return nombre;
+}
+
+std::string DTUsuario::getContrasena() {
+    return contrasena;
+}
+
+std::string DTUsuario::getEmail() {
+    return email;
+}
+
+// Implementación del destructor
+DTUsuario::~DTUsuario() {
+    // No hay memoria dinámica que liberar
 }
 
 bool DTUsuario::operator<(DTUsuario& other) {

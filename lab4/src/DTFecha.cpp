@@ -8,6 +8,7 @@ DTFecha::DTFecha(int dia, int mes, int anio) {
     this->dia = dia;
 }
 
+
 DTFecha::DTFecha(DTFecha* fecha){
     this->anio = fecha->anio;
     this->mes = fecha->mes;

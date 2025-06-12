@@ -8,16 +8,20 @@ class DTPublicacion {
         int codigo;
         DTFecha* fecha;
         std::string texto;
-        std::string precio;
+        TipoPublicacion tipo;
+        float precio;
         std::string inmobiliaria;
+        bool activa;
 
     public:
-        DTPublicacion(int codigo, DTFecha* fecha, std::string texto, std::string precio, std::string inmobiliaria);
+        DTPublicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo,std::string texto, float precio, std::string inmobiliaria, bool activa);
         int getCodigo();
         DTFecha* getFecha();
         std::string getTexto();
-        std::string getPrecio();
+        float getPrecio();
+        TipoPublicacion getTipoPublicacion();
         std::string getInmobiliaria();
+        bool getActiva();
         ~DTPublicacion();
 };
 
