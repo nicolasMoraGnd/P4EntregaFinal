@@ -7,13 +7,13 @@ InmuebleHandler* InmuebleHandler::instancia = 0;
 InmuebleHandler::InmuebleHandler() {}
 
 InmuebleHandler* InmuebleHandler::getInstance() {
-    if (instancia == nullptr)
+    if (instancia == NULL)
         instancia = new InmuebleHandler();
     return instancia;
 }
 
 void InmuebleHandler::addInmueble(Inmueble* inmueble) {
-    if (inmueble != nullptr)
+    if (inmueble != NULL)
         inmuebles[inmueble->getCodigo()] = inmueble;
 }
 
@@ -31,7 +31,7 @@ Inmueble* InmuebleHandler::findInmueble(int codigoInmueble) {
     std::map<int, Inmueble*>::iterator it = this->inmuebles.find(codigoInmueble);
     if (it != this->inmuebles.end())
         return it->second;
-    return nullptr;
+    return NULL;
 }
 
 InmuebleHandler::~InmuebleHandler() {
