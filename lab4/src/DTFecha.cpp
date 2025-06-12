@@ -15,13 +15,8 @@ DTFecha::DTFecha(DTFecha* fecha){
 }
 
 bool DTFecha::operator>=(DTFecha* fecha) {
-    return (
-        this->anio > fecha->anio || 
-        (this->anio == fecha->anio && this->mes > fecha->mes) ||
-        (this->anio == fecha->anio && this->mes == fecha->mes && this->dia >= fecha->dia)
-    );
+    return (this->anio > fecha->anio || (this->anio == fecha->anio && this->mes > fecha->mes) || (this->anio == fecha->anio && this->mes == fecha->mes && this->dia >= fecha->dia));
 }
-
 
 bool DTFecha::operator<(DTFecha* fecha) {
     if (fecha == NULL) return false;
@@ -32,9 +27,7 @@ bool DTFecha::operator<(DTFecha* fecha) {
 
 bool DTFecha::operator==(DTFecha* fecha) {
     if (fecha == NULL) return false;
-    return this->anio == fecha->anio && 
-            this->mes == fecha->mes && 
-            this->dia == fecha->dia;
+    return this->anio == fecha->anio && this->mes == fecha->mes && this->dia == fecha->dia;
 }
 
 std::string DTFecha::toString(){

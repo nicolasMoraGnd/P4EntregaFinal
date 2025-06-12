@@ -12,6 +12,7 @@ class InmuebleHandler{
         InmuebleHandler();
     public:
         static InmuebleHandler* getInstance();
+        void addInmueble(Inmueble* inmueble);
         void removeInmueble(int);
         Inmueble* findInmueble(int);
 };

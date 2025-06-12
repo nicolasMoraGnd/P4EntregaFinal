@@ -4,17 +4,18 @@
 #include "DTFecha.h"
 #include "IControladorFechaActual.h"
 
-class ControladorFechaActual : public IControladorFechaActual  {
-    private:
-        static ControladorFechaActual* instance;
-        DTFecha* fechaActual;
-        ControladorFechaActual();
+class ControladorFechaActual : public IControladorFechaActual {
+private:
+    static ControladorFechaActual* instance;
+    DTFecha* fechaActual;
+    ControladorFechaActual();
 
-    public:
-        static ControladorFechaActual* getInstance();
-        DTFecha* getFechaActual();
-        void setNewFechaActual(int dia, int mes, int anio);
-        ~ControladorFechaActual();
+public:
+    static ControladorFechaActual* getInstance();
+    static void releaseInstance(); // Metodo para liberar la instancia singleton
+    virtual ~ControladorFechaActual();
+    virtual DTFecha getFechaActual();
+    virtual void setNewFechaActual(const DTFecha& fecha);
 };
 
 #endif

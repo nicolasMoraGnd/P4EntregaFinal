@@ -1,7 +1,7 @@
 #ifndef FACTORY_H
 #define FACTORY_H
 
-#include "IControladorFechaActual.h"
+class IControladorFechaActual;
 
 class Factory {
     private:
