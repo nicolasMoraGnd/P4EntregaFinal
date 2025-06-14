@@ -6,12 +6,15 @@
 #include <set>
 #include <map>
 
+//foward declarations
 class Propietario;
 class AdministraPropiedad;
 class Inmueble;
+class IObserver; //fuck YEAHHHHHHHHHHHHHHHH
 struct DTUsuario;
 struct DTFecha;
 struct DTInmuebleListado;
+struct DTNotificacion; //para uso de los metodos con el observer
 // struct DTInmuebleAdministrado; Para listarInmueblesAdministrados
 
 // Inmobiliaria hereda de Usuario y es Observer de otra clase (no Inmueble)
@@ -29,9 +32,13 @@ private:
     //relacion inmobiliarias inmueble
     int key;
     std::map<int, Inmueble*> inmuebles;
+
+    //sujeto para el patron observer
+    std::set<IObserver*> suscriptores; //para manejo de observadores
     
 
 public:
+    //constructor y destructor
     Inmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& dirFisica, const std::string& url, const std::string& telInmo);
     virtual ~Inmobiliaria();
 
@@ -41,7 +48,7 @@ public:
     std::string getTelefonoInmobiliaria() const;
     DTUsuario* getDTUsuario() const; // Sobrescribe Usuario::getDTUsuario
 
-    //propietarios
+    //propietarios management
     void agregarPropietarioRepresentado(Propietario* prop); // altaUsuario -> representarPropietario
     void desvincularAdministracion(AdministraPropiedad* adminProp);
     std::set<Propietario*> getPropietariosRepresentados() const;
@@ -56,11 +63,17 @@ public:
     std::map<int, Inmueble*> getInmuebles() const;
 
     // Métodos de "Alta de Administración de Propiedad"
-    std::set<DTInmuebleListado*> getInmueblesNoAdminDePropietariosRepresentados() const;
-    void altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, const DTFecha& fechaComienzo);
+    std::set<DTInmuebleListado*> getInmueblesNoAdminDePropietario() const;
+    void altaAdministracionPropiedad(Inmueble* inmuebleAAdmin, const DTFecha& fechaComienzo);
+
+    //METODOS PARA LA GESTION DE SUSCRIPTORES
+    void agregarSuscriptor(IObserver* observer);
+    void eliminarSuscriptor(IObserver* observer);
+    void notificarSuscriptores(DTNotificacion* notificacion);
+
 
     // Métodos de "Alta de Publicación"
-    // std::set<DTInmuebleAdministrado*> getDTInmueblesAdministrados() const; // Para listarInmueblesAdministrados
+    std::set<DTInmuebleListado*> getDTInmueblesAdministrados() const; // Para listarInmueblesAdministrados
     // bool crearPublicacionParaInmueble(int codigoInmueble, TipoPublicacion tipo, const std::string& texto, float precio, const DTFecha& fechaActual, int& outCodigoPublicacion);
 };
 
