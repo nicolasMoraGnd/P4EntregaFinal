@@ -2,6 +2,11 @@
 #include "../include/Propietario.h"
 #include "../include/AdministraPropiedad.h"
 #include "../include/Inmueble.h"
+#include "IObserver.h"
+#include "DTUsuario.h"
+#include "DTFecha.h"
+#include "DTInmuebleListado.h"
+//#include "DTNotificacion.h" hay que imlementar este datatype
 
 // Constructor
 Inmobiliaria::Inmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre,
@@ -9,7 +14,8 @@ Inmobiliaria::Inmobiliaria(const std::string& nickname, const std::string& contr
     : Usuario(nickname, contrasena, nombre, email),
       direccionFisica(dirFisica),
       url(url),
-      telefonoInmobiliaria(telInmo)
+      telefonoInmobiliaria(telInmo),
+      key(0) //es inicializae en 0 el coso del map pero se puede cambiar
 {
     // Inicializaciones si hacen falta
 }
@@ -26,12 +32,13 @@ std::string Inmobiliaria::getTelefonoInmobiliaria() const {
     return telefonoInmobiliaria;
 }
 
-//DTUsuario* Inmobiliaria::getDTUsuario() const {
-    // Implementa la creación del DTUsuario correspondiente asi que pendiente
-    //return new DTUsuario(/* pasar datos relevantes */);
-//}
+DTUsuario* Inmobiliaria::getDTUsuario() const {
+    //Implementa la creación del DTUsuario correspondiente asi que pendiente
+    return new DTUsuario(/* pasar datos relevantes */);
+    // return NULL; es otra opcion
+}
 
-//para los propietarios a ver
+//management de los propietarios
 void Inmobiliaria::agregarPropietarioRepresentado(Propietario* prop) {
     propietariosRepresentados.insert(prop);
 }
@@ -47,6 +54,10 @@ void Inmobiliaria::agregarAdministracion(AdministraPropiedad* adminProp) {
 
 std::set<AdministraPropiedad*> Inmobiliaria::getPropiedadesAdministradas() const {
     return propiedadesAdministradas;
+}
+
+void Inmobiliaria::desvincularAdministracion(AdministraPropiedad* adminProp) {
+    propiedadesAdministradas.erase(adminProp);
 }
 
 //asociacion con inmueeeeebles
@@ -92,6 +103,26 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, c
     // También deberías llamar a métodos de Inmueble para asociar esta administración,
     // si la clase inmueble tiene algo así:
     inmuebleAAdministrar->asociarAdministracionPropiedad(nuevaAdmin);
+}
+
+//metodos para la gestion de suscriptores
+void Inmobiliaria::agregarSuscriptor(IObserver* observer) {
+    suscriptores.insert(observer);
+}
+void Inmobiliaria::eliminarSuscriptor(IObserver* observer) {
+    suscriptores.erase(observer);
+}
+
+void Inmobiliaria::notificarSuscriptores(DTNotificacion* notificacion) {
+    for (std::set<IObserver*>::iterator it = suscriptores.begin(); it != suscriptores.end(); ++it) {
+        (*it)->actualizar(notificacion);
+    }
+}
+
+//metodos de alta publicacion
+std::set<DTInmuebleListado*> Inmobiliaria::getDTInmueblesAdministrados() const {
+    std::set<DTInmuebleListado*> resultado;
+    return resultado;
 }
 
 Inmobiliaria::~Inmobiliaria() {
