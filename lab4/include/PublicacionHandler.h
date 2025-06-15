@@ -1,18 +1,23 @@
 #ifndef PUBLICACIONHANDLER_H
 #define PUBLICACIONHANDLER_H
+
 #include <map>
-#include <set>
 #include "Publicacion.h"
 
+class PublicacionHandler {
+private:
+    std::map<int, Publicacion*> mapPublicaciones;
+    static PublicacionHandler* instancia;
+    PublicacionHandler(); // Constructor privado para el Singleton
 
-class PublicacionHandler{
-    private:
-        std::map<int, Publicacion*> mapPublicaciones;
-        static PublicacionHandler* instancia;
-        PublicacionHandler();
+public:
+    static PublicacionHandler* getInstance();
+    static void releaseInstance();
+    ~PublicacionHandler();
 
-    public:
-        PublicacionHandler* getInstancia();
-        std::map<int, Publicacion*> getPublicaciones();
-        void agregarPublicacion(Publicacion* publicacion);
+    void agregarPublicacion(Publicacion* publicacion);
+    Publicacion* findPublicacion(int codigo);
+    std::map<int, Publicacion*> getPublicaciones();
 };
+
+#endif

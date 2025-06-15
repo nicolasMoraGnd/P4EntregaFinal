@@ -2,6 +2,7 @@
 #include "../include/Propietario.h"
 #include "../include/AdministraPropiedad.h"
 #include "../include/Inmueble.h"
+#include "../include/IObserver.h"
 
 // Constructor
 Inmobiliaria::Inmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre,
@@ -97,4 +98,19 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, c
 Inmobiliaria::~Inmobiliaria() {
     // Liberar recursos si es necesario, pero como usamos punteros sin ownership
     // no borramos objetos referenciados aquí. Aunque podemos revisar que onda por una cosa que dijo la profe de memoria estatica
+}
+
+void Inmobiliaria::suscribir(IObserver* obs) {
+    this->suscriptores.insert(obs);
+}
+
+void Inmobiliaria::desuscribir(IObserver* obs) {
+    this->suscriptores.erase(obs);
+}
+
+void Inmobiliaria::notificarSuscriptores(const DTNotificacion& notif) {
+    for (std::set<IObserver*>::iterator it = this->suscriptores.begin(); it != this->suscriptores.end(); ++it) {
+        IObserver* observador = *it;
+        observador->notificar(notif);
+    }
 }

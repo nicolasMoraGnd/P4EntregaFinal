@@ -2,6 +2,7 @@
 #define INMOBILIARIA_H
 
 #include "Usuario.h"
+#include "IObserver.h"
 #include <string>
 #include <set>
 #include <map>
@@ -25,6 +26,7 @@ private:
     std::string telefonoInmobiliaria;
     std::set<Propietario*> propietariosRepresentados;
     std::set<AdministraPropiedad*> propiedadesAdministradas;
+    std::set<IObserver*> suscriptores;
 
     //relacion inmobiliarias inmueble
     int key;
@@ -59,6 +61,9 @@ public:
     std::set<DTInmuebleListado*> getInmueblesNoAdminDePropietariosRepresentados() const;
     void altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, const DTFecha& fechaComienzo);
 
+    void suscribir(IObserver* obs);
+    void desuscribir(IObserver* obs);
+    void notificarSuscriptores(const DTNotificacion& notif);
     // Métodos de "Alta de Publicación"
     // std::set<DTInmuebleAdministrado*> getDTInmueblesAdministrados() const; // Para listarInmueblesAdministrados
     // bool crearPublicacionParaInmueble(int codigoInmueble, TipoPublicacion tipo, const std::string& texto, float precio, const DTFecha& fechaActual, int& outCodigoPublicacion);
