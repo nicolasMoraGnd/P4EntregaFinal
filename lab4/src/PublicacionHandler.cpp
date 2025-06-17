@@ -1,6 +1,8 @@
 #include "../include/PublicacionHandler.h"
 
-PublicacionHandler* PublicacionHandler::instancia = 0;
+PublicacionHandler* PublicacionHandler::instancia = NULL;
+PublicacionHandler::PublicacionHandler(){
+}
 
 PublicacionHandler* PublicacionHandler::getInstancia(){
     if(instancia== NULL){

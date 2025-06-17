@@ -2,7 +2,7 @@
 #define PUBLICACION_H
 
 #include "DTFecha.h"
-#include "DTPublicacion"
+#include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include <string>
 
@@ -32,6 +32,7 @@ public:
 
     void setActiva(bool estado);
 
+    std::string getNombreInmobiliaria();
     DTPublicacion* getDTPublicacion() const;
 };
 

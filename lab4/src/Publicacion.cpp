@@ -24,10 +24,15 @@ AdministraPropiedad* Publicacion::getAdministracionPropiedad() const {
     return administracionPropiedadPadre;
 }
 
-void setActiva(bool estado){
+void Publicacion::setActiva(bool estado){
     activa = estado;
 }
 
+std::string Publicacion::getNombreInmobiliaria(){
+    Inmobiliaria* inm = administracionPropiedadPadre->getInmobiliariaAdmin();
+    return inm->getNombre();
+}
+
 DTPublicacion* Publicacion::getDTPublicacion() {
-    return new DTPublicacion(codigo, fecha, texto, precio, adminProp->getInmobiliaria());
+    return new DTPublicacion(codigo, fecha, texto, precio, adminProp->getInmobiliariaAdmin());
 }
