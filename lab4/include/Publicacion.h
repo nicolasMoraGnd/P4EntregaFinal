@@ -2,16 +2,17 @@
 #define PUBLICACION_H
 
 #include "DTFecha.h"
+#include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include <string>
 
 class AdministraPropiedad;
 struct DTPublicacion;
-
+ 
 class Publicacion {
 private:
     int codigo;
-    DTFecha fecha;
+    DTFecha& fecha;
     TipoPublicacion tipo;
     std::string texto;
     float precio;
@@ -31,6 +32,7 @@ public:
 
     void setActiva(bool estado);
 
+    std::string getNombreInmobiliaria();
     DTPublicacion* getDTPublicacion() const;
 };
 
