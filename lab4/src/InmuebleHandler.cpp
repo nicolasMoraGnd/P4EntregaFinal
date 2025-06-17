@@ -39,3 +39,7 @@ InmuebleHandler::~InmuebleHandler() {
         delete it->second;
     this->inmuebles.clear();
 }
+
+std::map<int, Inmueble*> InmuebleHandler::getInmuebles() const {
+    return this->inmuebles;
+}

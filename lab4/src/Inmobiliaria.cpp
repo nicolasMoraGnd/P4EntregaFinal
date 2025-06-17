@@ -34,7 +34,8 @@ std::string Inmobiliaria::getTelefonoInmobiliaria() const {
 
 //para los propietarios a ver
 void Inmobiliaria::agregarPropietarioRepresentado(Propietario* prop) {
-    propietariosRepresentados.insert(prop);
+    this->propietariosRepresentados.insert(prop);
+    prop->agregarInmobiliariaQueRepresenta(this);
 }
 
 std::set<Propietario*> Inmobiliaria::getPropietariosRepresentados() const {
@@ -113,4 +114,14 @@ void Inmobiliaria::notificarSuscriptores(const DTNotificacion& notif) {
         IObserver* observador = *it;
         observador->notificar(notif);
     }
+}
+
+AdministraPropiedad* Inmobiliaria::getAdministracionDeInmueble(int codigoInmueble) const {
+    for (std::set<AdministraPropiedad*>::const_iterator it = this->propiedadesAdministradas.begin(); it != this->propiedadesAdministradas.end(); ++it){
+        AdministraPropiedad* adminActual = *it;
+        if(adminActual != 0 && adminActual->getInmuebleAdministrado() != 0)
+            if(adminActual->getInmuebleAdministrado()->getCodigo() == codigoInmueble)
+                return adminActual;
+    }
+    return 0; // o NULL?
 }

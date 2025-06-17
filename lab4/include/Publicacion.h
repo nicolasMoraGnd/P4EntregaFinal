@@ -26,6 +26,7 @@ public:
     int getCodigo() const;
     DTFecha getFecha() const;
     TipoPublicacion getTipo() const;
+    float getPrecio() const;
     bool esActiva() const; 
     AdministraPropiedad* getAdministracionPropiedad() const;
 

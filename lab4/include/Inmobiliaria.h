@@ -64,9 +64,9 @@ public:
     void suscribir(IObserver* obs);
     void desuscribir(IObserver* obs);
     void notificarSuscriptores(const DTNotificacion& notif);
+    
     // Métodos de "Alta de Publicación"
-    // std::set<DTInmuebleAdministrado*> getDTInmueblesAdministrados() const; // Para listarInmueblesAdministrados
-    // bool crearPublicacionParaInmueble(int codigoInmueble, TipoPublicacion tipo, const std::string& texto, float precio, const DTFecha& fechaActual, int& outCodigoPublicacion);
+    AdministraPropiedad* getAdministracionDeInmueble(int codigoInmueble) const;
 };
 
 #endif

@@ -29,6 +29,6 @@ bool UsuarioHandler::existeUsuario(std::string nickname){
 Inmobiliaria* UsuarioHandler::findInmobiliaria(std::string nickname) {
     std::map<std::string, Usuario*>::iterator it = mapInmobiliarias.find(nickname);
     if (it != mapInmobiliarias.end())
-        return dynamic_cast<Inmobiliaria*>(it->second);
+        return static_cast<Inmobiliaria*>(it->second);
     return NULL;
 } 
