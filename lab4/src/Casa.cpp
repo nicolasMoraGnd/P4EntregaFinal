@@ -1,6 +1,6 @@
 #include "../include/Casa.h"
-#include "../include/DTInmueble.h"
 #include "../include/Propietario.h"
+#include "../include/DTCasa.h"
 
 Casa::Casa(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno, bool esPH, TipoTecho tipoT)
     : Inmueble(codigo, direccion, numeroPuerta, superficie, anioConstruccion, dueno), esPH(esPH), techo(tipoT) {}
@@ -26,8 +26,7 @@ void Casa::setTecho(TipoTecho techo) {
 }
 
 DTInmueble* Casa::getDTInmueble() const {
-    // TODO: Implementar la creación y retorno de un DTInmueble
-    return 0;
+    return new DTCasa(this->getCodigo(), this->getDireccion(), this->getNumeroPuerta(), this->getSuperficie(), this->getAnioConstruccion(), this->getEsPH(), this->getTecho());
 }
 
 Casa::~Casa() {}

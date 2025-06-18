@@ -17,3 +17,11 @@ Factory* Factory::getInstance() {
 IControladorFechaActual* Factory::getControladorFechaActual(){
     return ControladorFechaActual::getInstance();
 }
+
+IUsuarioController* Factory::getIUsuarioController(){
+    return UsuarioController::getInstance();
+}
+
+ISistemaController* Factory::getISistemaController(){
+    return SistemaController::getInstance();
+}

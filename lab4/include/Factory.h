@@ -1,5 +1,7 @@
 #ifndef FACTORY_H
 #define FACTORY_H
+#include "IUsuarioController.h"
+#include "ISistemaController.h"
 
 class IControladorFechaActual;
 
@@ -12,6 +14,9 @@ class Factory {
         static Factory* getInstance();
         IControladorFechaActual* getControladorFechaActual();
         //TODO: Get interfaces de controladores
+        IUsuarioController* getIUsuarioController();
+        ISistemaController* getISistemaController();
+
         ~Factory();
 };
 
