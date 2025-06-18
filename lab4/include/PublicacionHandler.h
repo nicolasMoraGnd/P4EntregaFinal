@@ -1,18 +1,29 @@
 #ifndef PUBLICACIONHANDLER_H
 #define PUBLICACIONHANDLER_H
-#include <map>
-#include <set>
+
+#include "TipoPublicacion.h"
+#include "TipoInmueble.h"
 #include "Publicacion.h"
 
+#include <map>
 
-class PublicacionHandler{
-    private:
-        std::map<int, Publicacion*> mapPublicaciones;
-        static PublicacionHandler* instancia;
-        PublicacionHandler();
+class PublicacionHandler {
+private:
+    std::map<int, Publicacion*> mapPublicaciones;
+    static PublicacionHandler* instancia;
+    PublicacionHandler(); // Constructor privado para el Singleton
+    int ultimoCodigo;
 
-    public:
-        PublicacionHandler* getInstancia();
-        std::map<int, Publicacion*> getPublicaciones();
-        void agregarPublicacion(Publicacion* publicacion);
+public:
+    static PublicacionHandler* getInstance();
+    static void releaseInstance();
+    ~PublicacionHandler();
+
+    void agregarPublicacion(Publicacion* publicacion);
+    Publicacion* findPublicacion(int codigo);
+    std::map<int, Publicacion*> getPublicaciones();
+    int getSiguienteCodigo();
+    std::set<DTPublicacion*> getPublicaciones(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInm);
 };
+
+#endif
