@@ -2,12 +2,12 @@
 #include "../include/Publicacion.h"
 #include "../include/Inmueble.h"
 #include "../include/AdministraPropiedad.h"
+#include "../include/Casa.h"
+#include "../include/Apartamento.h"
 #include <cstddef>
 #include <set>
 
 PublicacionHandler* PublicacionHandler::instancia = NULL;
-PublicacionHandler::PublicacionHandler(){
-}
 
 PublicacionHandler::PublicacionHandler() : ultimoCodigo(0) {}
 
@@ -57,9 +57,9 @@ std::set<DTPublicacion*> PublicacionHandler::getPublicaciones(TipoPublicacion ti
             filtroTipoInmueble = true;
         else{
             Inmueble* inm = pub->getAdministracionPropiedad()->getInmuebleAdministrado();
-            if(tipoInm == Casa && inm->esCasa())
+            if(tipoInm == TI_Casa && dynamic_cast<Casa*>(inm) != 0)
                 filtroTipoInmueble = true;
-            else if(tipoInm == Apartamento && !inm->esCasa())
+            else if(tipoInm == TI_Apartamento && dynamic_cast<Apartamento*>(inm) != 0)
                 filtroTipoInmueble = true;
         }
         if (filtroActiva && filtroTipoPub && filtroPrecio && filtroTipoInmueble)

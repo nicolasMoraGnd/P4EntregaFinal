@@ -57,7 +57,7 @@ DTInmueble* SistemaController::detalleInmueble(int codigoInmueble) {
 }
 
 bool SistemaController::altaPublicacion(const std::string& nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipo, const std::string& texto, float precio) {
-    UsuarioHandler* uh = UsuarioHandler::getInstancia(); // babeado bebeeeeee
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
     PublicacionHandler* ph = PublicacionHandler::getInstance();
     IControladorFechaActual* cf = ControladorFechaActual::getInstance();
     // 1
@@ -85,7 +85,7 @@ bool SistemaController::altaPublicacion(const std::string& nicknameInmobiliaria,
     // 6
     Inmueble* inmuebleNotif = adminProp->getInmuebleAdministrado();
     // Pasos 10-13 notifico a los suscriptores
-    DTNotificacion notif(inmobiliaria->getNickname(), inmuebleNotif->getCodigo(), texto, tipo, inmuebleNotif->esCasa()); // 9 esCasa()
+    DTNotificacion notif = inmuebleNotif->crearDTNotificacion(inmobiliaria->getNickname(), texto, tipo);
     inmobiliaria->notificarSuscriptores(notif);
     return true; // Si todo sale bien se cargo la publicacion y devuelvo true
 }

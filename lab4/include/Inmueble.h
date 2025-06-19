@@ -43,8 +43,9 @@ public:
     std::set<AdministraPropiedad*> getAdministraciones() const;
     void limpiarReferenciasAdministraciones();
 
-    virtual bool esCasa() const = 0;
     virtual DTInmueble* getDTInmueble() const = 0;
+
+    virtual DTNotificacion crearDTNotificacion(const std::string& nickInmo, const std::string& texto, TipoPublicacion tipo) const = 0;
 };
 
 #endif

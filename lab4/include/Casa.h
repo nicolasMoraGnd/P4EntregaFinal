@@ -3,6 +3,7 @@
 
 #include "Inmueble.h"
 #include "TipoTecho.h"
+#include "DTNotificacion.h"
 
 class Casa : public Inmueble {
 private:
@@ -19,8 +20,9 @@ public:
     void setEsPH(bool esPH);
     void setTecho(TipoTecho techo);
 
-    virtual bool esCasa() const;
     virtual DTInmueble* getDTInmueble() const;
+
+    DTNotificacion crearDTNotificacion(const std::string& nickInmo, const std::string& texto, TipoPublicacion tipo) const;
 };
 
 #endif

@@ -20,6 +20,6 @@ class IUsuarioController{
 
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(const std::string& nicknameInmobiliaria) = 0;
 
-}:
+};
 
 #endif

@@ -3,13 +3,12 @@
 #include "../include/Inmobiliaria.h"
 #include "../include/Propietario.h"
 #include "../include/DTApartamento.h"
+#include "../include/DTNotificacion.h"
 
 Apartamento::Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anoConstruccion, Propietario* dueno, float gastosComunes, int piso, bool tieneAscensor)
     : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion, dueno), gastosComunes(gastosComunes), piso(piso), tieneAscensor(tieneAscensor) {}
 
-bool Apartamento::esCasa() const {
-    return false;
-}
+Apartamento::~Apartamento() {}
 
 float Apartamento::getGastosComunes() const {
     return gastosComunes;
@@ -39,4 +38,6 @@ DTInmueble* Apartamento::getDTInmueble() const {
     return new DTApartamento(this->getCodigo(), this->getDireccion(), this->getNumeroPuerta(), this->getSuperficie(), this->getAnioConstruccion(), this->getPiso(), this->getTieneAscensor(), this->getGastosComunes());
 }
 
-Apartamento::~Apartamento() {}
+DTNotificacion Apartamento::crearDTNotificacion(const std::string& nickInmo, const std::string& texto, TipoPublicacion tipo) const {
+    return DTNotificacion(nickInmo, this->getCodigo(), texto, tipo, false);
+}
