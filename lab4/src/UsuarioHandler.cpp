@@ -1,23 +1,41 @@
 #include "../include/UsuarioHandler.h"
+#include <cstddef>
 
 UsuarioHandler* UsuarioHandler::instancia = 0;
 
+UsuarioHandler::~UsuarioHandler(){}
+
+UsuarioHandler::~UsuarioHandler(){
+    for(std::map<std::string, Cliente*>::iterator it = mapClientes.begin(); it != mapClientes.end(); ++it)
+        delete it->second;
+    mapClientes.clear();
+    for(std::map<std::string, Propietario*>::iterator it = mapPropietarios.begin(); it != mapPropietarios.end(); ++it)
+        delete it->second;
+    mapPropietarios.clear();
+    for(std::map<std::string, Inmobiliaria*>::iterator it = mapInmobiliarias.begin(); it != mapInmobiliarias.end(); ++it)
+        delete it->second;
+    mapInmobiliarias.clear();
+}
+
 UsuarioHandler* UsuarioHandler::getInstancia(){
-    if(instancia== NULL)
+    if(instancia == NULL)
         instancia = new UsuarioHandler();
     return instancia;
 }
 
 void UsuarioHandler::agregarCliente(Cliente* cliente) {
-    mapClientes.insert(std::make_pair(cliente->getNickname(), cliente));
+    if(cliente != NULL)
+        mapClientes[cliente->getNickname()] = cliente;
 }
 
 void UsuarioHandler::agregarPropietario(Propietario* propietario) {
-    mapPropietarios.insert(std::make_pair(propietario->getNickname(), propietario));
+    if(propietario != NULL)
+        mapPropietarios[propietario->getNickname()] = propietario;
 }
 
 void UsuarioHandler::agregarInmobiliaria(Inmobiliaria* inmobiliaria) {
-    mapInmobiliarias.insert(std::make_pair(inmobiliaria->getNickname(), inmobiliaria));
+    if (inmobiliaria != NULL)
+        mapInmobiliarias[inmobiliaria->getNickname()] = inmobiliaria;
 }
 
 bool UsuarioHandler::existeUsuario(std::string nickname){
@@ -27,8 +45,8 @@ bool UsuarioHandler::existeUsuario(std::string nickname){
 }
 
 Inmobiliaria* UsuarioHandler::findInmobiliaria(std::string nickname) {
-    std::map<std::string, Usuario*>::iterator it = mapInmobiliarias.find(nickname);
+    std::map<std::string, Inmobiliaria*>::iterator it = mapInmobiliarias.find(nickname);
     if (it != mapInmobiliarias.end())
-        return static_cast<Inmobiliaria*>(it->second);
+        return it->second;
     return NULL;
 } 
