@@ -12,7 +12,7 @@ struct DTPublicacion;
 class Publicacion {
 private:
     int codigo;
-    DTFecha& fecha;
+    DTFecha fecha;
     TipoPublicacion tipo;
     std::string texto;
     float precio;
@@ -33,7 +33,7 @@ public:
 
     void setActiva(bool estado);
 
-    std::string getNombreInmobiliaria();
+    std::string getNombreInmobiliaria() const;
     DTPublicacion* getDTPublicacion() const;
 };
 

@@ -91,31 +91,6 @@ bool SistemaController::altaPublicacion(const std::string& nicknameInmobiliaria,
 }
 
 std::set<DTPublicacion*> SistemaController::listarPublicacion(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInm) {
-    
-    // SOY MOGOLICO NO VI EL DIAGRAMA SISTEMA CONTROLLER ES SIMPLE Y DERIVA TODO EL LABURO A EXPERTOS!!!!!!!!!!!!
-    
-    /*PublicacionHandler* ph = PublicacionHandler::getInstance();
-    std::map<int, Publicacion*> todasLasPublicaciones = ph->getPublicaciones();
-    std::set<DTPublicacion*> resultado; 
-    for (std::map<int, Publicacion*>::iterator it = todasLasPublicaciones.begin(); it != todasLasPublicaciones.end(); ++it){
-        Publicacion* pub = it->second;
-        bool filtroTipoPub = pub->getTipo() == tipo;
-        bool filtroPrecio = pub->getPrecio() >= precioMin && pub->getPrecio() <= precioMax;
-        bool filtroTipoInmueble = false;
-        if (tipoInm == Todos)
-            filtroTipoInmueble = true;
-        else{
-            Inmueble* inm = pub->getAdministracionPropiedad()->getInmuebleAdministrado();
-            if(tipoInm == Casa && inm->esCasa())
-                filtroTipoInmueble = true;
-            else if(tipoInm == Apartamento && !inm->esCasa())
-                filtroTipoInmueble = true;
-        }
-        if (filtroTipoPub && filtroPrecio && filtroTipoInmueble)
-            resultado.insert(pub->getDTPublicacion());
-    }
-    return resultado;*/
-
     PublicacionHandler* ph = PublicacionHandler::getInstance();
     return ph->getPublicaciones(tipo, precioMin, precioMax, tipoInm);
 }
