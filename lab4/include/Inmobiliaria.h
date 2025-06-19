@@ -13,7 +13,6 @@ class Inmueble;
 struct DTUsuario;
 struct DTFecha;
 struct DTInmuebleListado;
-// struct DTInmuebleAdministrado; Para listarInmueblesAdministrados
 
 // Inmobiliaria hereda de Usuario y es Observer de otra clase (no Inmueble)
 // La asociación entre Inmobiliaria e Inmueble se modela a través de la clase asociativa AdministraPropiedad,
@@ -26,47 +25,34 @@ private:
     std::string telefonoInmobiliaria;
     std::set<Propietario*> propietariosRepresentados;
     std::set<AdministraPropiedad*> propiedadesAdministradas;
-    std::set<IObserver*> suscriptores;
-
-    //relacion inmobiliarias inmueble
-    int key;
-    std::map<int, Inmueble*> inmuebles;
-    
+    std::set<IObserver*> suscriptores;    
 
 public:
     Inmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& dirFisica, const std::string& url, const std::string& telInmo);
     virtual ~Inmobiliaria();
 
-    //getters
+    // Getters
     std::string getDireccionFisica() const;
     std::string getUrl() const;
     std::string getTelefonoInmobiliaria() const;
     DTUsuario* getDTUsuario() const; // Sobrescribe Usuario::getDTUsuario
 
-    //propietarios
+    // Gestion de relaciones
     void agregarPropietarioRepresentado(Propietario* prop); // altaUsuario -> representarPropietario
-    void desvincularAdministracion(AdministraPropiedad* adminProp);
-    std::set<Propietario*> getPropietariosRepresentados() const;
-
-    //administraciones
     void agregarAdministracion(AdministraPropiedad* adminProp);
+    void desvincularAdministracion(AdministraPropiedad* adminProp);
     std::set<AdministraPropiedad*> getPropiedadesAdministradas() const;
+    std::set<Propietario*> getPropietariosRepresentados() const;  
 
-    //asociaciones con inmuebles
-    void asociarInmueble(int codigo, Inmueble* inmueble);
-    void desasociarInmueble(int codigo);
-    std::map<int, Inmueble*> getInmuebles() const;
-
-    // Métodos de "Alta de Administración de Propiedad"
+    // Metodos de casos de uso
     std::set<DTInmuebleListado*> getInmueblesNoAdminDePropietariosRepresentados() const;
+    AdministraPropiedad* getAdministracionDeInmueble(int codigoInmueble) const;
     void altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, const DTFecha& fechaComienzo);
 
+    // Metodos patron observer
     void suscribir(IObserver* obs);
     void desuscribir(IObserver* obs);
-    void notificarSuscriptores(const DTNotificacion& notif);
-    
-    // Métodos de "Alta de Publicación"
-    AdministraPropiedad* getAdministracionDeInmueble(int codigoInmueble) const;
+    void notificarSuscriptores(const DTNotificacion& notif);  
 };
 
 #endif

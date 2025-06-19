@@ -27,11 +27,6 @@ std::string Inmobiliaria::getTelefonoInmobiliaria() const {
     return telefonoInmobiliaria;
 }
 
-//DTUsuario* Inmobiliaria::getDTUsuario() const {
-    // Implementa la creación del DTUsuario correspondiente asi que pendiente
-    //return new DTUsuario(/* pasar datos relevantes */);
-//}
-
 //para los propietarios a ver
 void Inmobiliaria::agregarPropietarioRepresentado(Propietario* prop) {
     this->propietariosRepresentados.insert(prop);
@@ -51,22 +46,9 @@ std::set<AdministraPropiedad*> Inmobiliaria::getPropiedadesAdministradas() const
     return propiedadesAdministradas;
 }
 
-//asociacion con inmueeeeebles
-void Inmobiliaria::asociarInmueble(int key, Inmueble* inmueble) {
-    inmuebles[key] = inmueble;
-}
-
-void Inmobiliaria::desasociarInmueble(int key) {
-    inmuebles.erase(key);
-}
-
-std::map<int, Inmueble*> Inmobiliaria::getInmuebles() const {
-    return inmuebles;
-}
-
 
 //SACADO DE CHATGPT FALTA VER DCD Y TEORICO PARA QUE CURTA BIEN Y RAYE ZARPADO
-// métodos relacionados a "Alta de Administración de Propiedad"
+// métodos relacionados a "Alta de Administración de Propiedad" // IMPLEMENTAR IMPORTANTE
 std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminDePropietariosRepresentados() const {
     // Aquí implementas la lógica que filtre y devuelva un set de inmuebles listados que no están administrados
     // por la inmobiliaria y pertenecen a propietarios representados.
@@ -89,7 +71,7 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, c
     agregarAdministracion(nuevaAdmin);
 
     // Asociar inmueble a inmobiliaria (opcional si ya se hace en AdministraPropiedad)
-    asociarInmueble(inmuebleAAdministrar->getCodigo(), inmuebleAAdministrar);
+    // asociarInmueble(inmuebleAAdministrar->getCodigo(), inmuebleAAdministrar);
 
     // También deberías llamar a métodos de Inmueble para asociar esta administración,
     // si la clase inmueble tiene algo así:
