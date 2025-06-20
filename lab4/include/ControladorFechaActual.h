@@ -11,7 +11,7 @@ private:
     ControladorFechaActual();
 
 public:
-    static ControladorFechaActual* getInstance();
+    static ControladorFechaActual* getInstancia();
     static void releaseInstance(); // Metodo para liberar la instancia singleton
     virtual ~ControladorFechaActual();
     virtual DTFecha getFechaActual();

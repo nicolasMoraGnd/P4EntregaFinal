@@ -4,9 +4,15 @@
 
 InmuebleHandler* InmuebleHandler::instancia = 0;
 
-InmuebleHandler::InmuebleHandler() {}
+InmuebleHandler::InmuebleHandler() : ultimoCodigo(0) {}
 
-InmuebleHandler* InmuebleHandler::getInstance() {
+InmuebleHandler::~InmuebleHandler() {
+    for (std::map<int, Inmueble*>::iterator it = this->inmuebles.begin(); it != this->inmuebles.end(); ++it)
+        delete it->second;
+    this->inmuebles.clear();
+}
+
+InmuebleHandler* InmuebleHandler::getInstancia() {
     if (instancia == NULL)
         instancia = new InmuebleHandler();
     return instancia;
@@ -34,12 +40,11 @@ Inmueble* InmuebleHandler::findInmueble(int codigoInmueble) {
     return NULL;
 }
 
-InmuebleHandler::~InmuebleHandler() {
-    for (std::map<int, Inmueble*>::iterator it = this->inmuebles.begin(); it != this->inmuebles.end(); ++it)
-        delete it->second;
-    this->inmuebles.clear();
-}
-
 std::map<int, Inmueble*> InmuebleHandler::getInmuebles() const {
     return this->inmuebles;
+}
+
+int InmuebleHandler::getSiguienteCodigo(){
+    this->ultimoCodigo++;
+    return this->ultimoCodigo;
 }

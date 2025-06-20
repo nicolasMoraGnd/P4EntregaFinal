@@ -9,20 +9,20 @@ Factory* Factory::instance = NULL;
 Factory::Factory() {
 }
 
-Factory* Factory::getInstance() {
+Factory* Factory::getInstancia() {
     if (instance == NULL)
         instance = new Factory();
     return instance;
 }
 
 IControladorFechaActual* Factory::getControladorFechaActual(){
-    return ControladorFechaActual::getInstance();
+    return ControladorFechaActual::getInstancia();
 }
 
 IUsuarioController* Factory::getIUsuarioController(){
-    return UsuarioController::getInstance();
+    return UsuarioController::getInstancia();
 }
 
 ISistemaController* Factory::getISistemaController(){
-    return SistemaController::getInstance();
+    return SistemaController::getInstancia();
 }
