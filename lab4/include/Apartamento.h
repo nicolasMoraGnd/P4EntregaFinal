@@ -21,8 +21,9 @@ public:
     void setTieneAscensor(bool tieneAscensor);
     void setGastosComunes(float gastosComunes);
 
-    virtual bool esCasa() const;
     virtual DTInmueble* getDTInmueble() const;
+
+    DTNotificacion crearDTNotificacion(const std::string& nickInmo, const std::string& texto, TipoPublicacion tipo) const;
 };
 
 #endif

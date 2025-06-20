@@ -2,6 +2,7 @@
 #define ADMINISTRAPROPIEDAD_H
 
 #include "DTFecha.h"
+#include "DTInmuebleAdministrado.h"
 #include <set>
 #include <string>
 
@@ -26,6 +27,7 @@ class AdministraPropiedad {
         Inmobiliaria* getInmobiliariaAdmin() const;
         Inmueble* getInmuebleAdministrado() const;
         std::set<Publicacion*> getPublicaciones() const;
+        DTInmuebleAdministrado* getDTInmuebleAdministrado() const;
 
         void agregarPublicacion(Publicacion* pub);
         bool existePublicacionReciente(const DTFecha& fecha, TipoPublicacion tipo) const;

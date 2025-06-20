@@ -1,9 +1,9 @@
 #ifndef FACTORY_H
 #define FACTORY_H
-#include "IUsuarioController.h"
-#include "ISistemaController.h"
 
 class IControladorFechaActual;
+class ISistemaController;
+class IUsuarioController;
 
 class Factory {
     private:

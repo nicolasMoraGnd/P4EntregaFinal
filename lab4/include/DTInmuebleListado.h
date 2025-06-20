@@ -1,5 +1,6 @@
 #ifndef DTINMUEBLELISTADO_H
 #define DTINMUEBLELISTADO_H
+
 #include <string>
 
 class DTInmuebleListado {

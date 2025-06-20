@@ -1,19 +1,20 @@
 #include "../include/UsuarioController.h"
 #include "../include/UsuarioHandler.h"
+#include "../include/AdministraPropiedad.h"
 
-UsuarioController* UsuarioController::instancia = nullptr;
+UsuarioController* UsuarioController::instancia = 0;
 
 UsuarioController::UsuarioController(){}
+
 UsuarioController::~UsuarioController(){}
 
 UsuarioController* UsuarioController::getInstance(){
-    if (instancia == nullptr){
+    if (instancia == 0)
         instancia = new UsuarioController();
     return instancia;
-    }
 }
 
-bool UsuarioController::altaCliente(const std:: string& nickname, const std::string contrasena, const std::string& nombre, const std::string& email, const std::string& apellido, const std::string& documento){
+bool UsuarioController::altaCliente(const std::string& nickname, const std::string contrasena, const std::string& nombre, const std::string& email, const std::string& apellido, const std::string& documento){
     UsuarioHandler* manejo = UsuarioHandler::getInstancia();
     //paso 1: existe???
     if(manejo->existeUsuario(nickname)){
@@ -29,6 +30,7 @@ bool UsuarioController::altaCliente(const std:: string& nickname, const std::str
     
     return true;
 }
+
 bool UsuarioController::altaPropietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono){
     UsuarioHandler* manejo = UsuarioHandler::getInstancia();
     //paso 1: existe?
@@ -45,6 +47,7 @@ bool UsuarioController::altaPropietario(const std::string& nickname, const std::
 
     return true;
 }
+
 bool UsuarioController::altaInmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& direccion, const std::string& url, const std::string& telefono){
     UsuarioHandler* manejo = UsuarioHandler::getInstancia();
     // 1 existe?
@@ -61,6 +64,7 @@ bool UsuarioController::altaInmobiliaria(const std::string& nickname, const std:
 
     return true;
 }
+
 std::set<DTUsuario*> UsuarioController::listarInmobiliarias(){
     std::set<DTUsuario*> res;
     UsuarioHandler* manejo = UsuarioHandler::getInstancia();
@@ -72,7 +76,47 @@ std::set<DTUsuario*> UsuarioController::listarInmobiliarias(){
     }
     return res;
 }
-std::set<DTInmuebleAdministrado*> UsuarioController::listarInmueblesAdministrados(const std::string& nicknameInmobiliaria){
 
+std::set<DTInmuebleAdministrado*> UsuarioController::listarInmueblesAdministrados(const std::string& nicknameInmobiliaria){
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Inmobiliaria* inmo = uh->findInmobiliaria(nicknameInmobiliaria);
+    std::set<DTInmuebleAdministrado*> resultado;
+    if(inmo != 0){
+        std::set<AdministraPropiedad*> adminProps = inmo->getPropiedadesAdministradas();
+        for(std::set<AdministraPropiedad*>::iterator it = adminProps.begin(); it != adminProps.end(); ++it)
+            resultado.insert((*it)->getDTInmuebleAdministrado());
+    }
+    return resultado;
 }
 
+std::list<DTNotificacion> UsuarioController::consultarNotificaciones(const std::string& nicknameUsuario){
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Usuario* user = uh->findUsuario(nicknameUsuario);
+    std::list<DTNotificacion> resultado;
+    if(Cliente* cli = dynamic_cast<Cliente*>(user)){
+        resultado = cli->getNotificacionesPendientes();
+        cli->limpiarNotificaciones();
+    }
+    else if(Propietario* prop = dynamic_cast<Propietario*>(user)){
+        resultado = prop->getNotificacionesPendientes();
+        prop->limpiarNotificaciones();
+    }
+    return resultado;
+}
+
+void UsuarioController::suscribirseAInmobiliaria(const std::string& nicknameUsuario, const std::string& nicknameInmobiliaria){
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Usuario* user = uh->findUsuario(nicknameUsuario);
+    Inmobiliaria* inm = uh->findInmobiliaria(nicknameInmobiliaria);
+    if (user != 0 && inm != 0){
+        if(Cliente* cli = dynamic_cast<Cliente*>(user))
+            cli->suscribirseAInmobiliaria(inm);
+        else if (Propietario* prop = dynamic_cast<Propietario*>(user))
+            prop->suscribirseAInmobiliaria(inm);
+    }
+}
+
+std::set<DTUsuario*> UsuarioController::listarPropietarios(){
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    return uh->listarPropietarios();
+}

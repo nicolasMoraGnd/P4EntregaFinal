@@ -1,4 +1,7 @@
 #include "../include/Publicacion.h"
+#include "../include/AdministraPropiedad.h"
+#include "../include/Inmobiliaria.h"
+#include "../include/DTPublicacion.h"
 
 Publicacion::Publicacion(int codigo, const DTFecha& fecha, TipoPublicacion tipo, const std::string& texto, float precio, AdministraPropiedad* adminProp)
     : codigo(codigo), 
@@ -6,33 +9,35 @@ Publicacion::Publicacion(int codigo, const DTFecha& fecha, TipoPublicacion tipo,
     tipo(tipo), 
     texto(texto), 
     precio(precio), 
+    activa(false),
     administracionPropiedadPadre(adminProp){};
 
+Publicacion::~Publicacion() {}
+
 int Publicacion::getCodigo() const {
-    return codigo;
+    return this->codigo;
 }
 DTFecha Publicacion::getFecha() const {
-    return fecha;
+    return this->fecha;
 }
 TipoPublicacion Publicacion::getTipo() const {
-    return tipo;
+    return this->tipo;
 }
 bool Publicacion::esActiva() const {
-    return activa;
+    return this->activa;
 }
 AdministraPropiedad* Publicacion::getAdministracionPropiedad() const {
-    return administracionPropiedadPadre;
+    return this->administracionPropiedadPadre;
 }
 
 void Publicacion::setActiva(bool estado){
-    activa = estado;
+    this->activa = estado;
 }
 
-std::string Publicacion::getNombreInmobiliaria(){
-    Inmobiliaria* inm = administracionPropiedadPadre->getInmobiliariaAdmin();
-    return inm->getNombre();
+std::string Publicacion::getNombreInmobiliaria() const {
+    return this->administracionPropiedadPadre->getInmobiliariaAdmin()->getNombre();
 }
 
-DTPublicacion* Publicacion::getDTPublicacion() {
-    return new DTPublicacion(codigo, fecha, texto, precio, adminProp->getInmobiliariaAdmin());
+DTPublicacion* Publicacion::getDTPublicacion() const {
+    return new DTPublicacion(this->codigo, this->fecha, this->texto, this->precio, this->getNombreInmobiliaria());
 }

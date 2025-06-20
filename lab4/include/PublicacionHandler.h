@@ -4,7 +4,6 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Publicacion.h"
-
 #include <map>
 
 class PublicacionHandler {
@@ -23,7 +22,6 @@ public:
     Publicacion* findPublicacion(int codigo);
     std::map<int, Publicacion*> getPublicaciones();
     int getSiguienteCodigo();
-    std::set<DTPublicacion*> getPublicaciones(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInm);
 };
 
 #endif

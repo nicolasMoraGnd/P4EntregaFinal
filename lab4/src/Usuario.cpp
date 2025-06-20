@@ -18,4 +18,3 @@ std::string Usuario::getNickname() const{
  std::string Usuario::getContrasena() const{
     return this->contrasena;
  }
-
