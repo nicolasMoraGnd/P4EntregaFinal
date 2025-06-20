@@ -11,7 +11,7 @@ class Factory {
         Factory();
 
     public:
-        static Factory* getInstance();
+        static Factory* getInstancia();
         IControladorFechaActual* getControladorFechaActual();
         //TODO: Get interfaces de controladores
         IUsuarioController* getIUsuarioController();

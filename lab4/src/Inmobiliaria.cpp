@@ -46,20 +46,9 @@ std::set<AdministraPropiedad*> Inmobiliaria::getPropiedadesAdministradas() const
     return propiedadesAdministradas;
 }
 
-
-//SACADO DE CHATGPT FALTA VER DCD Y TEORICO PARA QUE CURTA BIEN Y RAYE ZARPADO
-// métodos relacionados a "Alta de Administración de Propiedad" // IMPLEMENTAR IMPORTANTE
-std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminDePropietariosRepresentados() const {
-    // Aquí implementas la lógica que filtre y devuelva un set de inmuebles listados que no están administrados
-    // por la inmobiliaria y pertenecen a propietarios representados.
+// IMPLEMENTAR POR FAVOR SUMAMENTE IMPORTANTE VER AdministracionPropiedad_SoloDiagramas_2025
+std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario() const {
     std::set<DTInmuebleListado*> resultado;
-
-    // Ejemplo (pseudo-código):
-    // Por cada propietarioRepresentado
-    //    por cada inmueble del propietario
-    //       si inmueble no está administrado por esta inmobiliaria
-    //          agregar a resultado
-
     return resultado;
 }
 
@@ -68,10 +57,7 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, c
     AdministraPropiedad* nuevaAdmin = new AdministraPropiedad(this, inmuebleAAdministrar, fechaComienzo);
     
     // Agregar a propiedades administradas
-    agregarAdministracion(nuevaAdmin);
-
-    // Asociar inmueble a inmobiliaria (opcional si ya se hace en AdministraPropiedad)
-    // asociarInmueble(inmuebleAAdministrar->getCodigo(), inmuebleAAdministrar);
+    this->agregarAdministracion(nuevaAdmin);
 
     // También deberías llamar a métodos de Inmueble para asociar esta administración,
     // si la clase inmueble tiene algo así:

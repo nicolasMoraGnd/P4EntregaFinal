@@ -19,14 +19,14 @@ SistemaController* SistemaController::instancia = 0;
 SistemaController::SistemaController() {}
 SistemaController::~SistemaController() {}
 
-SistemaController* SistemaController::getInstance() {
+SistemaController* SistemaController::getInstancia() {
     if (instancia == 0)
         instancia = new SistemaController();
     return instancia;
 }
 
 void SistemaController::eliminarInmueble(int codigoInmueble) {
-    InmuebleHandler* ih = InmuebleHandler::getInstance();
+    InmuebleHandler* ih = InmuebleHandler::getInstancia();
     Inmueble* inm = ih->findInmueble(codigoInmueble);
     if(inm != 0){
         inm->desvincularInmueble();
@@ -35,7 +35,7 @@ void SistemaController::eliminarInmueble(int codigoInmueble) {
 }
 
 std::set<DTInmuebleListado*> SistemaController::listarInmuebles() {
-    InmuebleHandler* ih = InmuebleHandler::getInstance();
+    InmuebleHandler* ih = InmuebleHandler::getInstancia();
     std::map<int, Inmueble*> todosLosInmuebles = ih->getInmuebles();
     std::set<DTInmuebleListado*> resultado;
     for (std::map<int, Inmueble*>::iterator it = todosLosInmuebles.begin(); it != todosLosInmuebles.end(); ++it){
@@ -51,7 +51,7 @@ std::set<DTInmuebleListado*> SistemaController::listarInmuebles() {
 }
 
 DTInmueble* SistemaController::detalleInmueble(int codigoInmueble) {
-    InmuebleHandler* ih = InmuebleHandler::getInstance();
+    InmuebleHandler* ih = InmuebleHandler::getInstancia();
     Inmueble* inm = ih->findInmueble(codigoInmueble);
     if (inm != 0)
         return inm->getDTInmueble();
@@ -60,8 +60,8 @@ DTInmueble* SistemaController::detalleInmueble(int codigoInmueble) {
 
 bool SistemaController::altaPublicacion(const std::string& nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipo, const std::string& texto, float precio) {
     UsuarioHandler* uh = UsuarioHandler::getInstancia();
-    PublicacionHandler* ph = PublicacionHandler::getInstance();
-    IControladorFechaActual* cf = ControladorFechaActual::getInstance();
+    PublicacionHandler* ph = PublicacionHandler::getInstancia();
+    IControladorFechaActual* cf = ControladorFechaActual::getInstancia();
     // 1
     Inmobiliaria* inmobiliaria = uh->findInmobiliaria(nicknameInmobiliaria);
     if (inmobiliaria == 0)
@@ -93,7 +93,7 @@ bool SistemaController::altaPublicacion(const std::string& nicknameInmobiliaria,
 }
 
 std::set<DTPublicacion*> SistemaController::listarPublicacion(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInm) {
-    PublicacionHandler* ph = PublicacionHandler::getInstance();
+    PublicacionHandler* ph = PublicacionHandler::getInstancia();
     std::map<int, Publicacion*> todasLasPublicaciones = ph->getPublicaciones();
     std::set<DTPublicacion*> resultado; 
     for (std::map<int, Publicacion*>::iterator it = todasLasPublicaciones.begin(); it != todasLasPublicaciones.end(); ++it){
@@ -117,7 +117,7 @@ std::set<DTPublicacion*> SistemaController::listarPublicacion(TipoPublicacion ti
 }
 
 DTInmueble* SistemaController::detalleInmueblePublicacion(int codigoPublicacion) {
-    PublicacionHandler* ph = PublicacionHandler::getInstance();
+    PublicacionHandler* ph = PublicacionHandler::getInstancia();
     Publicacion* pub = ph->findPublicacion(codigoPublicacion);
     if(pub != 0){
         Inmueble* inm = pub->getAdministracionPropiedad()->getInmuebleAdministrado();

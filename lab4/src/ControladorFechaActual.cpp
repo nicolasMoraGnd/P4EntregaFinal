@@ -8,7 +8,7 @@ ControladorFechaActual::ControladorFechaActual() {
     fechaActual = new DTFecha(1,1,1900);
 }
 
-ControladorFechaActual* ControladorFechaActual::getInstance() {
+ControladorFechaActual* ControladorFechaActual::getInstancia() {
     if (instance == NULL)
         instance = new ControladorFechaActual();
     return instance;

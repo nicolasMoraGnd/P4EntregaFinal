@@ -9,7 +9,7 @@ private:
     SistemaController();
 
 public:
-    static SistemaController* getInstance();
+    static SistemaController* getInstancia();
     ~SistemaController();
 
     virtual bool altaPublicacion(const std::string& nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipo, const std::string& texto, float precio);

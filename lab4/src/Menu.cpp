@@ -96,7 +96,7 @@ void ejecutarOpcion(int opcion) {
 
 void altaUsuario(){
 
-    Factory* factory = Factory::getInstance();
+    Factory* factory = Factory::getInstancia();
 
     std::cout << "Ingrese el tipo de usuario (0: Cliente, 1: Inmobiliaria, 2: Propietario): ";
     int tipoUsuario;
@@ -237,7 +237,7 @@ void altaUsuario(){
 
 void altaPublicacion(){
 
-    Factory* factory = Factory::getInstance();
+    Factory* factory = Factory::getInstancia();
 
     std::cout << "Lista de Inmobiliarias:\n";
     //TODO: Coleccion de DTUsuario = controlador->listarInmobiliarias();
@@ -271,7 +271,7 @@ void altaPublicacion(){
 
 void consultaPublicaciones(){
 
-    Factory* factory = Factory::getInstance();
+    Factory* factory = Factory::getInstancia();
 
     int inTipoPublicacion;
     std::cout << "Tipo de Publicacion: (1: Venta, 0: Alquiler)";
@@ -321,7 +321,7 @@ void consultaPublicaciones(){
 
 void eliminarInmueble(){
 
-    Factory* factory = Factory::getInstance();
+    Factory* factory = Factory::getInstancia();
     std::cout << "Listado de inmuebles:\n";
     //TODO: Coleccion de DTInmuebleListado = Controlador->listarInmuebles();
     //Recorrer la coleccion Mostrar "- Codigo: xx, direccion: xxxx, propietario: bbbbb";
@@ -357,7 +357,7 @@ void eliminarSuscripciones(){
 }
 
 void altaAdministracionPropiedad(){
-    Factory* factory = Factory::getInstance();
+    Factory* factory = Factory::getInstancia();
 
     std::cout << "Lista de Inmobiliarias:\n";
     //TODO: Coleccion de DTUsuario = controlador->listarInmobiliarias();
@@ -375,11 +375,11 @@ void altaAdministracionPropiedad(){
 }
 
 void cargarDatos(){
-    CargaDatos::getInstance();
+    CargaDatos::getInstancia();
 }
 
  void verFechaActual(){
-    Factory* factory = Factory::getInstance();
+    Factory* factory = Factory::getInstancia();
     IControladorFechaActual* cfecha = factory->getControladorFechaActual();
     DTFecha* fechaActual = cfecha->getFechaActual();
     std::cout << "fecha actual: " << fechaActual;
@@ -387,7 +387,7 @@ void cargarDatos(){
  }
 
  void asignarFechaActual(){
-    Factory* factory = Factory::getInstance();
+    Factory* factory = Factory::getInstancia();
     IControladorFechaActual* cfecha = factory->getControladorFechaActual();
     std::cout << "dia: ";
     int dia;
