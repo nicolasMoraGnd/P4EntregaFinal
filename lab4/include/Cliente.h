@@ -33,6 +33,8 @@ public:
     bool estaSuscritoA(Inmobiliaria* inm) const;
     std::list<DTNotificacion> getNotificacionesPendientes() const;
     void limpiarNotificaciones();
+
+    DTUsuario* getDTUsuario() const;
 };
 
 #endif

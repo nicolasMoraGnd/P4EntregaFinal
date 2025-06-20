@@ -43,6 +43,8 @@ public:
     
     void agregarInmobiliariaQueRepresenta(Inmobiliaria* inm);
     void quitarInmobiliariaQueRepresenta(Inmobiliaria* inm);
+
+    DTUsuario* getDTUsuario() const;
 };
 
 #endif

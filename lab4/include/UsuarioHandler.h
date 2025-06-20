@@ -9,9 +9,9 @@
 
 class UsuarioHandler {
     private:
-        std::map<std::string, Usuario*> mapClientes;
-        std::map<std::string, Usuario*> mapPropietarios;
-        std::map<std::string, Usuario*> mapInmobiliarias;
+        std::map<std::string, Cliente*> mapClientes;
+        std::map<std::string, Propietario*> mapPropietarios;
+        std::map<std::string, Inmobiliaria*> mapInmobiliarias;
         static UsuarioHandler* instancia;
         UsuarioHandler();
 
@@ -25,6 +25,8 @@ class UsuarioHandler {
 
         Inmobiliaria* findInmobiliaria(std::string nickname);
         bool existeUsuario(std::string nickname);
+
+        std::map<std::string, Inmobiliaria*> getInmobiliarias();
 };
 
 #endif
