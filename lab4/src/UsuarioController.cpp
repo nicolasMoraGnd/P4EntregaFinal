@@ -1,9 +1,6 @@
 #include "../include/UsuarioController.h"
 #include "../include/UsuarioHandler.h"
 
-
-
-
 UsuarioController* UsuarioController::instancia = nullptr;
 
 UsuarioController::UsuarioController(){}
@@ -48,7 +45,7 @@ bool UsuarioController::altaPropietario(const std::string& nickname, const std::
 
     return true;
 }
-bool UsuarioController::altaInmobiliria(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& direccion, const std::string& url, const std::string& telefono){
+bool UsuarioController::altaInmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& direccion, const std::string& url, const std::string& telefono){
     UsuarioHandler* manejo = UsuarioHandler::getInstancia();
     // 1 existe?
     if (manejo->existeUsuario(nickname)){
