@@ -24,8 +24,12 @@ class UsuarioHandler {
         void agregarPropietario(Propietario* propietario);
         void agregarInmobiliaria(Inmobiliaria* inmobiliaria);
 
-        Inmobiliaria* findInmobiliaria(std::string nickname);
+        Inmobiliaria* findInmobiliaria(const std::string& nickname) const;
+        Usuario* findUsuario(const std::string& nickname) const;
         bool existeUsuario(std::string nickname);
+
+        std::map<std::string, Inmobiliaria*> getInmobiliarias();
+        std::set<DTUsuario*> listarPropietarios() const;
 };
 
 #endif

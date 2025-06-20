@@ -22,7 +22,6 @@ public:
     Publicacion* findPublicacion(int codigo);
     std::map<int, Publicacion*> getPublicaciones();
     int getSiguienteCodigo();
-    std::set<DTPublicacion*> getPublicaciones(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInm);
 };
 
 #endif

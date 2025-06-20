@@ -11,6 +11,8 @@
 #include "../include/DTInmuebleListado.h"
 #include "../include/DTPublicacion.h"
 #include "../include/TipoInmueble.h"
+#include "../include/Casa.h"
+#include "../include/Apartamento.h"
 
 SistemaController* SistemaController::instancia = 0;
 
@@ -92,7 +94,26 @@ bool SistemaController::altaPublicacion(const std::string& nicknameInmobiliaria,
 
 std::set<DTPublicacion*> SistemaController::listarPublicacion(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInm) {
     PublicacionHandler* ph = PublicacionHandler::getInstance();
-    return ph->getPublicaciones(tipo, precioMin, precioMax, tipoInm);
+    std::map<int, Publicacion*> todasLasPublicaciones = ph->getPublicaciones();
+    std::set<DTPublicacion*> resultado; 
+    for (std::map<int, Publicacion*>::iterator it = todasLasPublicaciones.begin(); it != todasLasPublicaciones.end(); ++it){
+        Publicacion* pub = it->second;
+        bool filtroTipoPub = pub->getTipo() == tipo;
+        bool filtroPrecio = pub->getPrecio() >= precioMin && pub->getPrecio() <= precioMax;
+        bool filtroTipoInmueble = false;
+        if (tipoInm == Todos)
+            filtroTipoInmueble = true;
+        else{
+            Inmueble* inm = pub->getAdministracionPropiedad()->getInmuebleAdministrado();
+            if(tipoInm == TI_Casa && dynamic_cast<Casa*>(inm) != 0)
+                filtroTipoInmueble = true;
+            else if(tipoInm == TI_Apartamento && dynamic_cast<Apartamento*>(inm) != 0)
+                filtroTipoInmueble = true;
+        }
+        if (filtroTipoPub && filtroPrecio && filtroTipoInmueble)
+            resultado.insert(pub->getDTPublicacion());
+    }
+    return resultado;
 }
 
 DTInmueble* SistemaController::detalleInmueblePublicacion(int codigoPublicacion) {

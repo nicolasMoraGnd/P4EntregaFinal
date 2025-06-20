@@ -44,9 +44,32 @@ bool UsuarioHandler::existeUsuario(std::string nickname){
         mapInmobiliarias.find(nickname) != mapInmobiliarias.end());
 }
 
-Inmobiliaria* UsuarioHandler::findInmobiliaria(std::string nickname) {
-    std::map<std::string, Inmobiliaria*>::iterator it = mapInmobiliarias.find(nickname);
+Inmobiliaria* UsuarioHandler::findInmobiliaria(const std::string& nickname) const {
+    std::map<std::string, Inmobiliaria*>::const_iterator it = mapInmobiliarias.find(nickname);
     if (it != mapInmobiliarias.end())
         return it->second;
     return NULL;
 } 
+
+Usuario* UsuarioHandler::findUsuario(const std::string& nickname) const {
+    std::map<std::string, Cliente*>::const_iterator itCli = this->mapClientes.find(nickname);
+    if (itCli != this->mapClientes.end())
+        return itCli->second;
+
+    std::map<std::string, Propietario*>::const_iterator itProp = this->mapPropietarios.find(nickname);
+    if (itProp != this->mapPropietarios.end())
+        return itProp->second;
+
+    std::map<std::string, Inmobiliaria*>::const_iterator itInmo = this->mapInmobiliarias.find(nickname);
+    if (itInmo != this->mapInmobiliarias.end())
+        return itInmo->second;
+
+    return NULL;
+}
+
+std::set<DTUsuario*> UsuarioHandler::listarPropietarios() const {
+    std::set<DTUsuario*> resultado;
+    for (std::map<std::string, Propietario*>::const_iterator it = this->mapPropietarios.begin(); it != this->mapPropietarios.end(); ++it)
+        resultado.insert(it->second->getDTUsuario());
+    return resultado;
+}

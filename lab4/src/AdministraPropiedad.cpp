@@ -35,6 +35,11 @@ std::set<Publicacion*> AdministraPropiedad::getPublicaciones() const {
     return publicacionesAsociadas;
 }
 
+DTInmuebleAdministrado* AdministraPropiedad::getDTInmuebleAdministrado() const{
+    Inmueble* inm = this->getInmuebleAdministrado();
+    return new DTInmuebleAdministrado(inm->getCodigo(), inm->getDireccion(), this->getFechaComienzo());
+}
+
 // Leer bien que tiene que hacer esto, particularmente que publicacion queda activa una vez se agrega.
 void AdministraPropiedad::agregarPublicacion(Publicacion* pub) {
     publicacionesAsociadas.insert(pub);

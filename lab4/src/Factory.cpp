@@ -10,9 +10,8 @@ Factory::Factory() {
 }
 
 Factory* Factory::getInstance() {
-    if (instance == NULL) {
+    if (instance == NULL)
         instance = new Factory();
-    }
     return instance;
 }
 

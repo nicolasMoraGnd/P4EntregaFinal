@@ -44,26 +44,3 @@ int PublicacionHandler::getSiguienteCodigo() {
     this->ultimoCodigo++;
     return this->ultimoCodigo;
 }
-
-std::set<DTPublicacion*> PublicacionHandler::getPublicaciones(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInm) {
-    std::set<DTPublicacion*> resultado;
-    for (std::map<int, Publicacion*>::iterator it = this->mapPublicaciones.begin(); it != this->mapPublicaciones.end(); ++it){
-        Publicacion* pub = it->second;
-        bool filtroActiva = pub->esActiva();
-        bool filtroTipoPub = pub->getTipo() == tipo;
-        bool filtroPrecio = pub->getPrecio() >= precioMin && pub->getPrecio() <= precioMax;
-        bool filtroTipoInmueble = false;
-        if (tipoInm == Todos)
-            filtroTipoInmueble = true;
-        else{
-            Inmueble* inm = pub->getAdministracionPropiedad()->getInmuebleAdministrado();
-            if(tipoInm == TI_Casa && dynamic_cast<Casa*>(inm) != 0)
-                filtroTipoInmueble = true;
-            else if(tipoInm == TI_Apartamento && dynamic_cast<Apartamento*>(inm) != 0)
-                filtroTipoInmueble = true;
-        }
-        if (filtroActiva && filtroTipoPub && filtroPrecio && filtroTipoInmueble)
-            resultado.insert(pub->getDTPublicacion());
-    }
-    return resultado;
-}
