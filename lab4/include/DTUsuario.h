@@ -1,5 +1,6 @@
 #ifndef DTUSUARIO_H
 #define DTUSUARIO_H
+
 #include <string>
 
 class DTUsuario {
@@ -12,4 +13,5 @@ class DTUsuario {
         std::string getNombre();
         bool operator<(DTUsuario& other);
 };
+
 #endif

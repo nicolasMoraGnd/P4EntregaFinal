@@ -4,7 +4,6 @@
 #include "TipoPublicacion.h"
 #include "TipoInmueble.h"
 #include "Publicacion.h"
-
 #include <map>
 
 class PublicacionHandler {

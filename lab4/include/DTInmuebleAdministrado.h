@@ -1,5 +1,6 @@
 #ifndef DTINMUEBLEADMINISTRADO_H
 #define DTINMUEBLEADMINISTRADO_H
+
 #include "DTFecha.h"
 #include <string>
 
