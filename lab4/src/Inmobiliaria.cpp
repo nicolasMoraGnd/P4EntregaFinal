@@ -46,9 +46,14 @@ std::set<AdministraPropiedad*> Inmobiliaria::getPropiedadesAdministradas() const
     return propiedadesAdministradas;
 }
 
-// IMPLEMENTAR POR FAVOR SUMAMENTE IMPORTANTE VER AdministracionPropiedad_SoloDiagramas_2025
 std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario() const {
     std::set<DTInmuebleListado*> resultado;
+    for(std::set<Propietario*>::const_iterator it = propietariosRepresentados.begin(); it != propietariosRepresentados.end(); ++it){
+        Propietario* prop = *it;
+        std::set<DTInmuebleListado*> listInmueblesProp = prop->getInmueblesNoAdmin(this);
+        for (std::set<DTInmuebleListado*>::const_iterator ite = listInmueblesProp.begin(); ite != listInmueblesProp.end(); ++ite)
+            resultado.insert(*ite);
+    }
     return resultado;
 }
 
