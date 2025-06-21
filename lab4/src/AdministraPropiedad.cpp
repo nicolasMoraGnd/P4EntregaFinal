@@ -46,5 +46,11 @@ void AdministraPropiedad::agregarPublicacion(Publicacion* pub) {
 }
 
 bool AdministraPropiedad::existePublicacionReciente(const DTFecha& fechaActual, TipoPublicacion tipo) const {
-    
+    for (std::set<Publicacion*>::iterator it = this->publicacionesAsociadas.begin(); it != this->publicacionesAsociadas.end(); ++it){
+        if(it->tipo == tipo && it->fecha == &fechaActual){
+            return true
+        }
+    }
+    return false
 }
+
