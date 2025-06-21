@@ -3,6 +3,7 @@
 
 #include "Usuario.h"
 #include "IObserver.h"
+#include "DTFecha.h"
 #include <string>
 #include <set>
 #include <map>
@@ -11,9 +12,8 @@
 class Propietario;
 class AdministraPropiedad;
 class Inmueble;
-class IObserver; //fuck YEAHHHHHHHHHHHHHHHH
+class DTNotificacion;
 struct DTUsuario;
-struct DTFecha;
 struct DTInmuebleListado;
 <<<<<<< HEAD
 struct DTNotificacion; //para uso de los metodos con el observer

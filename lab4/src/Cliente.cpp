@@ -49,3 +49,7 @@ std::list<DTNotificacion> Cliente::getNotificacionesPendientes() const {
 void Cliente::limpiarNotificaciones() {
     this->notificacionesPendientes.clear();
 }
+
+DTUsuario* Cliente::getDTUsuario() const {
+    return new DTUsuario(getNickname(), getNombre());
+}

@@ -1,14 +1,14 @@
 #ifndef ISISTEMACONTROLLER_H
 #define ISISTEMACONTROLLER_H
 
+#include "TipoPublicacion.h"
+#include "TipoInmueble.h"
 #include <set>
 #include <string>
 
-struct DTInmueble;
-struct DTInmuebleListado;
-struct DTPublicacion;
-enum TipoPublicacion;
-enum TipoInmueble;
+class DTInmueble;
+class DTInmuebleListado;
+class DTPublicacion;
 
 class ISistemaController {
 public:

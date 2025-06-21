@@ -73,6 +73,8 @@ bool UsuarioController::altaInmobiliaria(const std::string& nickname, const std:
     // paso 3: agrego inmm
     manejo->agregarInmobiliaria(nuevaInm);
 
+    this->inmobiliariaRecordado = nuevaInm;
+
     return true;
 }
 
@@ -176,4 +178,64 @@ std::set<DTInmuebleListado*> UsuarioController::listarInmueblesNoAdministradosIn
     if(inmo != 0)
         return inmo->getInmueblesNoAdminPropietario();
     return std::set<DTInmuebleListado*>();
+}
+
+void UsuarioController::representarPropietario(const std::string& nicknamePropietario){
+    if(this->inmobiliariaRecordado == NULL)
+        return;
+
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Usuario* user = uh->findUsuario(nicknamePropietario);
+    Propietario* prop = dynamic_cast<Propietario*>(user);
+    if(prop != NULL)
+        this->inmobiliariaRecordado->agregarPropietarioRepresentado(prop);
+}
+
+void UsuarioController::seleccionarPropietario(const std::string& nickname){
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Usuario* user = uh->findUsuario(nickname);
+    this->propietarioRecordado = dynamic_cast<Propietario*>(user);
+}
+
+void UsuarioController::seleccionarInmobiliaria(const std::string& nicknameInmobiliaria){
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    this->inmobiliariaRecordado = uh->findInmobiliaria(nicknameInmobiliaria);
+}
+
+void UsuarioController::desuscribirseDeInmobiliaria(const std::string& nicknameUsuario, const std::string& nicknameInmobiliaria){
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Usuario* user = uh->findUsuario(nicknameUsuario);
+    Inmobiliaria* inmo = uh->findInmobiliaria(nicknameInmobiliaria);
+    if(user == NULL || inmo == NULL)
+        return;
+    if(Cliente* cliente = dynamic_cast<Cliente*>(user))
+        cliente->desuscribirseDeInmobiliaria(inmo);
+    else if(Propietario* propietario = dynamic_cast<Propietario*>(user))
+        propietario->desuscribirseDeInmobiliaria(inmo);
+}
+
+std::set<DTUsuario*> UsuarioController::listarInmobiliariasNoSuscripto(const std::string& nicknameUsuario){
+    std::set<DTUsuario*> resultado;
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    
+    Usuario* user = uh->findUsuario(nicknameUsuario);
+    if(user == NULL)
+        return resultado;
+    Cliente* cliente = dynamic_cast<Cliente*>(user);
+    Propietario* propietario = dynamic_cast<Propietario*>(user);
+    if(cliente == NULL && propietario == NULL)
+        return resultado;
+    
+std::map<std::string, Inmobiliaria*> todasLasInmobiliarias = uh->getInmobiliarias();
+    for(std::map<std::string, Inmobiliaria*>::iterator it = todasLasInmobiliarias.begin(); it != todasLasInmobiliarias.end(); ++it){
+        Inmobiliaria* inmo = it->second;
+        bool estaSuscrito = false;
+        if(cliente != NULL)
+            estaSuscrito = cliente->estaSuscritoA(inmo);
+        else
+            estaSuscrito = propietario->estaSuscritoA(inmo);
+        if(!estaSuscrito)
+            resultado.insert(inmo->getDTUsuario());
+    }
+    return resultado;
 }

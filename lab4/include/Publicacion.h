@@ -2,12 +2,11 @@
 #define PUBLICACION_H
 
 #include "DTFecha.h"
-#include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include <string>
 
 class AdministraPropiedad;
-struct DTPublicacion;
+class DTPublicacion;
  
 class Publicacion {
 private:
@@ -16,7 +15,6 @@ private:
     TipoPublicacion tipo;
     std::string texto;
     float precio;
-    bool activa;
 
     AdministraPropiedad* administracionPropiedadPadre;
 
@@ -28,13 +26,12 @@ public:
     DTFecha getFecha() const;
     TipoPublicacion getTipo() const;
     float getPrecio() const;
-    bool esActiva() const; 
     AdministraPropiedad* getAdministracionPropiedad() const;
-
-    void setActiva(bool estado);
-
+    
     std::string getNombreInmobiliaria() const;
     DTPublicacion* getDTPublicacion() const;
+
+    bool esActiva() const; 
 };
 
 #endif

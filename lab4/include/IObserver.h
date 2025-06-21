@@ -1,7 +1,7 @@
 #ifndef IOBSERVER_H
 #define IOBSERVER_H
 
-class DTNotificacion;
+#include "DTNotificacion.h"
 
 class IObserver {
 public:

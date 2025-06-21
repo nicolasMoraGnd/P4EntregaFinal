@@ -1,9 +1,8 @@
 #ifndef INMUEBLEHANDLER_H
 #define INMUEBLEHANDLER_H
 
+#include "Inmueble.h"
 #include <map>
-
-class Inmueble;
 
 class InmuebleHandler {
 private:

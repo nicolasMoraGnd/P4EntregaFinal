@@ -33,6 +33,7 @@ class UsuarioController : public IUsuarioController{
 
         virtual std::set<DTUsuario*> listarPropietarios();
         virtual void seleccionarPropietario(const std::string& nickname);
+        virtual void seleccionarInmobiliaria(const std::string& nicknameInmobiliaria);
 
         // Caso alta administra
         virtual std::set<DTUsuario*> listarInmobiliarias();
@@ -41,11 +42,11 @@ class UsuarioController : public IUsuarioController{
 
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(const std::string& nicknameInmobiliaria);
 
-        virtual std::set<DTUsuario*> listarinmobiliariasNoSuscripto(const std::string& nicknameUsuario);
+        virtual std::set<DTUsuario*> listarInmobiliariasNoSuscripto(const std::string& nicknameUsuario);
         virtual void suscribirseAInmobiliaria(const std::string& nicknameUsuario, const std::string& nicknameInmobiliaria);
         virtual void desuscribirseDeInmobiliaria(const std::string& nicknameUsuario, const std::string& nicknameInmobiliaria);
         virtual std::list<DTNotificacion> consultarNotificaciones(const std::string& nicknameUsuario);
-        //void RepresentarPropietario(string nicknamePropietario)
+        virtual void representarPropietario(const std::string& nicknamePropietario);
 };
 
 #endif

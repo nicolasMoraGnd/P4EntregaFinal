@@ -12,12 +12,12 @@ class Factory {
 
     public:
         static Factory* getInstancia();
-        IControladorFechaActual* getControladorFechaActual();
+        ~Factory();
+        
         //TODO: Get interfaces de controladores
         IUsuarioController* getIUsuarioController();
         ISistemaController* getISistemaController();
-
-        ~Factory();
+        IControladorFechaActual* getIControladorFechaActual();
 };
 
 #endif

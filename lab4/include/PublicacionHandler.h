@@ -15,7 +15,6 @@ private:
 
 public:
     static PublicacionHandler* getInstancia();
-    static void releaseInstance();
     ~PublicacionHandler();
 
     void agregarPublicacion(Publicacion* publicacion);

@@ -3,14 +3,13 @@
 #include "../include/Inmobiliaria.h"
 #include "../include/DTNotificacion.h"
 #include "../include/DTInmuebleListado.h"
+#include "../include/DTUsuario.h"
 
 Propietario::Propietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono)
     : Usuario(nickname, contrasena, nombre, email), cuentaBancaria(cuentaBancaria), telefono(telefono) {}
 
 // Como el Propietario es "dueño" de sus Inmuebles, su destructor debe liberarlos.
 Propietario::~Propietario() {
-    for (std::set<Inmueble*>::iterator it = inmuebles.begin(); it != inmuebles.end(); ++it)
-        delete *it;
     inmuebles.clear();
 }
 
@@ -68,24 +67,23 @@ void Propietario::quitarInmobiliariaQueRepresenta(Inmobiliaria* inm) {
     this->inmobiliariasQueRepresentan.erase(inm);
 }
 
-// IMPLEMENTAR AdministracionPropiedad_SoloDiagramas_2025
+DTUsuario* Propietario::getDTUsuario() const {
+    return new DTUsuario(getNickname(), getNombre());
+}
+
 std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(const Inmobiliaria* inm) const {
     std::set<DTInmuebleListado*> resultado;
-
     for (std::set<Inmueble*>::const_iterator it = inmuebles.begin(); it != inmuebles.end(); ++it) {
             Inmueble* in = *it;
-
             // si no va a ser admin por la propiety pasadusken
             if (!in->esAdministradoPor(inm)) {
                 int codigo = in->getCodigo(); // retortna el codigo
                 std::string direccion = in->getDireccion();
-
                 //creamo el coso
                 DTInmuebleListado* dt = new DTInmuebleListado(codigo, direccion, getNickname());
                 resultado.insert(dt);
             }
         }
-
     return resultado;
 }
 

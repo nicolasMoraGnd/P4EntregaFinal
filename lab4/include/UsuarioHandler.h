@@ -6,7 +6,10 @@
 #include "Propietario.h"
 #include "Inmobiliaria.h"
 #include <map>
+#include <set>
 #include <string>
+
+class DTUsuario;
 
 class UsuarioHandler {
     private:

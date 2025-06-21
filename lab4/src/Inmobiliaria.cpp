@@ -3,6 +3,8 @@
 #include "../include/AdministraPropiedad.h"
 #include "../include/Inmueble.h"
 #include "../include/IObserver.h"
+#include "../include/DTInmuebleListado.h"
+#include "../include/DTNotificacion.h"
 
 // Constructor
 Inmobiliaria::Inmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre,
@@ -47,9 +49,14 @@ std::set<AdministraPropiedad*> Inmobiliaria::getPropiedadesAdministradas() const
     return propiedadesAdministradas;
 }
 
-// IMPLEMENTAR POR FAVOR SUMAMENTE IMPORTANTE VER AdministracionPropiedad_SoloDiagramas_2025
 std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario() const {
     std::set<DTInmuebleListado*> resultado;
+    for(std::set<Propietario*>::const_iterator it = propietariosRepresentados.begin(); it != propietariosRepresentados.end(); ++it){
+        Propietario* prop = *it;
+        std::set<DTInmuebleListado*> listInmueblesProp = prop->getInmueblesNoAdmin(this);
+        for (std::set<DTInmuebleListado*>::const_iterator ite = listInmueblesProp.begin(); ite != listInmueblesProp.end(); ++ite)
+            resultado.insert(*ite);
+    }
     return resultado;
 }
 
@@ -108,9 +115,12 @@ void Inmobiliaria::notificarSuscriptores(const DTNotificacion& notif) {
 AdministraPropiedad* Inmobiliaria::getAdministracionDeInmueble(int codigoInmueble) const {
     for (std::set<AdministraPropiedad*>::const_iterator it = this->propiedadesAdministradas.begin(); it != this->propiedadesAdministradas.end(); ++it){
         AdministraPropiedad* adminActual = *it;
-        if(adminActual != 0 && adminActual->getInmuebleAdministrado() != 0)
-            if(adminActual->getInmuebleAdministrado()->getCodigo() == codigoInmueble)
-                return adminActual;
+        if (adminActual != 0 && adminActual->getInmuebleAdministrado() != 0 && adminActual->getInmuebleAdministrado()->getCodigo() == codigoInmueble)
+            return adminActual;
     }
     return 0; // o NULL?
+}
+
+void Inmobiliaria::desvincularAdministracion(AdministraPropiedad* adminProp){
+    this->propiedadesAdministradas.erase(adminProp);
 }

@@ -8,8 +8,7 @@ Publicacion::Publicacion(int codigo, const DTFecha& fecha, TipoPublicacion tipo,
     fecha(fecha), 
     tipo(tipo), 
     texto(texto), 
-    precio(precio), 
-    activa(false),
+    precio(precio),
     administracionPropiedadPadre(adminProp){};
 
 Publicacion::~Publicacion() {}
@@ -17,21 +16,30 @@ Publicacion::~Publicacion() {}
 int Publicacion::getCodigo() const {
     return this->codigo;
 }
+
 DTFecha Publicacion::getFecha() const {
     return this->fecha;
 }
+
 TipoPublicacion Publicacion::getTipo() const {
     return this->tipo;
 }
+
 bool Publicacion::esActiva() const {
-    return this->activa;
-}
-AdministraPropiedad* Publicacion::getAdministracionPropiedad() const {
-    return this->administracionPropiedadPadre;
+    AdministraPropiedad* adminProp = this->getAdministracionPropiedad();
+    if(adminProp == NULL)
+        return false;
+    std::set<Publicacion*> publicacionesHermanas = adminProp->getPublicaciones();
+    for(std::set<Publicacion*>::const_iterator it = publicacionesHermanas.begin(); it != publicacionesHermanas.end(); ++it){
+        Publicacion* otraPub = *it;
+        if(otraPub->getTipo() == this->getTipo() && this->getFecha() < otraPub->getFecha())
+            return false;
+    }
+    return true;
 }
 
-void Publicacion::setActiva(bool estado){
-    this->activa = estado;
+AdministraPropiedad* Publicacion::getAdministracionPropiedad() const {
+    return this->administracionPropiedadPadre;
 }
 
 std::string Publicacion::getNombreInmobiliaria() const {
