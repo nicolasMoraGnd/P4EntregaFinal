@@ -30,7 +30,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 .PHONY: all clean run
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR) # You can keep $(BIN_DIR) here if you want to ensure it's removed if it exists from previous runs, or just rm -rf $(OBJ_DIR) if you completely remove the bin directory concept.
+	rm -rf $(OBJ_DIR) $(BIN_DIR) 
 
 run: all
-	./$(TARGET) # This will now execute ./main
+	./$(TARGET) 
