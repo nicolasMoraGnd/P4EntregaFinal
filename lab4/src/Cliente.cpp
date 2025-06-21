@@ -1,4 +1,6 @@
 #include "../include/Cliente.h"
+#include "../include/DTUsuario.h"
+
 #include "../include/Inmobiliaria.h"
 
 Cliente::Cliente(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& apellido, const std::string& documento)
