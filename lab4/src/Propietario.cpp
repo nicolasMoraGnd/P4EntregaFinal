@@ -3,6 +3,7 @@
 #include "../include/Inmobiliaria.h"
 #include "../include/DTNotificacion.h"
 #include "../include/DTInmuebleListado.h"
+#include "../include/DTUsuario.h"
 
 Propietario::Propietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono)
     : Usuario(nickname, contrasena, nombre, email), cuentaBancaria(cuentaBancaria), telefono(telefono) {}

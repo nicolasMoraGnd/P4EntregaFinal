@@ -1,13 +1,15 @@
 #ifndef INMUEBLE_H
 #define INMUEBLE_H
 
+#include "TipoPublicacion.h"
+#include "DTNotificacion.h"
 #include <string>
 #include <set>
 
 class Propietario;
 class AdministraPropiedad;
 class Inmobiliaria;
-struct DTInmueble;
+class DTInmueble;
 
 class Inmueble {
 private:

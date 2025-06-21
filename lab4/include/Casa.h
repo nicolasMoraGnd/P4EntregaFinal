@@ -4,6 +4,7 @@
 #include "Inmueble.h"
 #include "TipoTecho.h"
 #include "DTNotificacion.h"
+#include "TipoPublicacion.h"
 
 class Casa : public Inmueble {
 private:

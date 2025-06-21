@@ -2,12 +2,11 @@
 #define PUBLICACION_H
 
 #include "DTFecha.h"
-#include "DTPublicacion.h"
 #include "TipoPublicacion.h"
 #include <string>
 
 class AdministraPropiedad;
-struct DTPublicacion;
+class DTPublicacion;
  
 class Publicacion {
 private:

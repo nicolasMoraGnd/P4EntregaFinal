@@ -21,7 +21,7 @@ CargaDatos::CargaDatos() {
     Factory* factory = Factory::getInstancia();
     IUsuarioController* iuc = factory->getIUsuarioController();
     ISistemaController* isc = factory->getISistemaController();
-    IControladorFechaActual* icf = factory->getControladorFechaActual();
+    IControladorFechaActual* icf = factory->getIControladorFechaActual();
     //TODO: Cargar los datos de prueba
     
     //carga Clientes

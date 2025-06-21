@@ -3,13 +3,13 @@
 
 #include "DTFecha.h"
 #include "DTInmuebleAdministrado.h"
+#include "TipoPublicacion.h"
 #include <set>
 #include <string>
 
 class Inmobiliaria;
 class Inmueble;
 class Publicacion;
-enum TipoPublicacion; 
 
 class AdministraPropiedad {
     private:

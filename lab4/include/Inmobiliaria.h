@@ -3,6 +3,7 @@
 
 #include "Usuario.h"
 #include "IObserver.h"
+#include "DTFecha.h"
 #include <string>
 #include <set>
 #include <map>
@@ -10,8 +11,8 @@
 class Propietario;
 class AdministraPropiedad;
 class Inmueble;
+class DTNotificacion;
 struct DTUsuario;
-struct DTFecha;
 struct DTInmuebleListado;
 
 // Inmobiliaria hereda de Usuario y es Observer de otra clase (no Inmueble)

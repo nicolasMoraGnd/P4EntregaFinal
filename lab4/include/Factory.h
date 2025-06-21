@@ -17,7 +17,7 @@ class Factory {
         //TODO: Get interfaces de controladores
         IUsuarioController* getIUsuarioController();
         ISistemaController* getISistemaController();
-        IControladorFechaActual* getControladorFechaActual();
+        IControladorFechaActual* getIControladorFechaActual();
 };
 
 #endif

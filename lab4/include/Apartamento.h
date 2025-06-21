@@ -2,6 +2,7 @@
 #define APARTAMENTO_H
 
 #include "Inmueble.h"
+#include "TipoPublicacion.h"
 
 class Apartamento : public Inmueble {
 private:

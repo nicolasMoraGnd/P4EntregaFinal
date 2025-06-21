@@ -10,7 +10,7 @@
 
 class Inmueble;
 class Inmobiliaria;
-struct DTInmuebleListado;
+class DTInmuebleListado;
 
 class Propietario : public Usuario, public IObserver {
 private:

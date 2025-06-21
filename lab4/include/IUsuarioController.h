@@ -5,9 +5,11 @@
 #include "DTNotificacion.h"
 #include <set>
 #include <string>
+#include <list>
 
-struct DTUsuario;
-struct DTInmuebleAdministrado;
+class DTUsuario;
+class DTInmuebleAdministrado;
+class DTInmuebleListado;
 
 class IUsuarioController{
     public:

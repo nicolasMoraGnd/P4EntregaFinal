@@ -3,6 +3,8 @@
 #include "../include/AdministraPropiedad.h"
 #include "../include/Inmueble.h"
 #include "../include/IObserver.h"
+#include "../include/DTInmuebleListado.h"
+#include "../include/DTNotificacion.h"
 
 // Constructor
 Inmobiliaria::Inmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre,
