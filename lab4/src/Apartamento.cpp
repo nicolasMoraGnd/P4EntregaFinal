@@ -6,7 +6,7 @@
 #include "../include/DTNotificacion.h"
 
 Apartamento::Apartamento(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anoConstruccion, Propietario* dueno, float gastosComunes, int piso, bool tieneAscensor)
-    : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion, dueno), gastosComunes(gastosComunes), piso(piso), tieneAscensor(tieneAscensor) {}
+    : Inmueble(codigo, direccion, numeroPuerta, superficie, anoConstruccion, dueno), piso(piso), tieneAscensor(tieneAscensor), gastosComunes(gastosComunes) {}
 
 Apartamento::~Apartamento() {}
 

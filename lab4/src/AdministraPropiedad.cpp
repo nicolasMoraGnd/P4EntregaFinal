@@ -8,8 +8,8 @@
 #include <algorithm> // por si se usa std::find o similares esto ta bueno pal futuro
 
 AdministraPropiedad::AdministraPropiedad(Inmobiliaria* inmo, Inmueble* inm, const DTFecha& fechaIni)
-    : inmobiliaria(inmo),
-     inmueble(inm), 
+    : inmueble(inm),
+     inmobiliaria(inmo), 
      fecha(fechaIni) {
     // el set se inicializa solo
 }
