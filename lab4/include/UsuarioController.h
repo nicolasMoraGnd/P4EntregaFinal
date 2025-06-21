@@ -36,7 +36,7 @@ class UsuarioController : public IUsuarioController{
 
         // Caso alta administra
         virtual std::set<DTUsuario*> listarInmobiliarias();
-        virtual std::set<DTInmuebleListado> listarInmueblesNoAdministradosInmobiliaria(const std::string& nicknameInmobiliaria);
+        virtual std::set<DTInmuebleListado*> listarInmueblesNoAdministradosInmobiliaria(const std::string& nicknameInmobiliaria);
         virtual void altaAdministraPropiedad(const std::string& nicknameInmobiliaria, int codigoInmueble);
 
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(const std::string& nicknameInmobiliaria);

@@ -73,3 +73,7 @@ std::set<DTUsuario*> UsuarioHandler::listarPropietarios() const {
         resultado.insert(it->second->getDTUsuario());
     return resultado;
 }
+
+std::map<std::string, Inmobiliaria*> UsuarioHandler::getInmobiliarias(){
+    return this->mapInmobiliarias;
+}

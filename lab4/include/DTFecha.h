@@ -5,7 +5,7 @@
 
 class DTFecha {
     private:
-        int dia, mes, anio;;
+        int dia, mes, anio;
     public:
         DTFecha(int dia, int mes, int anio);
         DTFecha(DTFecha* fecha);
