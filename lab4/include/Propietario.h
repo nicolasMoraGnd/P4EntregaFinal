@@ -3,23 +3,25 @@
 
 #include "Usuario.h"
 #include "IObserver.h"
+#include "DTNotificacion.h"
 #include <string>
 #include <set>
-#include <list> 
+#include <list>
 
 class Inmueble;
 class Inmobiliaria;
-class Notificacion;
 struct DTInmuebleListado;
 
 class Propietario : public Usuario, public IObserver {
 private:
     std::string cuentaBancaria;
     std::string telefono;
+    
     std::set<Inmueble*> inmuebles;
     std::set<Inmobiliaria*> inmobiliariasQueRepresentan;
     std::set<Inmobiliaria*> suscripciones;
-    std::list<Notificacion*> notificacionesPendientes;
+
+    std::list<DTNotificacion> notificacionesPendientes;
 
 public:
     Propietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono);
@@ -32,14 +34,17 @@ public:
     void desvincularPropietarioInmueble(Inmueble* inm);
     std::set<Inmueble*> getInmuebles() const;
 
-    virtual void notificar(Notificacion* notif);
+    virtual void notificar(const DTNotificacion& notif);
     void suscribirseAInmobiliaria(Inmobiliaria* inm);
     void desuscribirseDeInmobiliaria(Inmobiliaria* inm);
-    std::list<Notificacion*> getNotificacionesPendientes() const;
+    bool estaSuscritoA(Inmobiliaria* inm) const;
+    std::list<DTNotificacion> getNotificacionesPendientes() const;
     void limpiarNotificaciones();
     
     void agregarInmobiliariaQueRepresenta(Inmobiliaria* inm);
     void quitarInmobiliariaQueRepresenta(Inmobiliaria* inm);
+
+    DTUsuario* getDTUsuario() const;
 };
 
 #endif

@@ -1,5 +1,6 @@
 #ifndef DTAPARTAMENTO_H
 #define DTAPARTAMENTO_H
+
 #include "DTInmueble.h"
 
 class DTApartamento : public DTInmueble {

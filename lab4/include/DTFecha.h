@@ -5,7 +5,7 @@
 
 class DTFecha {
     private:
-        int dia, mes, anio;;
+        int dia, mes, anio;
     public:
         DTFecha(int dia, int mes, int anio);
         DTFecha(DTFecha* fecha);
@@ -14,5 +14,7 @@ class DTFecha {
         bool operator==(DTFecha* fecha);
         std::string toString();
 };
+
 std::ostream& operator<<(std::ostream& os, DTFecha* fecha);
+
 #endif

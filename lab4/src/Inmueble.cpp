@@ -4,12 +4,9 @@
 #include "../include/Inmobiliaria.h"
 
 Inmueble::Inmueble(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno)
-    : codigo(codigo), 
-    direccion(direccion), 
-    numeroPuerta(numeroPuerta), 
-    superficie(superficie), 
-    anioConstruccion(anioConstruccion), 
-    propietarioDuenio(dueno) {}
+    : codigo(codigo), direccion(direccion), numeroPuerta(numeroPuerta), superficie(superficie), anioConstruccion(anioConstruccion), propietarioDuenio(dueno) {}
+
+Inmueble::~Inmueble() {}
 
 int Inmueble::getCodigo() const {
     return codigo;
@@ -56,7 +53,9 @@ void Inmueble::setAnioConstruccion(int anioConstruccion) {
 }
 
 bool Inmueble::esAdministradoPor(const Inmobiliaria* inm) const {
-    // TODO: Implementar la logica de busqueda en el set 'administraciones'
+    for (std::set<AdministraPropiedad*>::const_iterator it = administraciones.begin(); it != administraciones.end(); ++it)
+        if ((*it)->getInmobiliariaAdmin() == inm)
+            return true;
     return false;
 }
 
@@ -73,7 +72,6 @@ std::set<AdministraPropiedad*> Inmueble::getAdministraciones() const {
 }
 
 void Inmueble::limpiarReferenciasAdministraciones() {
-    // TODO
     administraciones.clear();
 }
 
@@ -88,8 +86,12 @@ void Inmueble::limpiarReferenciasAdministraciones() {
         delete admin;
     }
     this->limpiarReferenciasAdministraciones();
+<<<<<<< HEAD
 }
 
 Inmueble::~Inmueble() {
 
 }*/
+=======
+}
+>>>>>>> main

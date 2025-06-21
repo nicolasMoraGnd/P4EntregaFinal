@@ -7,7 +7,7 @@ class CargaDatos {
         CargaDatos();
 
     public:
-        static CargaDatos* getInstance();
+        static CargaDatos* getInstancia();
         ~CargaDatos();
 };
 

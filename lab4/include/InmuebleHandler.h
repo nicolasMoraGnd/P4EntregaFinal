@@ -1,19 +1,26 @@
 #ifndef INMUEBLEHANDLER_H
 #define INMUEBLEHANDLER_H
-#include "Inmueble.h"
+
 #include <map>
 
-using namespace std;
+class Inmueble;
 
-class InmuebleHandler{
-    private:
-        static InmuebleHandler* instancia;
-        map<int, Inmueble*> inmuebles;
-        InmuebleHandler();
-    public:
-        static InmuebleHandler* getInstance();
-        void addInmueble(Inmueble* inmueble);
-        void removeInmueble(int);
-        Inmueble* findInmueble(int);
+class InmuebleHandler {
+private:
+    std::map<int, Inmueble*> inmuebles;
+    static InmuebleHandler* instancia;
+    InmuebleHandler();
+    int ultimoCodigo;
+
+public:
+    static InmuebleHandler* getInstancia();
+    ~InmuebleHandler();
+
+    int getSiguienteCodigo();
+    void addInmueble(Inmueble* inmueble);
+    void removeInmueble(int codigoInmueble);
+    Inmueble* findInmueble(int codigoInmueble);
+    std::map<int, Inmueble*> getInmuebles() const;
 };
+
 #endif

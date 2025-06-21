@@ -2,6 +2,8 @@
 #define FACTORY_H
 
 class IControladorFechaActual;
+class ISistemaController;
+class IUsuarioController;
 
 class Factory {
     private:
@@ -9,9 +11,12 @@ class Factory {
         Factory();
 
     public:
-        static Factory* getInstance();
+        static Factory* getInstancia();
         IControladorFechaActual* getControladorFechaActual();
         //TODO: Get interfaces de controladores
+        IUsuarioController* getIUsuarioController();
+        ISistemaController* getISistemaController();
+
         ~Factory();
 };
 
