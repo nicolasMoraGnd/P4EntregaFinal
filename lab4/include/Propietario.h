@@ -45,6 +45,8 @@ public:
     void quitarInmobiliariaQueRepresenta(Inmobiliaria* inm);
 
     DTUsuario* getDTUsuario() const;
+
+    std::set<DTInmuebleListado*> getInmueblesNoAdmin(const Inmobiliaria* inm);
 };
 
 #endif
