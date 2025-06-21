@@ -25,13 +25,13 @@ UsuarioController* UsuarioController::getInstancia(){
 bool UsuarioController::altaCliente(const std::string& nickname, const std::string contrasena, const std::string& nombre, const std::string& email, const std::string& apellido, const std::string& documento){
     UsuarioHandler* manejo = UsuarioHandler::getInstancia();
     //paso 1: existe???
-    if(manejo->existeUsuario(nickname)){
+    if(manejo->existeUsuario(nickname))
         return false;
-    }
+    
     //paso 2: si no existe y contrasena mayor 6, creo cliente
-    if (contrasena.length() < 6){
+    if (contrasena.length() < 6)
         return false;
-    }
+    
     Cliente* nuevoCliente = new Cliente(nickname, contrasena, nombre, email, apellido, documento);
     //paso 3: agrego cliente
     manejo->agregarCliente(nuevoCliente);
@@ -42,13 +42,13 @@ bool UsuarioController::altaCliente(const std::string& nickname, const std::stri
 bool UsuarioController::altaPropietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono){
     UsuarioHandler* manejo = UsuarioHandler::getInstancia();
     //paso 1: existe?
-    if(manejo->existeUsuario(nickname)){
+    if(manejo->existeUsuario(nickname))
         return false;
-    }
+    
     // paso 2: si no existe y contrasena mayor 6, creo prop
-    if (contrasena.length() < 6){
+    if (contrasena.length() < 6)
         return false;
-    }
+    
     Propietario* nuevoProp = new Propietario(nickname, contrasena, nombre, email, cuentaBancaria, telefono);
     // paso 3: agrego prop
     manejo->agregarPropietario(nuevoProp);
@@ -62,13 +62,13 @@ bool UsuarioController::altaPropietario(const std::string& nickname, const std::
 bool UsuarioController::altaInmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& direccion, const std::string& url, const std::string& telefono){
     UsuarioHandler* manejo = UsuarioHandler::getInstancia();
     // 1 existe?
-    if (manejo->existeUsuario(nickname)){
+    if (manejo->existeUsuario(nickname))
         return false;
-    }
+
     // 2 si no existe y contrasena mayor a 6, creo inm
-    if (contrasena.length() < 6){
+    if (contrasena.length() < 6)
         return false;
-    }
+
     Inmobiliaria* nuevaInm = new Inmobiliaria(nickname, contrasena, nombre, email, direccion, url, telefono);
     // paso 3: agrego inmm
     manejo->agregarInmobiliaria(nuevaInm);
@@ -168,4 +168,12 @@ void UsuarioController::altaAdministraPropiedad(const std::string& nicknameInmob
         DTFecha fechaActual = cf->getFechaActual();
         inmo->altaAdministracionPropiedad(inm, fechaActual);
     }
+}
+
+std::set<DTInmuebleListado*> UsuarioController::listarInmueblesNoAdministradosInmobiliaria(const std::string& nicknameInmobiliaria){
+    UsuarioHandler* uh = UsuarioHandler::getInstancia();
+    Inmobiliaria* inmo = uh->findInmobiliaria(nicknameInmobiliaria);
+    if(inmo != 0)
+        return inmo->getInmueblesNoAdminPropietario();
+    return std::set<DTInmuebleListado*>();
 }
