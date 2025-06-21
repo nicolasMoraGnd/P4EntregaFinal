@@ -3,7 +3,7 @@
 
 UsuarioHandler* UsuarioHandler::instancia = 0;
 
-UsuarioHandler::~UsuarioHandler(){}
+UsuarioHandler::UsuarioHandler(){}
 
 UsuarioHandler::~UsuarioHandler(){
     for(std::map<std::string, Cliente*>::iterator it = mapClientes.begin(); it != mapClientes.end(); ++it)
