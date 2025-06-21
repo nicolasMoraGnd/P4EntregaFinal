@@ -7,7 +7,7 @@
 
 CargaDatos* CargaDatos::instance = NULL;
 
-CargaDatos* CargaDatos::getInstance() {
+CargaDatos* CargaDatos::getInstancia() {
     if (instance == 0)
         instance = new CargaDatos();
     return instance;

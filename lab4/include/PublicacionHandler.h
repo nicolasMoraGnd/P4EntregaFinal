@@ -14,7 +14,7 @@ private:
     int ultimoCodigo;
 
 public:
-    static PublicacionHandler* getInstance();
+    static PublicacionHandler* getInstancia();
     static void releaseInstance();
     ~PublicacionHandler();
 

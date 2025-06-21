@@ -53,3 +53,4 @@ bool AdministraPropiedad::existePublicacionReciente(const DTFecha& fechaActual, 
     }
     return false
 }
+

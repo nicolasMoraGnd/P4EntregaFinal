@@ -45,7 +45,7 @@ public:
     std::set<Propietario*> getPropietariosRepresentados() const;  
 
     // Metodos de casos de uso
-    std::set<DTInmuebleListado*> getInmueblesNoAdminDePropietariosRepresentados() const;
+    std::set<DTInmuebleListado*> getInmueblesNoAdminPropietario() const;
     AdministraPropiedad* getAdministracionDeInmueble(int codigoInmueble) const;
     void altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, const DTFecha& fechaComienzo);
 

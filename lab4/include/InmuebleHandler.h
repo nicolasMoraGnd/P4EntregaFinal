@@ -10,11 +10,13 @@ private:
     std::map<int, Inmueble*> inmuebles;
     static InmuebleHandler* instancia;
     InmuebleHandler();
+    int ultimoCodigo;
 
 public:
-    static InmuebleHandler* getInstance();
+    static InmuebleHandler* getInstancia();
     ~InmuebleHandler();
 
+    int getSiguienteCodigo();
     void addInmueble(Inmueble* inmueble);
     void removeInmueble(int codigoInmueble);
     Inmueble* findInmueble(int codigoInmueble);

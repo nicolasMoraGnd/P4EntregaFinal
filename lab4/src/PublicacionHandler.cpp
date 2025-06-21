@@ -18,7 +18,7 @@ PublicacionHandler::~PublicacionHandler() {
     mapPublicaciones.clear();
 }
 
-PublicacionHandler* PublicacionHandler::getInstance() {
+PublicacionHandler* PublicacionHandler::getInstancia() {
     if (instancia == NULL)
         instancia = new PublicacionHandler();
     return instancia;
