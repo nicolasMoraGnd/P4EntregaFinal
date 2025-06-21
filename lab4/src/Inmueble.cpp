@@ -86,12 +86,4 @@ void Inmueble::limpiarReferenciasAdministraciones() {
         delete admin;
     }
     this->limpiarReferenciasAdministraciones();
-<<<<<<< HEAD
 }
-
-Inmueble::~Inmueble() {
-
-}*/
-=======
-}
->>>>>>> main

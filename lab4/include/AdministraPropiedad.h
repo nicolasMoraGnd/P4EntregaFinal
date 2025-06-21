@@ -29,30 +29,18 @@ class AdministraPropiedad {
         std::set<Publicacion*> getPublicaciones() const;
         DTInmuebleAdministrado* getDTInmuebleAdministrado() const;
 
-<<<<<<< HEAD
-        //verificacion
-=======
         void agregarPublicacion(Publicacion* pub);
         bool existePublicacionReciente(const DTFecha& fecha, TipoPublicacion tipo) const;
 
         /*//verificacion
->>>>>>> main
         bool esDeInmobiliaria(const Inmobiliaria* inm) const;
 
         //metodos funcionales relacionados a publicacion
         Publicacion* crearPublicacion(int codigoPub, TipoPublicacion tipo, const std::string& texto, float precio, const DTFecha& fechaPub);
-<<<<<<< HEAD
-        void agregarPublicacionGenerada(Publicacion* pub);
-        //es necesario que exista pq una misma propiedad puede tener varias publicaciones a lo largo del tiempo,
-        // pero solo una de ellas puede estar activa al mismo tiempo
-        void actualizarEstadoActivaPublicaciones(Publicacion* nuevaPublicacion);
-        void eliminarPublicaciones();
-=======
         
         //es necesario que exista pq una misma propiedad puede tener varias publicaciones a lo largo del tiempo,
         // pero solo una de ellas puede estar activa al mismo tiempo
         void actualizarEstadoActivaPublicaciones(Publicacion* nuevaPublicacion);
->>>>>>> main
 
         // Métodos del DCD
         void desvincularAdministrarPropiedadInmueble();
@@ -60,11 +48,7 @@ class AdministraPropiedad {
         bool inmobiliariaAsociada(Inmobiliaria* i) const;
 
         // Limpieza
-<<<<<<< HEAD
-         void eliminarPublicaciones();
-=======
         void eliminarPublicaciones();*/
->>>>>>> main
 };
 
 #endif

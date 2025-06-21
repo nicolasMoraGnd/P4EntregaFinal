@@ -2,15 +2,7 @@
 #include "../include/Propietario.h"
 #include "../include/AdministraPropiedad.h"
 #include "../include/Inmueble.h"
-<<<<<<< HEAD
-#include "IObserver.h"
-#include "DTUsuario.h"
-#include "DTFecha.h"
-#include "DTInmuebleListado.h"
-//#include "DTNotificacion.h" hay que imlementar este datatype
-=======
 #include "../include/IObserver.h"
->>>>>>> main
 
 // Constructor
 Inmobiliaria::Inmobiliaria(const std::string& nickname, const std::string& contrasena, const std::string& nombre,
@@ -36,17 +28,7 @@ std::string Inmobiliaria::getTelefonoInmobiliaria() const {
     return telefonoInmobiliaria;
 }
 
-<<<<<<< HEAD
-DTUsuario* Inmobiliaria::getDTUsuario() const {
-    //Implementa la creación del DTUsuario correspondiente asi que pendiente
-    return new DTUsuario(/* pasar datos relevantes */);
-    // return NULL; es otra opcion
-}
-
-//management de los propietarios
-=======
 //para los propietarios a ver
->>>>>>> main
 void Inmobiliaria::agregarPropietarioRepresentado(Propietario* prop) {
     this->propietariosRepresentados.insert(prop);
     prop->agregarInmobiliariaQueRepresenta(this);
@@ -65,34 +47,8 @@ std::set<AdministraPropiedad*> Inmobiliaria::getPropiedadesAdministradas() const
     return propiedadesAdministradas;
 }
 
-<<<<<<< HEAD
-void Inmobiliaria::desvincularAdministracion(AdministraPropiedad* adminProp) {
-    propiedadesAdministradas.erase(adminProp);
-}
-
-//asociacion con inmueeeeebles
-void Inmobiliaria::asociarInmueble(int key, Inmueble* inmueble) {
-    inmuebles[key] = inmueble;
-}
-
-void Inmobiliaria::desasociarInmueble(int key) {
-    inmuebles.erase(key);
-}
-
-std::map<int, Inmueble*> Inmobiliaria::getInmuebles() const {
-    return inmuebles;
-}
-
-
-//SACADO DE CHATGPT FALTA VER DCD Y TEORICO PARA QUE CURTA BIEN Y RAYE ZARPADO
-// métodos relacionados a "Alta de Administración de Propiedad"
-std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminDePropietariosRepresentados() const {
-    // Aquí implementas la lógica que filtre y devuelva un set de inmuebles listados que no están administrados
-    // por la inmobiliaria y pertenecen a propietarios representados.
-=======
 // IMPLEMENTAR POR FAVOR SUMAMENTE IMPORTANTE VER AdministracionPropiedad_SoloDiagramas_2025
 std::set<DTInmuebleListado*> Inmobiliaria::getInmueblesNoAdminPropietario() const {
->>>>>>> main
     std::set<DTInmuebleListado*> resultado;
     return resultado;
 }
