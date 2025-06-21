@@ -17,6 +17,11 @@ class IUsuarioController{
 
         virtual std::set<DTUsuario*> listarInmobiliarias() = 0;
         virtual std::set<DTInmuebleAdministrado*> listarInmueblesAdministrados(const std::string& nicknameInmobiliaria) = 0;
+
+        virtual void finalizarAltaUsuario() = 0;
+        virtual void seleccionarPropietario(const std::string& nickname) = 0;
+        virtual std::set<DTUsuario*> listarinmobiliariasNoSuscripto(const std::string& nicknameUsuario) = 0;
+        virtual void desuscribirseDeInmobiliaria(const std::string& nicknameUsuario, const std::string& nicknameInmobiliaria) = 0;
 };
 
 #endif
