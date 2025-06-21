@@ -87,9 +87,8 @@ void Inmobiliaria::notificarSuscriptores(const DTNotificacion& notif) {
 AdministraPropiedad* Inmobiliaria::getAdministracionDeInmueble(int codigoInmueble) const {
     for (std::set<AdministraPropiedad*>::const_iterator it = this->propiedadesAdministradas.begin(); it != this->propiedadesAdministradas.end(); ++it){
         AdministraPropiedad* adminActual = *it;
-        if(adminActual != 0 && adminActual->getInmuebleAdministrado() != 0)
-            if(adminActual->getInmuebleAdministrado()->getCodigo() == codigoInmueble)
-                return adminActual;
+        if (adminActual != 0 && adminActual->getInmuebleAdministrado() != 0 && adminActual->getInmuebleAdministrado()->getCodigo() == codigoInmueble)
+            return adminActual;
     }
     return 0; // o NULL?
 }

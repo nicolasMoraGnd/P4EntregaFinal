@@ -1,6 +1,8 @@
 #ifndef IUSUARIOCONTROLLER_H
 #define IUSUARIOCONTROLLER_H
 
+#include "TipoTecho.h"
+#include "DTNotificacion.h"
 #include <set>
 #include <string>
 
@@ -30,5 +32,6 @@ class IUsuarioController{
         virtual void suscribirseAInmobiliaria(const std::string& nicknameUsuario, const std::string& nicknameInmobiliaria) = 0;
         virtual void desuscribirseDeInmobiliaria(const std::string& nicknameUsuario, const std::string& nicknameInmobiliaria) = 0;
         virtual std::list<DTNotificacion> consultarNotificaciones(const std::string& nicknameUsuario) = 0;
+};
 
 #endif
