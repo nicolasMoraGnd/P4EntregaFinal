@@ -10,7 +10,7 @@ class DTFecha {
         DTFecha(int dia, int mes, int anio);
         DTFecha(const DTFecha& fecha);
         bool operator>=(DTFecha* fecha);
-        bool operator<(DTFecha* fecha);
+        bool operator<(const DTFecha& otra) const;
         bool operator==(DTFecha* fecha);
         std::string toString();
 };

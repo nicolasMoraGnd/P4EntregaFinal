@@ -110,7 +110,7 @@ std::set<DTPublicacion*> SistemaController::listarPublicacion(TipoPublicacion ti
             else if(tipoInm == TI_Apartamento && dynamic_cast<Apartamento*>(inm) != 0)
                 filtroTipoInmueble = true;
         }
-        if (filtroTipoPub && filtroPrecio && filtroTipoInmueble)
+        if (pub->esActiva() && filtroTipoPub && filtroPrecio && filtroTipoInmueble)
             resultado.insert(pub->getDTPublicacion());
     }
     return resultado;

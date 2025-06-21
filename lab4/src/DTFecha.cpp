@@ -10,11 +10,10 @@ bool DTFecha::operator>=(DTFecha* fecha) {
     return (this->anio > fecha->anio || (this->anio == fecha->anio && this->mes > fecha->mes) || (this->anio == fecha->anio && this->mes == fecha->mes && this->dia >= fecha->dia));
 }
 
-bool DTFecha::operator<(DTFecha* fecha) {
-    if (fecha == NULL) return false;
-    if (this->anio != fecha->anio) return this->anio < fecha->anio;
-    if (this->mes != fecha->mes) return this->mes < fecha->mes;
-    return this->dia < fecha->dia;
+bool DTFecha::operator<(const DTFecha& fecha) const {
+    if (this->anio != fecha.anio) return this->anio < fecha.anio;
+    if (this->mes != fecha.mes) return this->mes < fecha.mes;
+    return this->dia < fecha.dia;
 }
 
 bool DTFecha::operator==(DTFecha* fecha) {
