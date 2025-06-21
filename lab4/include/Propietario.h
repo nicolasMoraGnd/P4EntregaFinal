@@ -34,6 +34,8 @@ public:
     void desvincularPropietarioInmueble(Inmueble* inm);
     std::set<Inmueble*> getInmuebles() const;
 
+    std::set<DTInmuebleListado*> getInmueblesNoAdmin(const Inmobiliaria* inm) const;
+
     virtual void notificar(const DTNotificacion& notif);
     void suscribirseAInmobiliaria(Inmobiliaria* inm);
     void desuscribirseDeInmobiliaria(Inmobiliaria* inm);

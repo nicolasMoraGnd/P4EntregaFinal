@@ -66,3 +66,9 @@ void Propietario::agregarInmobiliariaQueRepresenta(Inmobiliaria* inm) {
 void Propietario::quitarInmobiliariaQueRepresenta(Inmobiliaria* inm) {
     this->inmobiliariasQueRepresentan.erase(inm);
 }
+
+// IMPLEMENTAR AdministracionPropiedad_SoloDiagramas_2025
+std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(const Inmobiliaria* inm) const {
+    std::set<DTInmuebleListado*> resultado;
+    return resultado;
+}
