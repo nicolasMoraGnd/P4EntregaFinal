@@ -9,8 +9,6 @@ Propietario::Propietario(const std::string& nickname, const std::string& contras
 
 // Como el Propietario es "dueño" de sus Inmuebles, su destructor debe liberarlos.
 Propietario::~Propietario() {
-    for (std::set<Inmueble*>::iterator it = inmuebles.begin(); it != inmuebles.end(); ++it)
-        delete *it;
     inmuebles.clear();
 }
 

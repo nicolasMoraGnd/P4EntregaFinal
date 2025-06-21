@@ -4,7 +4,7 @@
 
 DTFecha::DTFecha(int dia, int mes, int anio) : anio(anio), mes(mes), dia(dia) {}
 
-DTFecha::DTFecha(const DTFecha& fecha) : anio(anio), mes(mes), dia(dia) {}
+DTFecha::DTFecha(const DTFecha& fecha) : dia(fecha.dia), mes(fecha.mes), anio(fecha.anio) {}
 
 bool DTFecha::operator>=(DTFecha* fecha) {
     return (this->anio > fecha->anio || (this->anio == fecha->anio && this->mes > fecha->mes) || (this->anio == fecha->anio && this->mes == fecha->mes && this->dia >= fecha->dia));
