@@ -5,19 +5,13 @@
 
 class DTUsuario {
     private:
-        std::string nickname, nombre, contrasena, email;
+        std::string nickname, nombre;
 
     public:
-        DTUsuario(std::string nickname, std::string nombre, std::string contrasena, std::string email);
+        DTUsuario(std::string nickname, std::string nombre);
         std::string getNickname();
         std::string getNombre();
-<<<<<<< HEAD
-        std::string getContrasena();
-        std::string getEmail();
-        bool operator<(DTUsuario& other);
-=======
         bool operator<<(DTUsuario& other);
->>>>>>> main
 };
 
 #endif
