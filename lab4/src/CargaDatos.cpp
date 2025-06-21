@@ -29,7 +29,7 @@ CargaDatos::CargaDatos() {
     iuc->altaCliente("anarojo88", "claveAna1", "Ana", "anarojo88@hotmail.com", "Rojo", "31287465");
     iuc->finalizarAltaUsuario();
 
-// Propietario 1 y sus inmuebles (cod: 1, 2)
+    // Propietario 1 y sus inmuebles (cod: 1, 2)
     iuc->altaPropietario("marcelom", "banco123", "Marcelo", "marcelo.m@gmail.com", "123456789012", "99876543");
     iuc->altaCasa("Av. Rivera", 1011, 120, 1995, true, Plano);
     iuc->altaApartamento("Av. Brasil", 2031, 75, 1980, 5, true, 3500);
@@ -76,50 +76,62 @@ CargaDatos::CargaDatos() {
     iuc->finalizarAltaUsuario();
 
     // --- Alta de Administración de Propiedad (necesario para poder publicar) ---
-    icf->setNewFechaActual(DTFecha(1, 1, 2010)); // Fecha genérica para la administración
-    iuc->altaAdministraPropiedad("casasur123", 1);
+    icf->setNewFechaActual(DTFecha(12, 12, 2015));
     iuc->altaAdministraPropiedad("casasur123", 2);
-    iuc->altaAdministraPropiedad("casasur123", 6);
-    iuc->altaAdministraPropiedad("idealhome", 5);
+    icf->setNewFechaActual(DTFecha(25, 9, 2023));
+    iuc->altaAdministraPropiedad("idealhome", 1);
+    icf->setNewFechaActual(DTFecha(20, 7, 2022));
     iuc->altaAdministraPropiedad("vivaurbana", 3);
+    icf->setNewFechaActual(DTFecha(1, 1, 2022));
     iuc->altaAdministraPropiedad("vivaurbana", 4);
+    icf->setNewFechaActual(DTFecha(3, 7, 2010));
+    iuc->altaAdministraPropiedad("idealhome", 5);
+    icf->setNewFechaActual(DTFecha(4, 11, 2019));
+    iuc->altaAdministraPropiedad("casasur123", 6);
+    icf->setNewFechaActual(DTFecha(19, 5, 2020));
+    iuc->altaAdministraPropiedad("vivaurbana", 6);
+    icf->setNewFechaActual(DTFecha(19, 7, 2024));
+    iuc->altaAdministraPropiedad("idealhome", 6);
+    icf->setNewFechaActual(DTFecha(18, 9, 2023));
+    iuc->altaAdministraPropiedad("idealhome", 7);
+    icf->setNewFechaActual(DTFecha(19, 5, 2022));
+    iuc->altaAdministraPropiedad("vivaurbana", 8);
 
-    // --- Carga de Publicaciones ---
+// --- Carga de Publicaciones ---
     icf->setNewFechaActual(DTFecha(9, 10, 2011));
-    isc->altaPublicacion("idealhome", 5, Alquiler,"Casa ideal para familia en Juan Paullier barrio tranquilo y seguro, con patio y rejas.", 38500.0f);
+    isc->altaPublicacion("idealhome", 5, Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000.0f);
     icf->setNewFechaActual(DTFecha(15, 1, 2016));
-    isc->altaPublicacion("casasur123", 2, Alquiler,"Oportunidad en Av. Brasil: apartamento de 75 m2 bien ubicado cerca de todo.", 28000.0f);
+    isc->altaPublicacion("casasur123", 2, Alquiler, "Oportunidad en Av. Brasil: apartamento de 75 m piso 5 con a", 28000.0f);
     icf->setNewFechaActual(DTFecha(5, 3, 2019));
-    isc->altaPublicacion("casasur123", 2, Alquiler,"Apartamento luminoso en Av. Brasil, piso alto con balcón y vista al este.", 29500.0f);
-    icf->setNewFechaActual(DTFecha(3, 4, 2019));
-    isc->altaPublicacion("idealhome", 5, Alquiler,"Casa ideal para familia en Juan Paullier barrio tranquilo y seguro, con patio y rejas.", 38500.0f);
-    icf->setNewFechaActual(DTFecha(12, 12, 2019));
-    isc->altaPublicacion("casasur123", 6, Venta,"Apartamento en Bulevar Artigas, piso 3 muy luminoso con vista despejada y extras.", 375000.0f);
-    icf->setNewFechaActual(DTFecha(12, 6, 2020));
-    isc->altaPublicacion("casasur123", 1, Venta,"Casa amplia en Av. Rivera, excelente estado, con jardín y garaje doble.", 47000.0f);
+    isc->altaPublicacion("casasur123", 2, Alquiler, "Apartamento luminoso en Av. Brasil piso alto con excelentes", 29500.0f);
+    icf->setNewFechaActual(DTFecha(4, 3, 2019));
+    isc->altaPublicacion("idealhome", 5, Alquiler, "Casa ideal para familia en Juan Paullier barrio tranquilo.", 38500.0f);
+    icf->setNewFechaActual(DTFecha(5, 12, 2019));
+    isc->altaPublicacion("casasur123", 6, Venta, "Apartamento en Bulevar Artigas piso 3 muy luminoso y mode", 375000.0f);
+    icf->setNewFechaActual(DTFecha(6, 12, 2020));
+    isc->altaPublicacion("casasur123", 2, Venta, "Excelente apartamento en Av. Brasil con 75 m ideal para refo", 390000.0f);
     icf->setNewFechaActual(DTFecha(20, 7, 2020));
-    isc->altaPublicacion("vivaurbana", 3, Venta,"Casa en Camino Maldonado, próxima a todos los servicios, con fondo y rejas.", 72000.0f);
-    icf->setNewFechaActual(DTFecha(4, 3, 2022));
-    isc->altaPublicacion("vivaurbana", 4, Alquiler,"Apartamento en Colonia con buena ventilación y cercanía al centro.", 28000.0f);
+    isc->altaPublicacion("vivaurbana", 6, Alquiler, "Apartamento 68 m en Bulevar Artigas tercer piso sin ascenso", 23000.0f);
+    icf->setNewFechaActual(DTFecha(8, 4, 2022));
+    isc->altaPublicacion("vivaurbana", 4, Alquiler, "Apartamento con ascensor en Colonia 1542 piso 12 excelent", 26000.0f);
     icf->setNewFechaActual(DTFecha(12, 9, 2022));
-    isc->altaPublicacion("vivaurbana", 4, Venta,"Apartamento en Colonia, piso 12 con vista panorámica. Oportunidad.", 110000.0f);
-    icf->setNewFechaActual(DTFecha(1, 10, 2023));
-    isc->altaPublicacion("idealhome", 5, Alquiler,"Casa ideal para familia en Juan Paullier barrio tranquilo y seguro, con patio y rejas.", 38500.0f);
+    isc->altaPublicacion("vivaurbana", 3, Alquiler, "Casa excelente en Camino Maldonado de 95 m con patio al f", 27000.0f);
+    icf->setNewFechaActual(DTFecha(10, 1, 2023));
+    isc->altaPublicacion("idealhome", 1, Venta, "Casa en Av. Rivera de 120 m con techo plano ideal para fami", 520000.0f);
     icf->setNewFechaActual(DTFecha(18, 10, 2023));
-    isc->altaPublicacion("idealhome", 5, Venta,"Casa en Juan Paullier con 110 m2 fondo y lugar para barbacoa.", 75000.0f);
-    icf->setNewFechaActual(DTFecha(19, 10, 2023));
-    isc->altaPublicacion("vivaurbana", 3, Alquiler,"Casa en Camino Maldonado con entrada lateral independiente y patio.", 25000.0f);
-    icf->setNewFechaActual(DTFecha(20, 11, 2023));
-    isc->altaPublicacion("casasur123", 2, Venta,"Apartamento reciclado en Av. Brasil, piso medio, buena iluminación.", 115000.0f);
-    
-    icf->setNewFechaActual(DTFecha(15, 1, 2024));
-    isc->altaPublicacion("vivaurbana", 3, Venta,"Casa con gran terreno en Camino Maldonado, ideal para familia numerosa.", 95000.0f);
-    icf->setNewFechaActual(DTFecha(21, 6, 2025)); // Usando fecha actual
-    isc->altaPublicacion("idealhome", 5, Alquiler,"Casa en Juan Paullier con patio techado y posibilidad de ampliación.", 39000.0f);
-    icf->setNewFechaActual(DTFecha(21, 6, 2025));
-    isc->altaPublicacion("vivaurbana", 3, Alquiler,"Casa en Camino Maldonado con posibilidad de cochera y parrillero.", 26000.0f);
-    icf->setNewFechaActual(DTFecha(21, 6, 2025));
-    isc->altaPublicacion("vivaurbana", 4, Venta,"Apartamento en Colonia reciclado a nuevo, edificio con ascensor.", 130000.0f);
+    isc->altaPublicacion("idealhome", 7, Alquiler, "Apartamento amplio en Sarmiento 1476 piso 6 con ascensor.", 32000.0f);
+    icf->setNewFechaActual(DTFecha(12, 9, 2023));
+    isc->altaPublicacion("idealhome", 7, Venta, "Apartamento de 80 m en Sarmiento excelente estado y vista.", 455000.0f);
+    icf->setNewFechaActual(DTFecha(13, 10, 2023));
+    isc->altaPublicacion("idealhome", 7, Alquiler, "Apartamento con gran vista a la rambla", 31000.0f);
+    icf->setNewFechaActual(DTFecha(14, 11, 2023));
+    isc->altaPublicacion("idealhome", 7, Venta, "Aptamente en excelentes condiciones de 80 m", 450000.0f);
+    icf->setNewFechaActual(DTFecha(15, 8, 2023));
+    isc->altaPublicacion("vivaurbana", 3, Venta, "Venta de casa en Camino Maldonado 95 m bien distribuidos.", 430000.0f);
+    icf->setNewFechaActual(DTFecha(16, 5, 2024));
+    isc->altaPublicacion("idealhome", 7, Alquiler, "Alquiler en Sarmiento 80 m piso alto con excelentes terminac", 33000.0f);
+    icf->setNewFechaActual(DTFecha(17, 8, 2025));
+    isc->altaPublicacion("idealhome", 6, Venta, "A estrenar en Bulevar Artigas 871 apartamento moderno.", 400000.0f);
 
     // --- Carga de Suscripciones ---
     iuc->suscribirseAInmobiliaria("luisito23", "casasur123");
