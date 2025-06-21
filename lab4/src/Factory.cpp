@@ -15,7 +15,7 @@ Factory* Factory::getInstancia() {
     return instance;
 }
 
-IControladorFechaActual* Factory::getControladorFechaActual(){
+IControladorFechaActual* Factory::getIControladorFechaActual(){
     return ControladorFechaActual::getInstancia();
 }
 

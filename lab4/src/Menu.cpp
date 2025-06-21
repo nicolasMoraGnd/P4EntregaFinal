@@ -18,6 +18,8 @@
 #include "../include/IControladorFechaActual.h"
 #include <string>
 #include <set>
+#include <cstdlib>
+
 
 void mostrarMenu() {
     std::cout << "=== Menu de Operaciones ===" << std::endl;
@@ -364,7 +366,7 @@ void consultaPublicaciones(){
         if(dtInm != NULL) {
             DTCasa* dtCasa = dynamic_cast<DTCasa*>(dtInm);
             if(dtCasa != NULL) {
-                std::cout << "Codigo: " << dtCasa->getCodigo() << ", direccion: " << ", nro. puerta: " << dtCasa->getNumeroPuerta() << ", superficie: " << dtCasa->getSuperficie() << " m2, construccion: " << dtCasa->getAnioConstruccion();
+                std::cout << "Codigo: " << dtCasa->getCodigo() << ", direccion: " << dtCasa->getDireccion() << ", nro. puerta: " << dtCasa->getNumeroPuerta() << ", superficie: " << dtCasa->getSuperficie() << " m2, construccion: " << dtCasa->getAnioConstruccion();
                 std::cout << ", PH: " << (dtCasa->getEsPH() ? "Si" : "No") << ", Tipo de techo: ";
                 if(dtCasa->getTecho() == Liviano){
                     std::cout << "Liviano" << std::endl;
@@ -418,7 +420,7 @@ void eliminarInmueble(){
                   << "m2, Construccion: " << dtCasa->getAnioConstruccion() << ",  PH: " << (dtCasa->getEsPH() ? "Si" : "No") << ", Tipo de Techo: " << techoStr << std::endl;
     } else if (DTApartamento* dtApto = dynamic_cast<DTApartamento*>(dtInm)){
         std::cout << "Codigo: " << dtApto->getCodigo() << ", Direccion: " << dtApto->getDireccion() << ", Numero Puerta: " << dtApto->getNumeroPuerta() << ", Superficie: " << dtApto->getSuperficie()
-                  << "m2, Construccion: " << dtCasa->getAnioConstruccion() << ", Piso: " << dtApto->getPiso() << ", Ascensor: " << (dtApto->getTieneAscensor() ? "Si" : "No") << ", Gastos comunes: "
+                  << "m2, Construccion: " << dtApto->getAnioConstruccion() << ", Piso: " << dtApto->getPiso() << ", Ascensor: " << (dtApto->getTieneAscensor() ? "Si" : "No") << ", Gastos comunes: "
                   << dtApto->getGastosComunes() << std::endl;
     }
     delete dtInm;
@@ -486,7 +488,6 @@ void consultaNotificaciones(){
 void eliminarSuscripciones(){
     Factory* factory = Factory::getInstancia();
     IUsuarioController* iuc = factory->getIUsuarioController();
-    //REVISAR!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
     std::set<DTUsuario*> inmobiliarias = iuc->listarInmobiliarias();
     std::set<DTUsuario*> subscribedInmobiliarias;
 
@@ -575,7 +576,7 @@ void altaAdministracionPropiedad(){
         return;
     }
     for(std::set<DTInmuebleListado*>::iterator it = inmuebles.begin(); it != inmuebles.end(); ++it)
-        std::cout << "- Codigo :" << (*it)->getCodigo() << ", direccion: " << (*it)->getDireccion() << ", porpietario: " << (*it)->getPropietario() << std::endl;
+        std::cout << "- Codigo :" << (*it)->getCodigo() << ", direccion: " << (*it)->getDireccion() << ", propietario: " << (*it)->getPropietario() << std::endl;
     for(std::set<DTInmuebleListado*>::iterator it = inmuebles.begin(); it != inmuebles.end(); ++it)
         delete *it;
     inmuebles.clear();

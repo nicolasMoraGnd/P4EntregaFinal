@@ -38,6 +38,10 @@ bool Publicacion::esActiva() const {
     return true;
 }
 
+float Publicacion::getPrecio() const {
+    return this->precio;
+}
+
 AdministraPropiedad* Publicacion::getAdministracionPropiedad() const {
     return this->administracionPropiedadPadre;
 }

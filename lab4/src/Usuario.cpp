@@ -3,6 +3,8 @@
 
 Usuario::Usuario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email): nickname(nickname), contrasena(contrasena), nombre(nombre), email(email) {}
 
+Usuario::~Usuario() {}
+
 std::string Usuario::getNickname() const{
     return this->nickname;
 }
@@ -18,3 +20,5 @@ std::string Usuario::getNickname() const{
  std::string Usuario::getContrasena() const{
     return this->contrasena;
  }
+
+ 

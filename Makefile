@@ -2,7 +2,8 @@ CXX = g++
 
 CXXFLAGS = -std=c++98 -Wall -g -O2
 
-BIN_DIR = bin
+# BIN_DIR = bin  <-- Remove or comment out this line
+BIN_DIR =
 
 INCLUDE_DIR = lab4/include
 SRC_DIR = lab4/src
@@ -11,14 +12,14 @@ OBJ_DIR = obj
 SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SOURCES))
 
-TARGET = $(BIN_DIR)/main
+# TARGET = $(BIN_DIR)/main <-- Change this line
+TARGET = main
 
 # --- Reglas de Compilación ---
 
 all: $(TARGET)
 
 $(TARGET): $(OBJECTS)
-	@mkdir -p $(BIN_DIR)
 	$(CXX) $(OBJECTS) -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
@@ -29,7 +30,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
 
 .PHONY: all clean run
 clean:
-	rm -rf $(OBJ_DIR) $(BIN_DIR)
+	rm -rf $(OBJ_DIR) $(BIN_DIR) # You can keep $(BIN_DIR) here if you want to ensure it's removed if it exists from previous runs, or just rm -rf $(OBJ_DIR) if you completely remove the bin directory concept.
 
 run: all
-	./$(TARGET)
+	./$(TARGET) # This will now execute ./main

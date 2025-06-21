@@ -2,7 +2,7 @@
 #include <sstream>
 #include <iostream>
 
-DTFecha::DTFecha(int dia, int mes, int anio) : anio(anio), mes(mes), dia(dia) {}
+DTFecha::DTFecha(int dia, int mes, int anio) : dia(dia), mes(mes), anio(anio) {}
 
 DTFecha::DTFecha(const DTFecha& fecha) : dia(fecha.dia), mes(fecha.mes), anio(fecha.anio) {}
 
