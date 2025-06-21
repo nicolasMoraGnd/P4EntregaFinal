@@ -3,6 +3,7 @@
 #include "../include/Inmobiliaria.h"
 #include "../include/Publicacion.h"
 #include "../include/DTFecha.h"
+#include "../include/Propietario.h"
 
 #include <algorithm> // por si se usa std::find o similares esto ta bueno pal futuro
 
@@ -37,6 +38,7 @@ std::set<Publicacion*> AdministraPropiedad::getPublicaciones() const {
 
 DTInmuebleAdministrado* AdministraPropiedad::getDTInmuebleAdministrado() const{
     Inmueble* inm = this->getInmuebleAdministrado();
+    std::string nickPropietario = inm->getPropietarioDuenio()->getNickname();
     return new DTInmuebleAdministrado(inm->getCodigo(), inm->getDireccion(), this->getFechaComienzo());
 }
 

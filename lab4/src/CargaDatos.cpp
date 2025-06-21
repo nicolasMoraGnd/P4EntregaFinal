@@ -97,7 +97,7 @@ CargaDatos::CargaDatos() {
     icf->setNewFechaActual(DTFecha(19, 5, 2022));
     iuc->altaAdministraPropiedad("vivaurbana", 8);
 
-// --- Carga de Publicaciones ---
+    // --- Carga de Publicaciones ---
     icf->setNewFechaActual(DTFecha(9, 10, 2011));
     isc->altaPublicacion("idealhome", 5, Venta, "Casa al fondo Juan Paullier con 110 m fondo y techo liviano.", 47000.0f);
     icf->setNewFechaActual(DTFecha(15, 1, 2016));
