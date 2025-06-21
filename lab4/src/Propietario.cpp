@@ -2,6 +2,7 @@
 #include "../include/Inmueble.h"
 #include "../include/Inmobiliaria.h"
 #include "../include/DTNotificacion.h"
+#include "../include/DTInmuebleListado.h"
 
 Propietario::Propietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono)
     : Usuario(nickname, contrasena, nombre, email), cuentaBancaria(cuentaBancaria), telefono(telefono) {}
@@ -70,5 +71,26 @@ void Propietario::quitarInmobiliariaQueRepresenta(Inmobiliaria* inm) {
 // IMPLEMENTAR AdministracionPropiedad_SoloDiagramas_2025
 std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(const Inmobiliaria* inm) const {
     std::set<DTInmuebleListado*> resultado;
+    for (std::set<Inmueble*>::const_iterator it = inmuebles.begin(); it != inmuebles.end(); ++it) {
+            Inmueble* in = *it;
+            // si no va a ser admin por la propiety pasadusken
+            if (!in->esAdministradoPor(inm)) {
+                int codigo = in->getCodigo(); // retortna el codigo
+                std::string direccion = in->getDireccion();
+                //creamo el coso
+                DTInmuebleListado* dt = new DTInmuebleListado(codigo, direccion, getNickname());
+                resultado.insert(dt);
+            }
+        }
     return resultado;
 }
+
+//esto es por si un memory leak
+//lo dejo comentado por si es necesario
+/*
+void liberarSetDTInmuebleListado(std::set<DTInmuebleListado*>& set) {
+    for (std::set<DTInmuebleListado*>::iterator it = set.begin(); it != set.end(); ++it)
+        delete *it;
+    set.clear();
+}
+*/
