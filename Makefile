@@ -2,7 +2,6 @@ CXX = g++
 
 CXXFLAGS = -std=c++98 -Wall -g -O2
 
-# BIN_DIR = bin  <-- Remove or comment out this line
 BIN_DIR =
 
 INCLUDE_DIR = lab4/include
@@ -12,7 +11,6 @@ OBJ_DIR = obj
 SOURCES := $(wildcard $(SRC_DIR)/*.cpp)
 OBJECTS := $(patsubst $(SRC_DIR)/%.cpp,$(OBJ_DIR)/%.o,$(SOURCES))
 
-# TARGET = $(BIN_DIR)/main <-- Change this line
 TARGET = main
 
 # --- Reglas de Compilación ---
