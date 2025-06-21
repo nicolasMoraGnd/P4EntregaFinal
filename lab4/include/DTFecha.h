@@ -8,7 +8,7 @@ class DTFecha {
         int dia, mes, anio;
     public:
         DTFecha(int dia, int mes, int anio);
-        DTFecha(DTFecha* fecha);
+        DTFecha(const DTFecha& fecha);
         bool operator>=(DTFecha* fecha);
         bool operator<(DTFecha* fecha);
         bool operator==(DTFecha* fecha);

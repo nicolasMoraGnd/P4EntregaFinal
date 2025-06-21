@@ -97,3 +97,7 @@ AdministraPropiedad* Inmobiliaria::getAdministracionDeInmueble(int codigoInmuebl
     }
     return 0; // o NULL?
 }
+
+void Inmobiliaria::desvincularAdministracion(AdministraPropiedad* adminProp){
+    this->propiedadesAdministradas.erase(adminProp);
+}

@@ -68,6 +68,10 @@ void Propietario::quitarInmobiliariaQueRepresenta(Inmobiliaria* inm) {
     this->inmobiliariasQueRepresentan.erase(inm);
 }
 
+DTUsuario* Propietario::getDTUsuario() const {
+    return new DTUsuario(getNickname(), getNombre());
+}
+
 std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(const Inmobiliaria* inm) const {
     std::set<DTInmuebleListado*> resultado;
     for (std::set<Inmueble*>::const_iterator it = inmuebles.begin(); it != inmuebles.end(); ++it) {
