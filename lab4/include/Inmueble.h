@@ -1,13 +1,15 @@
 #ifndef INMUEBLE_H
 #define INMUEBLE_H
 
+#include "TipoPublicacion.h"
+#include "DTNotificacion.h"
 #include <string>
 #include <set>
 
 class Propietario;
 class AdministraPropiedad;
 class Inmobiliaria;
-struct DTInmueble;
+class DTInmueble;
 
 class Inmueble {
 private:
@@ -36,15 +38,16 @@ public:
     void setSuperficie(int superficie);
     void setAnioConstruccion(int anioConstruccion);
 
+    void desvincularInmueble();
     bool esAdministradoPor(const Inmobiliaria* inm) const;
     void asociarAdministracionPropiedad(AdministraPropiedad* adminProp);
     void desasociarAdministracionPropiedad(AdministraPropiedad* adminProp);
     std::set<AdministraPropiedad*> getAdministraciones() const;
     void limpiarReferenciasAdministraciones();
 
-    virtual bool esCasa() const = 0;
-    virtual void desvincularInmueble() = 0;
     virtual DTInmueble* getDTInmueble() const = 0;
+
+    virtual DTNotificacion crearDTNotificacion(const std::string& nickInmo, const std::string& texto, TipoPublicacion tipo) const = 0;
 };
 
 #endif

@@ -1,7 +1,7 @@
 #ifndef ICONTROLADORFECHAACTUAL_H
 #define ICONTROLADORFECHAACTUAL_H
 
-struct DTFecha;
+#include "DTFecha.h"
 
 class IControladorFechaActual {
     public:

@@ -16,6 +16,7 @@ std::string DTUsuario::getNombre() {
     return nombre;
 }
 
+<<<<<<< HEAD
 std::string DTUsuario::getContrasena() {
     return contrasena;
 }
@@ -30,5 +31,8 @@ DTUsuario::~DTUsuario() {
 }
 
 bool DTUsuario::operator<(DTUsuario& other) {
+=======
+bool DTUsuario::operator<<(DTUsuario& other) {
+>>>>>>> main
     return nickname < other.nickname; // Comparar directamente los campo
 }

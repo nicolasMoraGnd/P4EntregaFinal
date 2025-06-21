@@ -1,6 +1,7 @@
 #ifndef IOBSERVER_H
 #define IOBSERVER_H
 
+<<<<<<< HEAD
 #include <string>
 #include "DTNotificacion.h" // Incluimos el DTNotificacion que será el "dato" de la notificación
 
@@ -13,6 +14,15 @@ public:
     
     // Virtual destructor para asegurar la correcta liberación de memoria de las clases derivadas
     virtual ~IObserver() {} 
+=======
+#include "DTNotificacion.h"
+
+class IObserver {
+public:
+    virtual ~IObserver() {}
+    
+    virtual void notificar(const DTNotificacion& notif) = 0;
+>>>>>>> main
 };
 
 #endif

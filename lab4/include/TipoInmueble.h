@@ -3,8 +3,8 @@
 
 enum TipoInmueble {
     Todos,
-    Casa,
-    Apartamento
+    TI_Casa,
+    TI_Apartamento
 };
 
 #endif

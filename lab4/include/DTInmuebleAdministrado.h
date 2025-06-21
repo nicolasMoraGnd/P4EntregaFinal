@@ -1,5 +1,6 @@
 #ifndef DTINMUEBLEADMINISTRADO_H
 #define DTINMUEBLEADMINISTRADO_H
+
 #include "DTFecha.h"
 #include <string>
 
@@ -7,13 +8,13 @@ class DTInmuebleAdministrado {
     private:
         int codigo;
         std::string direccion;
-        DTFecha* fechaComienzo;
+        DTFecha fechaComienzo;
 
     public:
-        DTInmuebleAdministrado(int codigo, std::string direccion, DTFecha* fechaComienzo);
+        DTInmuebleAdministrado(int codigo, const std::string& direccion, const DTFecha& fechaComienzo);
         int getCodigo();
         std::string getDireccion();
-        DTFecha* getFechaComienzo();
+        DTFecha getFechaComienzo();
         ~DTInmuebleAdministrado();
 };
 

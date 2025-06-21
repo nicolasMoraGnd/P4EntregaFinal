@@ -1,9 +1,12 @@
 #include "../include/Inmueble.h"
 #include "../include/Propietario.h"
 #include "../include/AdministraPropiedad.h"
+#include "../include/Inmobiliaria.h"
 
 Inmueble::Inmueble(int codigo, const std::string& direccion, int numeroPuerta, int superficie, int anioConstruccion, Propietario* dueno)
     : codigo(codigo), direccion(direccion), numeroPuerta(numeroPuerta), superficie(superficie), anioConstruccion(anioConstruccion), propietarioDuenio(dueno) {}
+
+Inmueble::~Inmueble() {}
 
 int Inmueble::getCodigo() const {
     return codigo;
@@ -49,9 +52,10 @@ void Inmueble::setAnioConstruccion(int anioConstruccion) {
     this->anioConstruccion = anioConstruccion;
 }
 
-
 bool Inmueble::esAdministradoPor(const Inmobiliaria* inm) const {
-    // TODO: Implementar la logica de busqueda en el set 'administraciones'
+    for (std::set<AdministraPropiedad*>::const_iterator it = administraciones.begin(); it != administraciones.end(); ++it)
+        if ((*it)->getInmobiliariaAdmin() == inm)
+            return true;
     return false;
 }
 
@@ -68,10 +72,18 @@ std::set<AdministraPropiedad*> Inmueble::getAdministraciones() const {
 }
 
 void Inmueble::limpiarReferenciasAdministraciones() {
-    // TODO
     administraciones.clear();
 }
 
-Inmueble::~Inmueble() {
-
+void Inmueble::desvincularInmueble() {
+    if (this->propietarioDuenio != 0)
+        this->propietarioDuenio->desvincularPropietarioInmueble(this);
+    std::set<AdministraPropiedad*> administracionesACopiar = this->getAdministraciones();
+    for (std::set<AdministraPropiedad*>::iterator it = administracionesACopiar.begin(); it != administracionesACopiar.end(); ++it) {
+        AdministraPropiedad* admin = *it;
+        if (admin->getInmobiliariaAdmin() != 0)
+            admin->getInmobiliariaAdmin()->desvincularAdministracion(admin);
+        delete admin;
+    }
+    this->limpiarReferenciasAdministraciones();
 }

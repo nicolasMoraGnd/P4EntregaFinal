@@ -2,6 +2,7 @@
 #define APARTAMENTO_H
 
 #include "Inmueble.h"
+#include "TipoPublicacion.h"
 
 class Apartamento : public Inmueble {
 private:
@@ -21,9 +22,9 @@ public:
     void setTieneAscensor(bool tieneAscensor);
     void setGastosComunes(float gastosComunes);
 
-    virtual bool esCasa() const;
-    virtual void desvincularInmueble();
     virtual DTInmueble* getDTInmueble() const;
+
+    DTNotificacion crearDTNotificacion(const std::string& nickInmo, const std::string& texto, TipoPublicacion tipo) const;
 };
 
 #endif

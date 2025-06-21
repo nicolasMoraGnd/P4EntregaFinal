@@ -1,5 +1,6 @@
 #ifndef DTUSUARIO_H
 #define DTUSUARIO_H
+
 #include <string>
 
 class DTUsuario {
@@ -10,8 +11,13 @@ class DTUsuario {
         DTUsuario(std::string nickname, std::string nombre, std::string contrasena, std::string email);
         std::string getNickname();
         std::string getNombre();
+<<<<<<< HEAD
         std::string getContrasena();
         std::string getEmail();
         bool operator<(DTUsuario& other);
+=======
+        bool operator<<(DTUsuario& other);
+>>>>>>> main
 };
+
 #endif

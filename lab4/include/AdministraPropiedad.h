@@ -2,33 +2,35 @@
 #define ADMINISTRAPROPIEDAD_H
 
 #include "DTFecha.h"
+#include "DTInmuebleAdministrado.h"
+#include "TipoPublicacion.h"
 #include <set>
+#include <string>
 
 class Inmobiliaria;
 class Inmueble;
 class Publicacion;
-enum TipoPublicacion; 
 
 class AdministraPropiedad {
     private:
-        DTFecha* fecha;
+        Inmueble* inmueble;
+        Inmobiliaria* inmobiliaria;
+        DTFecha fecha; //es mucho mas eficiente para el trabajo (hacerlo puntero es medio al pepe)
+        std::set<Publicacion*> publicacionesAsociadas; // ESTA ES LA RELACIÓN ASOCIATIVA
 
     public:
         AdministraPropiedad(Inmobiliaria* inmo, Inmueble* inm, const DTFecha& fechaIni);
         ~AdministraPropiedad(); // Gestiona la eliminación de Publicaciones que posee
-
+        
+        //getters
         DTFecha getFechaComienzo() const;
         Inmobiliaria* getInmobiliariaAdmin() const;
         Inmueble* getInmuebleAdministrado() const;
         std::set<Publicacion*> getPublicaciones() const;
+        DTInmuebleAdministrado* getDTInmuebleAdministrado() const;
 
-        bool esDeInmobiliaria(const Inmobiliaria* inm) const;
-
-        Publicacion* crearPublicacion(int codigoPub, TipoPublicacion tipo, const std::string& texto, float precio, const DTFecha& fechaPub);
-        void agregarPublicacionGenerada(Publicacion* pub);
-        void actualizarEstadoActivaPublicaciones(Publicacion* nuevaPublicacion);
-
-        void eliminarPublicaciones();
+        void agregarPublicacion(Publicacion* pub);
+        bool existePublicacionReciente(const DTFecha& fecha, TipoPublicacion tipo) const;
 };
 
 #endif

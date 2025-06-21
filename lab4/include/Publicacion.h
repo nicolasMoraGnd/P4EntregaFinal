@@ -6,8 +6,8 @@
 #include <string>
 
 class AdministraPropiedad;
-struct DTPublicacion;
-
+class DTPublicacion;
+ 
 class Publicacion {
 private:
     int codigo;
@@ -15,7 +15,6 @@ private:
     TipoPublicacion tipo;
     std::string texto;
     float precio;
-    bool activa;
 
     AdministraPropiedad* administracionPropiedadPadre;
 
@@ -26,12 +25,13 @@ public:
     int getCodigo() const;
     DTFecha getFecha() const;
     TipoPublicacion getTipo() const;
-    bool esActiva() const; 
+    float getPrecio() const;
     AdministraPropiedad* getAdministracionPropiedad() const;
-
-    void setActiva(bool estado);
-
+    
+    std::string getNombreInmobiliaria() const;
     DTPublicacion* getDTPublicacion() const;
+
+    bool esActiva() const; 
 };
 
 #endif

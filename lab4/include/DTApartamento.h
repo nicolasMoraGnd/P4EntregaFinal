@@ -1,6 +1,8 @@
 #ifndef DTAPARTAMENTO_H
 #define DTAPARTAMENTO_H
+
 #include "DTInmueble.h"
+#include <string>
 
 class DTApartamento : public DTInmueble {
     private:

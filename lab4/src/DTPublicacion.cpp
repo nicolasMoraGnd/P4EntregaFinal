@@ -1,4 +1,5 @@
 #include "../include/DTPublicacion.h"
+<<<<<<< HEAD
 #include "../include/TipoPublicacion.h"
 
 DTPublicacion::DTPublicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo,std::string texto, float precio, std::string inmobiliaria, bool activa) {
@@ -10,13 +11,21 @@ DTPublicacion::DTPublicacion(int codigo, DTFecha* fecha, TipoPublicacion tipo,st
     this->inmobiliaria = inmobiliaria;
     this->activa = activa;
 }
+=======
+#include "../include/DTFecha.h"
+
+DTPublicacion::DTPublicacion(int codigo, const DTFecha& fecha, const std::string& texto, float precio, const std::string& inmobiliaria)
+    : codigo(codigo), fecha(fecha), texto(texto), precio(precio), inmobiliaria(inmobiliaria) {}
+
+DTPublicacion::~DTPublicacion(){}
+>>>>>>> main
 
 int DTPublicacion::getCodigo() {
-    return codigo;
+    return this->codigo;
 }
 
-DTFecha* DTPublicacion::getFecha() {
-    return fecha;
+DTFecha DTPublicacion::getFecha() {
+    return this->fecha;
 }
 
 TipoPublicacion DTPublicacion::getTipoPublicacion(){
@@ -24,11 +33,15 @@ TipoPublicacion DTPublicacion::getTipoPublicacion(){
 }
 
 std::string DTPublicacion::getTexto() {
-    return texto;
+    return this->texto;
 }
 
 float DTPublicacion::getPrecio() {
+<<<<<<< HEAD
     return precio;
+=======
+    return this->precio;
+>>>>>>> main
 }
 
 bool DTPublicacion::getActiva() {
@@ -36,9 +49,5 @@ bool DTPublicacion::getActiva() {
 }
 
 std::string DTPublicacion::getInmobiliaria() {
-    return inmobiliaria;
-}
-
-DTPublicacion::~DTPublicacion(){
-    delete fecha;
+    return this->inmobiliaria;
 }
