@@ -1,10 +1,8 @@
 #include "../include/DTUsuario.h"
 #include <iostream>
 
-DTUsuario::DTUsuario(std::string nickname, std::string nombre) {
-    this->nickname = nickname;
-    this->nombre = nombre;
-}
+DTUsuario::DTUsuario(std::string nickname, std::string nombre) 
+    : nickname(nickname), nombre(nombre) {}
 
 std::string DTUsuario::getNickname() {
     return nickname;

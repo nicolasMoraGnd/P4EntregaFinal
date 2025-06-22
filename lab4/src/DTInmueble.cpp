@@ -1,12 +1,9 @@
 #include "../include/DTInmueble.h"
 
-DTInmueble::DTInmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion) {
-    this->codigo = codigo;
-    this->direccion = direccion;
-    this->numeroPuerta = numeroPuerta;
-    this->superficie = superficie;
-    this->anioConstruccion = anioConstruccion;
-}
+DTInmueble::DTInmueble(int codigo, std::string direccion, int numeroPuerta, int superficie, int anioConstruccion) 
+    : codigo(codigo), direccion(direccion), numeroPuerta(numeroPuerta), superficie(superficie), anioConstruccion(anioConstruccion){}
+
+DTInmueble::~DTInmueble(){}
 
 int DTInmueble::getCodigo() {
     return codigo;
@@ -26,8 +23,4 @@ int DTInmueble::getSuperficie() {
 
 int DTInmueble::getAnioConstruccion() {
     return anioConstruccion;
-}
-
-DTInmueble::~DTInmueble(){
-    
 }

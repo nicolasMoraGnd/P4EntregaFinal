@@ -3,9 +3,7 @@
 DTNotificacion::DTNotificacion(const std::string& nickInmo, int codigo, const std::string& texto, TipoPublicacion tipo, bool esCasa)
     : nickInmo(nickInmo), codigo(codigo), texto(texto), tipo(tipo), esCasa(esCasa) {}
 
-DTNotificacion::~DTNotificacion() {
-
-}
+DTNotificacion::~DTNotificacion() {}
 
 std::string DTNotificacion::getNickInmo() const {
     return this->nickInmo;

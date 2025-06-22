@@ -65,14 +65,8 @@ DTUsuario* Inmobiliaria::getDTUsuario() const {
 }
 
 void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, const DTFecha& fechaComienzo) {
-    // Crear nuevo AdministraPropiedad asociando inmobiliaria e inmueble
     AdministraPropiedad* nuevaAdmin = new AdministraPropiedad(this, inmuebleAAdministrar, fechaComienzo);
-    
-    // Agregar a propiedades administradas
     this->agregarAdministracion(nuevaAdmin);
-
-    // También deberías llamar a métodos de Inmueble para asociar esta administración,
-    // si la clase inmueble tiene algo así:
     inmuebleAAdministrar->asociarAdministracionPropiedad(nuevaAdmin);
 }
 

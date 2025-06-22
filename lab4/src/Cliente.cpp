@@ -1,12 +1,9 @@
 #include "../include/Cliente.h"
 #include "../include/DTUsuario.h"
-
 #include "../include/Inmobiliaria.h"
 
 Cliente::Cliente(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& apellido, const std::string& documento)
-    : Usuario(nickname, contrasena, nombre, email), apellido(apellido), documento(documento) {
-    // El cuerpo del constructor puede quedar vacio si toda la inicializacion se hace en la lista
-}
+    : Usuario(nickname, contrasena, nombre, email), apellido(apellido), documento(documento) {}
 
 Cliente::~Cliente() {}
 

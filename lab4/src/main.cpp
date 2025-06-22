@@ -1,5 +1,4 @@
 #include "../include/Menu.h"
-#include <iostream>
 #include "../include/Factory.h"
 #include "../include/CargaDatos.h"
 #include "../include/UsuarioController.h"
@@ -8,6 +7,7 @@
 #include "../include/UsuarioHandler.h"
 #include "../include/InmuebleHandler.h"
 #include "../include/PublicacionHandler.h"
+#include <iostream>
 
 void limpiarRecursos() {     
         CargaDatos::releaseInstancia();

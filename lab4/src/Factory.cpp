@@ -6,8 +6,9 @@
 
 Factory* Factory::instance = NULL;
 
-Factory::Factory() {
-}
+Factory::Factory() {}
+
+Factory::~Factory() {}
 
 Factory* Factory::getInstancia() {
     if (instance == NULL)
@@ -25,10 +26,6 @@ IUsuarioController* Factory::getIUsuarioController(){
 
 ISistemaController* Factory::getISistemaController(){
     return SistemaController::getInstancia();
-}
-
-Factory::~Factory() {
-    // Destructor vacío.
 }
 
 void Factory::releaseInstancia() {

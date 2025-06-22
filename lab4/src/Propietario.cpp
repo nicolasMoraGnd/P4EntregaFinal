@@ -89,13 +89,3 @@ std::set<DTInmuebleListado*> Propietario::getInmueblesNoAdmin(const Inmobiliaria
         }
     return resultado;
 }
-
-//esto es por si un memory leak
-//lo dejo comentado por si es necesario
-/*
-void liberarSetDTInmuebleListado(std::set<DTInmuebleListado*>& set) {
-    for (std::set<DTInmuebleListado*>::iterator it = set.begin(); it != set.end(); ++it)
-        delete *it;
-    set.clear();
-}
-*/

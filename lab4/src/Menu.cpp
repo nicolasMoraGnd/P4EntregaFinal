@@ -1,4 +1,3 @@
-#include <iostream>
 #include "../include/Menu.h"
 #include "../include/CargaDatos.h"
 #include "../include/TipoInmueble.h"
@@ -19,7 +18,7 @@
 #include <string>
 #include <set>
 #include <cstdlib>
-
+#include <iostream>
 
 void mostrarMenu() {
     std::cout << "=== Menu de Operaciones ===" << std::endl;
@@ -127,11 +126,11 @@ void altaUsuario(){
     
     std::cout << "Nickname: ";
     std::getline(std::cin, nickname);
-    std::cout << "Contrasena: ";
+    std::cout << "Contrasenñ: ";
     std::getline(std::cin, contrasena);
     // Bucle de validación para la contraseña
     while (contrasena.length() < 6) {
-        std::cout << "La contrasena es demasiado corta. Por favor, ingrese una nueva (minimo 6 caracteres): ";
+        std::cout << "La contraseña es demasiado corta. Por favor, ingrese una nueva (minimo 6 caracteres): ";
         std::getline(std::cin, contrasena);
     }
     std::cout << "Nombre: ";
@@ -498,68 +497,44 @@ void eliminarSuscripciones() {
     std::cout << "Ingrese su nickname: ";
     std::getline(std::cin, nicknameUsuario);
 
-    // --- Lógica Corregida y Eficiente ---
-
-    // 1. Obtener todas las inmobiliarias a las que el usuario NO está suscrito UNA SOLA VEZ.
     std::set<DTUsuario*> notSubscribedResult = iuc->listarInmobiliariasNoSuscripto(nicknameUsuario);
     std::set<std::string> notSubscribedNicknames;
-
-    // Guardamos solo los nicknames para una búsqueda rápida y liberamos la memoria de esos DTOs.
     for (std::set<DTUsuario*>::iterator it = notSubscribedResult.begin(); it != notSubscribedResult.end(); ++it) {
         notSubscribedNicknames.insert((*it)->getNickname());
-        delete *it; // Liberamos la memoria de los DTOs que ya no necesitamos.
+        delete *it;
     }
     notSubscribedResult.clear();
 
-    // 2. Obtenemos TODAS las inmobiliarias y filtramos para encontrar las suscripciones.
     std::set<DTUsuario*> todasInmobiliarias = iuc->listarInmobiliarias();
     std::set<DTUsuario*> subscribedInmobiliarias;
 
     for (std::set<DTUsuario*>::iterator it = todasInmobiliarias.begin(); it != todasInmobiliarias.end(); ++it) {
-        // Si el nickname de la inmobiliaria NO se encuentra en el set de "no suscritos",
-        // entonces el usuario SÍ está suscrito a ella.
         bool esNoSuscrito = notSubscribedNicknames.count((*it)->getNickname()) == 1;
-        if (!esNoSuscrito) {
+        if (!esNoSuscrito)
             subscribedInmobiliarias.insert(*it);
-        } else {
-            // Si no estamos interesados en esta inmobiliaria (porque no es una suscripción),
-            // simplemente liberamos la memoria que nos dio el controlador.
+        else
             delete *it;
-        }
     }
-    // Ya no necesitamos la lista completa original.
     todasInmobiliarias.clear();
 
-
-    // --- Interacción con el Usuario (Lógica de Presentación) ---
-
-    // 3. Comprobamos si hay suscripciones ANTES de intentar mostrarlas.
     if (subscribedInmobiliarias.empty()) {
         std::cout << "No esta suscripto a ninguna inmobiliaria." << std::endl;
-        // No hay nada más que hacer, la función puede terminar de forma segura.
         return;
     }
 
-    // 4. Si hay suscripciones, las mostramos TODAS JUNTAS.
     std::cout << "Lista de Inmobiliarias a las que esta suscripto:\n";
-    for (std::set<DTUsuario*>::iterator it = subscribedInmobiliarias.begin(); it != subscribedInmobiliarias.end(); ++it) {
-        std::cout << "- Nickname: " << (*it)->getNickname()
-                  << ", Nombre: " << (*it)->getNombre() << std::endl;
-    }
+    for (std::set<DTUsuario*>::iterator it = subscribedInmobiliarias.begin(); it != subscribedInmobiliarias.end(); ++it)
+        std::cout << "- Nickname: " << (*it)->getNickname() << ", Nombre: " << (*it)->getNombre() << std::endl;
 
-    // 5. Pedimos la inmobiliaria para desuscribir.
     std::cout << "Nickname de la inmobiliaria de la que desea desuscribirse: ";
     std::string nicknameInmobiliaria;
     std::getline(std::cin, nicknameInmobiliaria);
 
-    // 6. Llamamos al controlador para ejecutar la acción.
     iuc->desuscribirseDeInmobiliaria(nicknameUsuario, nicknameInmobiliaria);
     std::cout << "Desuscripcion realizada correctamente." << std::endl;
 
-    // 7. MUY IMPORTANTE: Liberamos la memoria de los DTOs que sí usamos y mostramos.
-    for (std::set<DTUsuario*>::iterator it = subscribedInmobiliarias.begin(); it != subscribedInmobiliarias.end(); ++it) {
+    for (std::set<DTUsuario*>::iterator it = subscribedInmobiliarias.begin(); it != subscribedInmobiliarias.end(); ++it)
         delete *it;
-    }
     subscribedInmobiliarias.clear();
 }
 
