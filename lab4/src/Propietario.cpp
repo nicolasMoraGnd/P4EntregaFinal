@@ -9,9 +9,11 @@
 Propietario::Propietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono)
     : Usuario(nickname, contrasena, nombre, email), cuentaBancaria(cuentaBancaria), telefono(telefono) {}
 
-// Como el Propietario es "dueño" de sus Inmuebles, su destructor debe liberarlos.
 Propietario::~Propietario() {
     inmuebles.clear();
+    inmobiliariasQueRepresentan.clear();
+    suscripciones.clear();
+    notificacionesPendientes.clear();
 }
 
 std::string Propietario::getCuentaBancaria() const {

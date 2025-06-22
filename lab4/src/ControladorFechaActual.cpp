@@ -14,6 +14,13 @@ ControladorFechaActual* ControladorFechaActual::getInstancia() {
     return instance;
 }
 
+void ControladorFechaActual::releaseInstancia() {
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
+}
+
 DTFecha ControladorFechaActual::getFechaActual(){
     return *(this->fechaActual);
 }

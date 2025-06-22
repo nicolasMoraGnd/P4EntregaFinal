@@ -17,11 +17,24 @@ CargaDatos* CargaDatos::getInstancia() {
     return instance;
 }
 
+void CargaDatos::releaseInstancia() {
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
+}
+
+CargaDatos::~CargaDatos() {
+    // El destructor puede estar vacío. Su existencia es suficiente para el enlazador.
+}
+
 CargaDatos::CargaDatos() {
     Factory* factory = Factory::getInstancia();
     IUsuarioController* iuc = factory->getIUsuarioController();
     ISistemaController* isc = factory->getISistemaController();
     IControladorFechaActual* icf = factory->getIControladorFechaActual();
+
+    
     //TODO: Cargar los datos de prueba
     
     //carga Clientes

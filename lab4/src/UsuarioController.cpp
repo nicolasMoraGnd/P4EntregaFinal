@@ -16,6 +16,13 @@ UsuarioController::UsuarioController(){
 
 UsuarioController::~UsuarioController(){}
 
+void UsuarioController::releaseInstancia() {
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
 UsuarioController* UsuarioController::getInstancia(){
     if (instancia == 0)
         instancia = new UsuarioController();

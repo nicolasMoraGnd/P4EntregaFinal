@@ -12,9 +12,9 @@ private:
 
 public:
     static ControladorFechaActual* getInstancia();
-    static void releaseInstance(); // Metodo para liberar la instancia singleton
     virtual ~ControladorFechaActual();
     virtual DTFecha getFechaActual();
+    static void releaseInstancia();
     virtual void setNewFechaActual(const DTFecha& fecha);
 };
 

@@ -15,6 +15,7 @@ class IUsuarioController{
     public:
         virtual ~IUsuarioController(){}
 
+
         // Caso de uso altaUsuario
         virtual bool altaCliente(const std:: string& nickname, const std::string contrasena, const std::string& nombre, const std::string& email, const std::string& apellido, const std::string& documento) = 0;
         virtual bool altaPropietario(const std::string& nickname, const std::string& contrasena, const std::string& nombre, const std::string& email, const std::string& cuentaBancaria, const std::string& telefono) = 0;

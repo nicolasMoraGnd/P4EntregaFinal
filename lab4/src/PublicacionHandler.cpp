@@ -11,11 +11,19 @@ PublicacionHandler* PublicacionHandler::instancia = NULL;
 
 PublicacionHandler::PublicacionHandler() : ultimoCodigo(0) {}
 
-// El destructor recorre el mapa y libera la memoria de cada Publicacion
 PublicacionHandler::~PublicacionHandler() {
-    for (std::map<int, Publicacion*>::iterator it = mapPublicaciones.begin(); it != mapPublicaciones.end(); ++it)
-        delete it->second;
     mapPublicaciones.clear();
+}
+
+void PublicacionHandler::removePublicacion(int codigo) {
+    mapPublicaciones.erase(codigo);
+}
+
+void PublicacionHandler::releaseInstancia() {
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
 }
 
 PublicacionHandler* PublicacionHandler::getInstancia() {

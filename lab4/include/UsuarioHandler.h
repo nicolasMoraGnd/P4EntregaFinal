@@ -31,6 +31,8 @@ class UsuarioHandler {
         Usuario* findUsuario(const std::string& nickname) const;
         bool existeUsuario(std::string nickname);
 
+        static void releaseInstancia();
+
         std::map<std::string, Inmobiliaria*> getInmobiliarias();
         std::set<DTUsuario*> listarPropietarios() const;
 };

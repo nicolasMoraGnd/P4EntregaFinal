@@ -4,6 +4,7 @@
 #include "../include/Publicacion.h"
 #include "../include/DTFecha.h"
 #include "../include/Propietario.h"
+#include "../include/PublicacionHandler.h"
 
 #include <algorithm> // por si se usa std::find o similares esto ta bueno pal futuro
 
@@ -15,8 +16,12 @@ AdministraPropiedad::AdministraPropiedad(Inmobiliaria* inmo, Inmueble* inm, cons
 }
 
 AdministraPropiedad::~AdministraPropiedad() {
-    for (std::set<Publicacion*>::iterator it = this->publicacionesAsociadas.begin(); it != this->publicacionesAsociadas.end(); ++it)
+    PublicacionHandler* ph = PublicacionHandler::getInstancia();
+
+    for (std::set<Publicacion*>::iterator it = this->publicacionesAsociadas.begin(); it != this->publicacionesAsociadas.end(); ++it){
+        ph->removePublicacion((*it)->getCodigo()); 
         delete *it;
+    }
     this->publicacionesAsociadas.clear();
 }
 

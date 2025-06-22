@@ -11,7 +11,7 @@ private:
 public:
     static SistemaController* getInstancia();
     ~SistemaController();
-
+    static void releaseInstancia();
     virtual bool altaPublicacion(const std::string& nicknameInmobiliaria, int codigoInmueble, TipoPublicacion tipo, const std::string& texto, float precio);
 
     virtual std::set<DTPublicacion*> listarPublicacion(TipoPublicacion tipo, float precioMin, float precioMax, TipoInmueble tipoInm);

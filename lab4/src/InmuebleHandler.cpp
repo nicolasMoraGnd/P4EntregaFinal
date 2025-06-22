@@ -40,6 +40,13 @@ Inmueble* InmuebleHandler::findInmueble(int codigoInmueble) {
     return NULL;
 }
 
+void InmuebleHandler::releaseInstancia() {
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
 std::map<int, Inmueble*> InmuebleHandler::getInmuebles() const {
     return this->inmuebles;
 }

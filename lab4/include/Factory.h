@@ -12,6 +12,7 @@ class Factory {
 
     public:
         static Factory* getInstancia();
+        static void releaseInstancia();
         ~Factory();
         
         //TODO: Get interfaces de controladores

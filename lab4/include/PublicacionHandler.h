@@ -16,6 +16,8 @@ private:
 public:
     static PublicacionHandler* getInstancia();
     ~PublicacionHandler();
+    void removePublicacion(int codigo);
+    static void releaseInstancia();
 
     void agregarPublicacion(Publicacion* publicacion);
     Publicacion* findPublicacion(int codigo);

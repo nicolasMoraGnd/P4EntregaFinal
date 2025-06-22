@@ -76,8 +76,11 @@ void Inmueble::limpiarReferenciasAdministraciones() {
 }
 
 void Inmueble::desvincularInmueble() {
-    if (this->propietarioDuenio != 0)
+    if (this->propietarioDuenio != 0) {
         this->propietarioDuenio->desvincularPropietarioInmueble(this);
+        this->propietarioDuenio = NULL;
+    }
+
     std::set<AdministraPropiedad*> administracionesACopiar = this->getAdministraciones();
     for (std::set<AdministraPropiedad*>::iterator it = administracionesACopiar.begin(); it != administracionesACopiar.end(); ++it) {
         AdministraPropiedad* admin = *it;

@@ -67,6 +67,13 @@ Usuario* UsuarioHandler::findUsuario(const std::string& nickname) const {
     return NULL;
 }
 
+void UsuarioHandler::releaseInstancia() {
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
 std::set<DTUsuario*> UsuarioHandler::listarPropietarios() const {
     std::set<DTUsuario*> resultado;
     for (std::map<std::string, Propietario*>::const_iterator it = this->mapPropietarios.begin(); it != this->mapPropietarios.end(); ++it)

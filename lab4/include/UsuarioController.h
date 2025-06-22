@@ -20,6 +20,7 @@ class UsuarioController : public IUsuarioController{
     public:
         static UsuarioController* getInstancia();
         ~UsuarioController();
+        static void releaseInstancia();
 
         // Caso de uso altaUsuario
         virtual bool altaCliente(const std::string& nickname, const std::string contrasena, const std::string& nombre, const std::string& email, const std::string& apellido, const std::string& documento);

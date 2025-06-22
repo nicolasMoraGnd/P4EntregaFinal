@@ -77,8 +77,10 @@ void Inmobiliaria::altaAdministracionPropiedad(Inmueble* inmuebleAAdministrar, c
 }
 
 Inmobiliaria::~Inmobiliaria() {
-    // Liberar recursos si es necesario, pero como usamos punteros sin ownership
-    // no borramos objetos referenciados aquí. Aunque podemos revisar que onda por una cosa que dijo la profe de memoria estatica
+    for (std::set<AdministraPropiedad*>::iterator it = propiedadesAdministradas.begin(); it != propiedadesAdministradas.end(); ++it) {
+        delete *it;
+    }
+    propiedadesAdministradas.clear();
 }
 
 void Inmobiliaria::suscribir(IObserver* obs) {

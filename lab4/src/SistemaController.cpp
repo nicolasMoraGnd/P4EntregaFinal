@@ -25,6 +25,13 @@ SistemaController* SistemaController::getInstancia() {
     return instancia;
 }
 
+void SistemaController::releaseInstancia() {
+    if (instancia != NULL) {
+        delete instancia;
+        instancia = NULL;
+    }
+}
+
 void SistemaController::eliminarInmueble(int codigoInmueble) {
     InmuebleHandler* ih = InmuebleHandler::getInstancia();
     Inmueble* inm = ih->findInmueble(codigoInmueble);

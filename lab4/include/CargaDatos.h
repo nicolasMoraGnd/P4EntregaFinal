@@ -8,6 +8,7 @@ class CargaDatos {
 
     public:
         static CargaDatos* getInstancia();
+        static void releaseInstancia();
         ~CargaDatos();
 };
 

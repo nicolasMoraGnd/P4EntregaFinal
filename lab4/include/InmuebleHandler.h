@@ -14,7 +14,7 @@ private:
 public:
     static InmuebleHandler* getInstancia();
     ~InmuebleHandler();
-
+    static void releaseInstancia();
     int getSiguienteCodigo();
     void addInmueble(Inmueble* inmueble);
     void removeInmueble(int codigoInmueble);

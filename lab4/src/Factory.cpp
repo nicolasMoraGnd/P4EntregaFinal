@@ -26,3 +26,14 @@ IUsuarioController* Factory::getIUsuarioController(){
 ISistemaController* Factory::getISistemaController(){
     return SistemaController::getInstancia();
 }
+
+Factory::~Factory() {
+    // Destructor vacío.
+}
+
+void Factory::releaseInstancia() {
+    if (instance != NULL) {
+        delete instance;
+        instance = NULL;
+    }
+}
