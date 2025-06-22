@@ -36,8 +36,10 @@ bool UsuarioController::altaCliente(const std::string& nickname, const std::stri
         return false;
     
     //paso 2: si no existe y contrasena mayor 6, creo cliente
-    if (contrasena.length() < 6)
+    if (contrasena.length() < 6){
         return false;
+    }
+        
     
     Cliente* nuevoCliente = new Cliente(nickname, contrasena, nombre, email, apellido, documento);
     //paso 3: agrego cliente

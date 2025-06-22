@@ -129,6 +129,11 @@ void altaUsuario(){
     std::getline(std::cin, nickname);
     std::cout << "Contrasena: ";
     std::getline(std::cin, contrasena);
+    // Bucle de validación para la contraseña
+    while (contrasena.length() < 6) {
+        std::cout << "La contrasena es demasiado corta. Por favor, ingrese una nueva (minimo 6 caracteres): ";
+        std::getline(std::cin, contrasena);
+    }
     std::cout << "Nombre: ";
     std::getline(std::cin, nombre);
     std::cout << "Email: ";
